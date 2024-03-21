@@ -5,8 +5,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    
+    <link rel="shortcut icon" type="image/png" href="{{asset('img/icon.png')}}">
+    <title>@yield('title')</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -23,7 +24,7 @@
     <x-banner />
 
     <div class="min-h-screen bg-gray-100">
-        @livewire('navigation-menu')
+        @livewire('menu-nav')
 
         <!-- Page Heading -->
         @if (isset($header))

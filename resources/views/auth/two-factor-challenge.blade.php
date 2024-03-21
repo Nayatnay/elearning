@@ -1,3 +1,4 @@
+@section('title', 'Dos Factores | Le Concassé')
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">

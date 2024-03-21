@@ -12,19 +12,19 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
 
-                    <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition cursor-pointer"
+                    <a class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 hover:text-red-700 focus:text-red-700 transition cursor-pointer"
                         href="#" data-turbo="false">
                         Cursos
                     </a>
-                    <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition cursor-pointer"
+                    <a class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 hover:text-red-700 focus:text-red-700 transition cursor-pointer"
                         href="#" data-turbo="false">
                         Recetas
                     </a>
-                    <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition cursor-pointer"
+                    <a class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 hover:text-red-700 focus:text-red-700 transition cursor-pointer"
                         href="#" data-turbo="false">
                         Eventos
                     </a>
-                    <a class="inline-flex items-center px-1 pt-1 border-b-2 border-transparent text-sm font-medium leading-5 text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition cursor-pointer"
+                    <a class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 hover:text-red-700 focus:text-red-700 transition cursor-pointer"
                         href="#" data-turbo="false">
                         Inscripciones
                     </a>
@@ -44,24 +44,24 @@
                         <div class="ms-3 relative">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
-                                    
-                                        <span class="inline-flex rounded-md">
-                                            <button type="button"
-                                                class="w-8 h-8 text-xl bg-red-700 text-white rounded-full  hover:text-gray-200 focus:outline-none focus:bg-gray-300 active:bg-gray-300 focus:text-red-700 active:text-red-700 transition ease-in-out duration-150">
-                                                <i class="fa-solid fa-user"></i>
-                                            </button>
-                                        </span>
-                                
+
+                                    <span class="inline-flex rounded-md">
+                                        <button type="button"
+                                            class="w-8 h-8 text-xl bg-red-700 text-white rounded-full  hover:text-gray-200 focus:outline-none focus:bg-gray-300 active:bg-gray-300 focus:text-red-700 active:text-red-700 transition ease-in-out duration-150">
+                                            <i class="fa-solid fa-user"></i>
+                                        </button>
+                                    </span>
+
                                 </x-slot>
 
                                 <x-slot name="content">
                                     <!-- Account Management -->
                                     <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Manage Account') }}
+                                        {{ __('Administrar cuenta') }}
                                     </div>
 
                                     <x-dropdown-link href="{{ route('profile.show') }}">
-                                        {{ __('Profile') }}
+                                        {{ __('Perfil') }}
                                     </x-dropdown-link>
 
                                     <div class="border-t border-gray-200"></div>
@@ -71,7 +71,7 @@
                                         @csrf
 
                                         <x-dropdown-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
-                                            {{ __('Log Out') }}
+                                            {{ __('Cerrar sesión') }}
                                         </x-dropdown-link>
                                     </form>
                                 </x-slot>
@@ -79,7 +79,8 @@
                         </div>
                     @else
                         <!-- Session -->
-                        <button class=" w-8 h-8 text-xl text-gray-400 hover:text-red-800 transition ease-in-out duration-150">
+                        <button
+                            class=" w-8 h-8 text-xl text-gray-400 hover:text-red-800 transition ease-in-out duration-150">
                             <a href="{{ route('login') }}">
                                 <i class="fa-solid fa-user"></i>
                             </a>
@@ -106,37 +107,74 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{ 'block': open, 'hidden': !open }" class="sm:hidden max-h-[calc(100vh-4rem)] overflow-auto hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <div class="bg-red-200">
-                <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition"
-                    href="#" data-turbo="false">
-                    Cursos
-                </a>
-            </div>
-
-            <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition"
-                href="#" data-turbo="false">
-                Recetas
-            </a>
-            <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition"
-                href="#" data-turbo="false">
-                Eventos
-            </a>
-            <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition"
-                href="#" data-turbo="false">
-                Inscripciones
-            </a>
-            <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition"
-                href="#" data-turbo="false">
-                Carrito de compras
-            </a>
-            <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition"
-                href="{{ route('login') }}" data-turbo="false">
-                Iniciar sesión
-            </a>
-            <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition"
-                href="{{ route('register') }}" data-turbo="false">
-                Registrarse
-            </a>
+            @if (Route::has('login'))
+                @auth
+                    <div class="block pl-4 py-2 border-b">
+                        <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
+                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    </div>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="#" data-turbo="false">
+                        Cursos
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="#" data-turbo="false">
+                        Recetas
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="#" data-turbo="false">
+                        Eventos
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="#" data-turbo="false">
+                        Inscripciones
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="#" data-turbo="false">
+                        Carrito de compras
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="{{route('profile.show')}}" data-turbo="false">
+                        Perfil
+                    </a>
+                    <form method="POST" action="{{ route('logout') }}" x-data>
+                        @csrf   
+                        <x-responsive-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                            {{ __('Cerrar sesión') }}
+                        </x-responsive-nav-link>
+                    </form>
+    
+                @else
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="#" data-turbo="false">
+                        Cursos
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="#" data-turbo="false">
+                        Recetas
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="#" data-turbo="false">
+                        Eventos
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="#" data-turbo="false">
+                        Inscripciones
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="#" data-turbo="false">
+                        Carrito de compras
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="{{ route('login') }}" data-turbo="false">
+                        Iniciar sesión
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="{{ route('register') }}" data-turbo="false">
+                        Registrarse
+                    </a>
+                @endauth
+            @endif
         </div>
     </div>
 </nav>

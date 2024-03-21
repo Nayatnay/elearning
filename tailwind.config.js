@@ -9,6 +9,8 @@ export default {
         './vendor/laravel/jetstream/**/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
+
+        "./node_modules/flowbite/**/*.js"
     ],
 
     theme: {
@@ -16,8 +18,15 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+
+            backgroundImage: {
+                'uno-png': "url('/img/1.png')",
+                'dos-png': "url('/img/2.png')",
+                'tres-png': "url('/img/3.png')",
+                
+            },
         },
     },
 
-    plugins: [forms, typography],
+    plugins: [forms, typography, require('./node_modules/flowbite/plugin')],
 };

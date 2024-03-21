@@ -1,3 +1,4 @@
+@section('title', 'Confirmar Contraseña | Le Concassé')
 <x-guest-layout>
     <x-authentication-card>
         <x-slot name="logo">
