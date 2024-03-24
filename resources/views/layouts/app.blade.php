@@ -24,6 +24,7 @@
     <x-banner />
 
     <div class="min-h-screen bg-gray-100">
+        
         @livewire('menu-nav')
 
         <!-- Page Heading -->
@@ -36,9 +37,9 @@
         @endif
 
         <!-- Page Content -->
-        <main>
+        
             {{ $slot }}
-        </main>
+       
     </div>
 
     @stack('modals')

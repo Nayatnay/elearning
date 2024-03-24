@@ -5,17 +5,17 @@
         <!-- Carousel wrapper -->
         <div class=" overflow-hidden relative h-48 sm:h-64 xl:h-[430px]">
             <!-- Item 1 -->
-            <div class="hidden animation ease-in-out duration-700" data-carousel-item>
+            <div class="hidden ease-in-out duration-700" data-carousel-item>
                 <img src="{{ asset('img/1.jpg') }}"
                     class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
             </div>
             <!-- Item 2 -->
-            <div class="hidden animation ease-in-out duration-700" data-carousel-item>
+            <div class="hidden ease-in-out duration-700" data-carousel-item>
                 <img src="{{ asset('img/2.jpg') }}"
                     class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
             </div>
             <!-- Item 3 -->
-            <div class="hidden animation ease-in-out duration-700" data-carousel-item>
+            <div class="hidden ease-in-out duration-700" data-carousel-item="active">
                 <img src="{{ asset('img/3.jpg') }}"
                     class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
             </div>
@@ -57,6 +57,10 @@
             </span>
         </button>
     </div>
+
+    <!--            pie de pagina FOOTER               -->
+
+    <x-footer></x-footer>
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 

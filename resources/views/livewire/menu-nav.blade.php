@@ -1,7 +1,35 @@
+@php
+
+    $nav_links = [
+        [
+            'name' => 'cursos',
+            'route' => route('cursos'),
+            'active' => request()->routeIs('cursos'),
+        ],
+
+        [
+            'name' => 'recetas',
+            'route' => route('recetas'),
+            'active' => request()->routeIs('recetas'),
+        ],
+
+        [
+            'name' => 'eventos',
+            'route' => route('eventos'),
+            'active' => request()->routeIs('eventos'),
+        ],
+
+        [
+            'name' => 'inscripciones',
+            'route' => route('inscripciones'),
+            'active' => request()->routeIs('inscripciones'),
+        ],
+    ];
+@endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow sticky top-0 z-[200]">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-20">
+        <div class="flex justify-between ">
             <div class="flex text-gray-600">
                 <!-- Logo -->
                 <div class="shrink-0 flex items-center">
@@ -12,29 +40,20 @@
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
 
-                    <a class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 hover:text-red-700 focus:text-red-700 transition cursor-pointer"
-                        href="#" data-turbo="false">
-                        Cursos
-                    </a>
-                    <a class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 hover:text-red-700 focus:text-red-700 transition cursor-pointer"
-                        href="#" data-turbo="false">
-                        Recetas
-                    </a>
-                    <a class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 hover:text-red-700 focus:text-red-700 transition cursor-pointer"
-                        href="#" data-turbo="false">
-                        Eventos
-                    </a>
-                    <a class="inline-flex items-center px-1 pt-1 text-sm font-medium leading-5 text-gray-500 hover:text-red-700 focus:text-red-700 transition cursor-pointer"
-                        href="#" data-turbo="false">
-                        Inscripciones
-                    </a>
+                    @foreach ($nav_links as $nav_link)
+                        <x-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                            {{ $nav_link['name'] }}
+                        </x-nav-link>
+                    @endforeach
+
                 </div>
             </div>
             <!-- menu derecho -->
             <div class="hidden sm:flex sm:items-center sm:ml-6 space-x-4">
                 <!-- Cart -->
+                
                 <button class=" w-8 h-8 text-xl text-gray-400 hover:text-red-800 transition ease-in-out duration-150">
-                    <a href="#">
+                    <a href="{{ route('carrito') }}">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </a>
                 </button>
@@ -109,60 +128,37 @@
         <div class="pt-2 pb-3 space-y-1">
             @if (Route::has('login'))
                 @auth
-                    <div class="block pl-4 py-2 border-b">
-                        <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                    <div class="border-y py-1">
+                        @foreach ($nav_links as $nav_link)
+                            <x-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                                {{ $nav_link['name'] }}
+                            </x-responsive-nav-link>
+                        @endforeach
                     </div>
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                        href="#" data-turbo="false">
-                        Cursos
-                    </a>
-                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                        href="#" data-turbo="false">
-                        Recetas
-                    </a>
-                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                        href="#" data-turbo="false">
-                        Eventos
-                    </a>
-                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                        href="#" data-turbo="false">
-                        Inscripciones
-                    </a>
-                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                        href="#" data-turbo="false">
+                        href="{{ route('carrito') }}" data-turbo="false">
                         Carrito de compras
                     </a>
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                        href="{{route('profile.show')}}" data-turbo="false">
+                        href="{{ route('profile.show') }}" data-turbo="false">
                         Perfil
                     </a>
                     <form method="POST" action="{{ route('logout') }}" x-data>
-                        @csrf   
+                        @csrf
                         <x-responsive-nav-link href="{{ route('logout') }}" @click.prevent="$root.submit();">
                             {{ __('Cerrar sesión') }}
                         </x-responsive-nav-link>
                     </form>
-    
                 @else
+                    <div class="border-y py-1s">
+                        @foreach ($nav_links as $nav_link)
+                            <x-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
+                                {{ $nav_link['name'] }}
+                            </x-responsive-nav-link>
+                        @endforeach
+                    </div>
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                        href="#" data-turbo="false">
-                        Cursos
-                    </a>
-                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                        href="#" data-turbo="false">
-                        Recetas
-                    </a>
-                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                        href="#" data-turbo="false">
-                        Eventos
-                    </a>
-                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                        href="#" data-turbo="false">
-                        Inscripciones
-                    </a>
-                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                        href="#" data-turbo="false">
+                        href="{{ route('carrito') }}" data-turbo="false">
                         Carrito de compras
                     </a>
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"

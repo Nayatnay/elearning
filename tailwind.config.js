@@ -19,12 +19,10 @@ export default {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
 
-            backgroundImage: {
-                'uno-png': "url('/img/1.png')",
-                'dos-png': "url('/img/2.png')",
-                'tres-png': "url('/img/3.png')",
-                
-            },
+            animation: {
+                'ease-in-out': 'ease-in-out 5s',
+              }
+            
         },
     },
 
