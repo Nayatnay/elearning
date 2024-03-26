@@ -38,4 +38,8 @@
             @endif
         </div>
     </div>
+
+    <!-- Pie de pagina -->
+    <x-footer></x-footer>
+    
 </x-app-layout>

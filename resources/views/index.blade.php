@@ -1,6 +1,6 @@
 @section('title', 'Escuela de Cocina | Le Concassé')
 <x-ppa-layout>
-    
+
     <div id="default-carousel" class="relative" data-carousel="static">
         <!-- Carousel wrapper -->
         <div class=" overflow-hidden relative h-48 sm:h-64 xl:h-[430px]">
@@ -10,12 +10,12 @@
                     class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
             </div>
             <!-- Item 2 -->
-            <div class="hidden ease-in-out duration-700" data-carousel-item>
+            <div class="hidden ease-in-out duration-700" data-carousel-item="active">
                 <img src="{{ asset('img/2.jpg') }}"
                     class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
             </div>
             <!-- Item 3 -->
-            <div class="hidden ease-in-out duration-700" data-carousel-item="active">
+            <div class="hidden ease-in-out duration-700" data-carousel-item>
                 <img src="{{ asset('img/3.jpg') }}"
                     class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
             </div>
@@ -58,8 +58,135 @@
         </button>
     </div>
 
-    <!--            pie de pagina FOOTER               -->
+    <div class="w-full py-10">
 
+        <div class="max-w-7xl mx-auto">
+
+            <p class="text-center text-xl">Contenido</p>
+
+            <div class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-4 py-8">
+
+                <div class="rounded-md border border-gray-300 bg-gray-100">
+
+                    <a href="{{ route('cursos') }}">
+                        <img src="{{ asset('/img/cursos.jpg') }}" alt="" title=""
+                            class="w-full rounded-tl-md rounded-tr-md">
+                        <p class="p-4">
+                            Cursos online y presenciales
+                        </p>
+                    </a>
+                </div>
+                <div class="rounded-md border border-gray-300 bg-gray-100">
+                    <a href="{{ route('recetas') }}">
+                        <img src="{{ asset('/img/recetas.jpg') }}" alt="" title=""
+                            class="w-full rounded-tl-md rounded-tr-md">
+                        <p class="p-4">
+                            Recetas
+                        </p>
+                    </a>
+                </div>
+                <div class="rounded-md border border-gray-300 bg-gray-100">
+                    <a href="{{ route('eventos') }}">
+                        <img src="{{ asset('/img/eventos.jpg') }}" alt="" title=""
+                            class="w-full rounded-tl-md rounded-tr-md">
+                        <p class="p-4">
+                            Eventos
+                        </p>
+                    </a>
+                </div>
+                <div class="rounded-md border border-gray-300 bg-gray-100">
+                    <a href="{{ route('inscripciones') }}">
+                        <img src="{{ asset('/img/inscripciones.jpg') }}" alt="" title=""
+                            class="w-full rounded-tl-md rounded-tr-md">
+                        <p class="p-4">
+                            Inscríbete
+                        </p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="w-full md:py-10">
+
+        <div class="max-w-7xl mx-auto flex items-start justify-center flex-wrap">
+            <div class="p-4 max-w-[460px]">
+                <img src="{{ asset('/img/img1.png') }}" alt="" title="" class="w-full">
+            </div>
+            <div class="p-4 font-extralight text-5xl max-w-[420px]">
+                <p class="font-bold">Comienza ya</p>
+                <p class="text-3xl mt-1">Aprende a defenderte como un chef*</p>
+
+                <div class="my-8 border rounded-md shadow-md bg-white">
+                    
+                    <p class="mb-6 p-3 bg-lime-400 text-lg font-medium text-center">Inscribe uno de nuestros cursos en línea o presencial</p>
+                    
+                    <form method="POST" action="" class="text-sm m-4">
+                        @csrf
+
+                        <div>
+                            <x-label for="name" value="{{ __('Nombre y Apellido') }}" />
+                            <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autocomplete="name" />
+                            <x-input-error for="name" />
+                        </div>
+                        
+                        <div class="mt-4">
+                            <x-label for="email" value="{{ __('Email') }}" />
+                            <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="email" />
+                            <x-input-error for="email" />
+                        </div>
+
+                        <div  class="mt-4">
+                            <x-label for="doc" value="{{ __('Documento Identidad') }}" />
+                            <x-input id="doc" class="block mt-1 w-full" type="text" name="doc" :value="old('doc')" required autocomplete="doc" />
+                            <x-input-error for="doc" />
+                        </div>
+
+                        <div class="mt-4 w-48">
+                            <x-label for="fechanac" value="{{ __('Fecha de Nacimiento') }}" class="ml-4 text-zinc-800" />
+                            <x-input id="fechanac" class="block mt-1 w-full" type="date" name="fechanac" :value="old('fechanac')" required autocomplete="fechanac" />
+                            <x-input-error for="fechanac" />
+                        </div>
+
+                        <div  class="mt-4">
+                            <x-label for="telf" value="{{ __('Teléfono Personal') }}" />
+                            <x-input id="telf" class="block mt-1 w-full" type="text" name="telf" :value="old('telf')" required autocomplete="telf" />
+                        </div>
+
+                        <div class="mt-8">
+                            <select name="curso" wire:model.defer="curso"
+                                class="pl-4 block mt-1 w-full border-gray-800 focus:border-gray-500 focus:ring-gray-500 rounded-md shadow-sm"
+                                type="text" name="curso" :value="old('curso')" required autocomplete="curso">
+                                <option value="">Cursos</option>
+                                <option value="1">Curso prueba 1</option>
+                                <option value="1">Curso prueba 2</option>
+                                <option value="1">Curso prueba 3</option>   
+                            </select>
+                            <x-input-error for="curso" />
+                        </div>
+
+                        <div class="mt-8">
+                            <select name="turno" class="pl-4 block mt-1 w-full border-gray-800 focus:border-gray-500 focus:ring-gray-500 rounded-md shadow-sm"
+                                type="text" name="turno" :value="old('turno')" required autocomplete="turno">
+                                <option value="">Turnos</option>
+                                <option value="1">Mañana</option>
+                                <option value="1">Tarde</option>
+                            </select>
+                            <x-input-error for="turno" />
+                        </div>
+
+                        <x-button class="mt-8">
+                            {{ __('Enviar') }}
+                        </x-button>
+                    </form>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Pie de pagina -->
     <x-footer></x-footer>
 
     <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
