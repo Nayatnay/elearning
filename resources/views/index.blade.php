@@ -118,39 +118,48 @@
                 <p class="text-3xl mt-1">Aprende a defenderte como un chef*</p>
 
                 <div class="my-8 border rounded-md shadow-md bg-white">
-                    
-                    <p class="mb-6 p-3 bg-lime-400 text-lg font-medium text-center">Inscribe uno de nuestros cursos en línea o presencial</p>
-                    
+
+                    <div class="mb-8 p-3 bg-lime-600 text-white text-center rounded-tl-md rounded-tr-md">
+                        <p class="uppercase font-bold text-base">Inscribe uno de nuestros cursos en línea o presencial
+                        </p>
+                    </div>
+
                     <form method="POST" action="" class="text-sm m-4">
                         @csrf
 
                         <div>
                             <x-label for="name" value="{{ __('Nombre y Apellido') }}" />
-                            <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autocomplete="name" />
+                            <x-input id="name" class="block mt-1 w-full" type="text" name="name"
+                                :value="old('name')" required autocomplete="name" />
                             <x-input-error for="name" />
                         </div>
-                        
+
                         <div class="mt-4">
                             <x-label for="email" value="{{ __('Email') }}" />
-                            <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="email" />
+                            <x-input id="email" class="block mt-1 w-full" type="email" name="email"
+                                :value="old('email')" required autocomplete="email" />
                             <x-input-error for="email" />
                         </div>
 
-                        <div  class="mt-4">
+                        <div class="mt-4">
                             <x-label for="doc" value="{{ __('Documento Identidad') }}" />
-                            <x-input id="doc" class="block mt-1 w-full" type="text" name="doc" :value="old('doc')" required autocomplete="doc" />
+                            <x-input id="doc" class="block mt-1 w-full" type="text" name="doc"
+                                :value="old('doc')" required autocomplete="doc" />
                             <x-input-error for="doc" />
                         </div>
 
                         <div class="mt-4 w-48">
-                            <x-label for="fechanac" value="{{ __('Fecha de Nacimiento') }}" class="ml-4 text-zinc-800" />
-                            <x-input id="fechanac" class="block mt-1 w-full" type="date" name="fechanac" :value="old('fechanac')" required autocomplete="fechanac" />
+                            <x-label for="fechanac" value="{{ __('Fecha de Nacimiento') }}"
+                                class="ml-4 text-zinc-800" />
+                            <x-input id="fechanac" class="block mt-1 w-full" type="date" name="fechanac"
+                                :value="old('fechanac')" required autocomplete="fechanac" />
                             <x-input-error for="fechanac" />
                         </div>
 
-                        <div  class="mt-4">
+                        <div class="mt-4">
                             <x-label for="telf" value="{{ __('Teléfono Personal') }}" />
-                            <x-input id="telf" class="block mt-1 w-full" type="text" name="telf" :value="old('telf')" required autocomplete="telf" />
+                            <x-input id="telf" class="block mt-1 w-full" type="text" name="telf"
+                                :value="old('telf')" required autocomplete="telf" />
                         </div>
 
                         <div class="mt-8">
@@ -160,13 +169,14 @@
                                 <option value="">Cursos</option>
                                 <option value="1">Curso prueba 1</option>
                                 <option value="1">Curso prueba 2</option>
-                                <option value="1">Curso prueba 3</option>   
+                                <option value="1">Curso prueba 3</option>
                             </select>
                             <x-input-error for="curso" />
                         </div>
 
                         <div class="mt-8">
-                            <select name="turno" class="pl-4 block mt-1 w-full border-gray-800 focus:border-gray-500 focus:ring-gray-500 rounded-md shadow-sm"
+                            <select name="turno"
+                                class="pl-4 block mt-1 w-full border-gray-800 focus:border-gray-500 focus:ring-gray-500 rounded-md shadow-sm"
                                 type="text" name="turno" :value="old('turno')" required autocomplete="turno">
                                 <option value="">Turnos</option>
                                 <option value="1">Mañana</option>

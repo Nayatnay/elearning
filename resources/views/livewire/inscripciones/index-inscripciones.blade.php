@@ -34,7 +34,8 @@
                                 class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-lime-600 rounded-full">
                                 <p class="text-lg md:text-2xl text-white font-bold">3</p>
                             </div>
-                            <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Realiza el pago</p>
+                            <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Te contactaremos para
+                                formalizar inscripción</p>
                         </div>
                         <div class="border-l border-lime-600 ml-4 md:ml-5 pb-3"></div>
 
@@ -50,12 +51,13 @@
                     </div>
                 </div>
 
-                <div class="p-4 font-extralight text-5xl w-full md:w-[35%]">
+                <div class="p-4 text-5xl w-full md:w-[35%]">
 
                     <div class="border rounded-md shadow-md bg-white">
 
-                        <p class="mb-6 p-3 bg-lime-400 text-lg font-medium text-center">Inscribe uno de nuestros cursos
-                            en línea o presencial</p>
+                        <div class="mb-8 p-3 bg-lime-600 text-white text-center rounded-tl-md rounded-tr-md">
+                            <p class="uppercase font-bold text-2xl">Inscríbete aquí</p>
+                        </div>
 
                         <form method="POST" action="" class="text-sm m-4">
                             @csrf
@@ -124,6 +126,10 @@
                         </form>
                     </div>
                 </div>
+            </div>
+            <div class="mt-20 md:w-[60%] mx-auto bg-red-800 text-white shadow-lg border rounded-xl p-8 ">
+                <p class="text-4xl">¿Quieres ver más?</p>
+                <p class="text-xl">Accede a todos los videos desde tu sesión</p>
             </div>
         </div>
     </div>
