@@ -117,10 +117,11 @@
                 <p class="font-bold">Comienza ya</p>
                 <p class="text-3xl mt-1">Aprende a defenderte como un chef*</p>
 
-                <div class="my-8 border rounded-md shadow-md bg-white">
+                <div class="my-8 border rounded-lg shadow-lg bg-white">
 
-                    <div class="mb-8 p-3 bg-lime-600 text-white text-center rounded-tl-md rounded-tr-md">
-                        <p class="uppercase font-bold text-base">Inscribe uno de nuestros cursos en línea o presencial
+                    <div class="mb-8 p-3 bg-lime-600 text-white text-center rounded-tl-lg rounded-tr-lg">
+                        <p class="uppercase font-bold text-base">Inscríbete en uno de nuestros cursos en línea o
+                            presencial
                         </p>
                     </div>
 
@@ -195,6 +196,69 @@
 
         </div>
     </div>
+
+
+    <!-- muestra cursos -->
+    <div class="max-w-7xl mx-auto ">
+
+        <div class="my-4">
+            <p class="text-center text-xl">cursos</p>
+        </div>
+
+        @if ($cursos->count())
+
+                <div
+                    class="text-black grid gap-x-4 gap-y-4 md:gap-y-8 grid-cols-1 sm:grid-cols-2 
+                lg:grid-cols-3 xl:grid-cols-4 px-2 pt-4">
+
+                    @foreach ($cursos as $curso)
+                        <div
+                            class="flex flex-col items-center justify-between border border-gray-200 rounded-lg bg-gray-100">
+
+                            <div class="flex h-[50%] items-start">
+                                <a href="#">
+                                    <img src="{{ asset('/storage/cursos/' . $curso->imagen) }}" alt=""
+                                        title="" class="w-full rounded-tl-lg rounded-tr-lg" width="">
+                                </a>
+                            </div>
+
+                            <div class="w-full p-4 font-bold text-lg">
+                                <a href="#">
+                                    <p class="text-ellipsis line-clamp-1">{{ $curso->nombre }}</p>
+                                </a>
+                                
+                                <div class="flex items-start mt-2">
+                                    <span class="text-sm font-normal mt-0.5 mr-0.5">US$</span>
+                                    <span class="text-3xl font-semibold">
+                                        {{ intval($curso->costo) }}</strong></span>
+                                    @php
+                                        $decimal = substr($curso->costo, -2);
+                                    @endphp
+                                    @if ($decimal != 0)
+                                        <span
+                                            class="mt-0.5 ml-0.5 text-sm font-light">{{ substr($curso->costo, -2) }}</span>
+                                    @endif
+                                </div>
+                            </div>
+
+                        </div>
+                    @endforeach
+
+                </div>
+            @else
+                <div class="w-full pt-6 pb-2 pl-6 border-b text-orange-600 font-medium">
+                    <p>Lo sentimos, no existen cursos con el filtro seleccionado</p>
+                </div>
+
+            @endif
+
+
+    </div>
+
+
+
+
+
 
     <!-- Pie de pagina -->
     <x-footer></x-footer>

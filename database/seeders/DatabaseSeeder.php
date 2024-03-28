@@ -2,9 +2,11 @@
 
 namespace Database\Seeders;
 
+use App\Models\Curso;
 use App\Models\User;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Storage;
 
 class DatabaseSeeder extends Seeder
 {
@@ -21,5 +23,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'nayatnay@gmail.com',
             'password' => '00000000',
         ]);
+
+        Storage::disk('public')->deleteDirectory('cursos');
+        Storage::disk('public')->makeDirectory('cursos');
+
+        Curso::factory(10)->create();
+
+
     }
 }

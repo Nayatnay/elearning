@@ -1,11 +1,11 @@
 <div>
     <div class="w-full py-10 ">
-        <div class="max-w-7xl mx-auto py-0 md:py-10 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto py-0 md:py-10 px-4 sm:px-6 lg:px-8">
             <div class="flex flex-col items-start justify-center md:flex-row">
 
-                <div class="p-4 w-full md:w-[60%] text-4xl sm:text-5xl ">
+                <div class="w-full md:w-[60%] text-4xl sm:text-5xl mr-4">
 
-                    <p class="font-bold mb-8">Estudia cocina en la escuela #1 de la zona</p>
+                    <p class="font-bold mb-10">Estudia cocina en la escuela #1 de la zona</p>
 
                     <div class="flex flex-col justify-center ">
 
@@ -51,11 +51,11 @@
                     </div>
                 </div>
 
-                <div class="p-4 text-5xl w-full md:w-[35%]">
+                <div class="mt-12 md:mt-0 text-5xl w-full md:w-[35%]">
 
-                    <div class="border rounded-md shadow-md bg-white">
+                    <div class="border rounded-lg shadow-lg bg-white">
 
-                        <div class="mb-8 p-3 bg-lime-600 text-white text-center rounded-tl-md rounded-tr-md">
+                        <div class="mb-8 p-3 bg-lime-600 text-white text-center rounded-tl-lg rounded-tr-lg">
                             <p class="uppercase font-bold text-2xl">Inscríbete aquí</p>
                         </div>
 
@@ -127,9 +127,21 @@
                     </div>
                 </div>
             </div>
-            <div class="mt-20 md:w-[60%] mx-auto bg-red-800 text-white shadow-lg border rounded-xl p-8 ">
-                <p class="text-4xl">¿Quieres ver más?</p>
-                <p class="text-xl">Accede a todos los videos desde tu sesión</p>
+
+            <div class="mt-20 mb-10 border border-gray-400 bg-gray-200 shadow-lg rounded-xl p-8 ">
+                <div class="flex flex-col items-center justify-center lg:flex-row ">
+                    <div class="w-full lg:mr-4 text-center lg:text-left">
+                        <p class="text-4xl">¡Da el primer paso!</p>
+                        <p class="text-2xl mt-2">Una extensa variedad de categorías a escoger</p>
+
+                    </div>
+                    <a href="#">
+                        <div class="mt-6 rounded-full w-60 border-4 border-transparent  bg-white hover:bg-gray-200 active:bg-gray-300 hover:border-white px-10 py-4 text-center font-bold text-base">
+                            Comienza aquí
+                        </div>
+                    </a>
+                </div>
+                <p class="mt-6 text-xs font-medium text-center lg:text-left"> Repostería tradicional, gastronomía exótica, comida internacional y exquisiteces de la India<p>
             </div>
         </div>
     </div>
