@@ -26,7 +26,7 @@
         ],
     ];
 @endphp
-<nav x-data="{ open: false }" class="bg-white border-b border-gray-100 shadow sticky top-0 z-[200]">
+<nav x-data="{ open: false }" class="bg-white border-b border-gray-100  shadow sticky top-0 z-[200]">
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between ">
@@ -81,6 +81,10 @@
 
                                     <x-dropdown-link href="{{ route('profile.show') }}">
                                         {{ __('Perfil') }}
+                                    </x-dropdown-link>
+
+                                    <x-dropdown-link href="{{ route('admin_cursos') }}">
+                                        {{ __('Administrar Cursos') }}
                                     </x-dropdown-link>
 
                                     <div class="border-t border-gray-200"></div>
@@ -142,6 +146,10 @@
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('profile.show') }}" data-turbo="false">
                         Perfil
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="{{ route('admin_cursos') }}" data-turbo="false">
+                        Administrar Cursos
                     </a>
                     <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf

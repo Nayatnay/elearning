@@ -10,7 +10,7 @@ class IndexController extends Controller
     public function index()
     {
         
-        $cursos = Curso::all();
+        $cursos = Curso::paginate(8);
 
         return view('index', compact('cursos'));
     }

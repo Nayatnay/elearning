@@ -145,4 +145,6 @@
             </div>
         </div>
     </div>
+    <!-- Pie de pagina -->
+    <x-footer></x-footer>
 </div>
