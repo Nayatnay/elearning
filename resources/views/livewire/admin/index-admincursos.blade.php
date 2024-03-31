@@ -5,7 +5,7 @@
             <h2 class="font-light">
                 {{ __('Administrar cursos') }}
             </h2>
-            <a href="{{route('admin_crearcursos')}}" class="text-base border-b-2 border-transparent hover:border-red-700">Crear Curso</a>
+            @livewire('admin.crear-admincursos')
         </div>
     </div>
 
@@ -23,7 +23,7 @@
 
                 @foreach ($cursos as $curso)
                         <div
-                            class="flex flex-col items-center justify-between border border-gray-200 rounded-lg bg-gray-100">
+                            class="flex flex-col items-center justify-between border border-gray-600 rounded-lg bg-white">
 
                             <div class="flex h-[50%] items-start">
                                 <a href="#">
@@ -40,13 +40,14 @@
                                 <div class="flex items-start mt-2">
                                     <span class="text-sm font-normal mt-0.5 mr-0.5">US$</span>
                                     <span class="text-3xl font-semibold">
-                                        {{ intval($curso->costo) }}</strong></span>
+                                        {{ intval($curso->costo) }}</span>
                                     @php
-                                        $decimal = substr($curso->costo, -2);
+                                    $numero = number_format($curso->costo, 2, '.', '');
+                                        $decimal = substr($numero, -2);
                                     @endphp
                                     @if ($decimal != 0)
                                         <span
-                                            class="mt-0.5 ml-0.5 text-sm font-light">{{ substr($curso->costo, -2) }}</span>
+                                        class="mt-0.5 ml-0.5 text-sm font-light">{{ $decimal }}</span>
                                     @endif
                                 </div>
                                 <div class="mt-2 pt-4 text-lg w-full flex items-center justify-between border-t border-gray-200">

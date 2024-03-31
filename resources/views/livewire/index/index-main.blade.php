@@ -233,13 +233,14 @@
                                 <div class="flex items-start mt-2">
                                     <span class="text-sm font-normal mt-0.5 mr-0.5">US$</span>
                                     <span class="text-3xl font-semibold">
-                                        {{ intval($curso->costo) }}</strong></span>
+                                        {{ intval($curso->costo) }}</span>
                                     @php
-                                        $decimal = substr($curso->costo, -2);
+                                    $numero = number_format($curso->costo, 2, '.', '');
+                                        $decimal = substr($numero, -2);
                                     @endphp
                                     @if ($decimal != 0)
                                         <span
-                                            class="mt-0.5 ml-0.5 text-sm font-light">{{ substr($curso->costo, -2) }}</span>
+                                            class="mt-0.5 ml-0.5 text-sm font-light">{{ $decimal }}</span>
                                     @endif
                                 </div>
                                 <a href="#">
