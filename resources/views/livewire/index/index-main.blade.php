@@ -207,7 +207,7 @@
 
                     @foreach ($cursos as $curso)
                         <div
-                            class="flex flex-col items-center justify-between border border-gray-200 rounded-lg bg-gray-100">
+                            class="flex flex-col items-center justify-between border border-gray-300 rounded-lg bg-gray-100">
 
                             <div class="flex flex-col h-[50%] items-start">
                                 <a href="#">

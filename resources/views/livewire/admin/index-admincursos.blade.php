@@ -10,148 +10,290 @@
     </div>
 
     <div class="my-8 p-4 max-w-screen-xl mx-auto">
-        
-        <!-- formulario de busqueda -->
 
-        <div class="md:flex items-center mt-8 mb-4">
+        <!-- Buscador -->
+
+        <div class="md:flex items-center mb-4">
             <x-input type="text" wire:model.live="buscar" class="w-full" placeholder="Buscar en la lista" />
         </div>
 
-        @if ($cursos->count())
+        <!-- Tabla -->
 
-            <div class="my-12 grid gap-x-8 md:gap-x-16 gap-y-4 md:gap-y-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+        <div class="mt-10">
+            @if ($cursos->count())
 
-                @foreach ($cursos as $curso)
-                        <div
-                            class="flex flex-col items-center justify-between border border-gray-600 rounded-lg bg-white">
+                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-xs text-gray-600">
 
-                            <div class="flex h-[50%] items-start">
-                                <a href="#">
-                                    <img src="{{ asset('/storage/cursos/' . $curso->imagen) }}" alt=""
-                                        title="" class="w-full rounded-tl-lg rounded-tr-lg" width="">
-                                </a>
-                            </div>
+                    <table class="table-fixed  w-full rounded font-light text-left h-auto border-collapse">
 
-                            <div class="w-full p-4 font-bold text-xl">
-                                <a href="#">
-                                    <p class="text-ellipsis line-clamp-1 font-normal">{{ $curso->nombre }}</p>
-                                </a>
+                        <tbody class="text-left">
 
-                                <div class="flex items-start mt-2">
-                                    <span class="text-sm font-normal mt-0.5 mr-0.5">US$</span>
-                                    <span class="text-3xl font-semibold">
-                                        {{ intval($curso->costo) }}</span>
-                                    @php
-                                    $numero = number_format($curso->costo, 2, '.', '');
-                                        $decimal = substr($numero, -2);
-                                    @endphp
-                                    @if ($decimal != 0)
-                                        <span
-                                        class="mt-0.5 ml-0.5 text-sm font-light">{{ $decimal }}</span>
-                                    @endif
-                                </div>
-                                <div class="mt-2 pt-4 text-lg w-full flex items-center justify-between border-t border-gray-200">
-                                    <a href="#" title="Eliminar" class="px-2"
-                                        wire:click="delete({{ $curso }})">
-                                        <svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                                            viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                                            <style>
-                                                svg {
-                                                    fill: #7d7d7d
-                                                }
-                                            </style>
-                                            <path
-                                                d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                                        </svg>
-                                    </a>
-                                    <a href="#" wire:click="edit({{ $curso }})" title="Editar"
-                                        class="group text-center px-2">
-                                        <span
-                                            class="h-2 w-2 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                        <span
-                                            class="h-2 w-2 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                        <span
-                                            class="h-2 w-2 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                    </a>
-                                </div>
+                            @foreach ($cursos as $curso)
+                                <tr class="h-12 hover:bg-gray-200 active:bg-gray-300">
+                                    <td class="w-[48px] pl-2 cursor-pointer" wire:click="prueba({{ $curso }})">
+                                        <img src="{{ asset('/storage/cursos/' . $curso->imagen) }}" alt=""
+                                            title="" class="rounded w-full">
+                                    </td>
 
-                            </div>
+                                    <td class="pl-2 w-48 min-w-48 font-bold uppercase cursor-pointer"
+                                        wire:click="prueba({{ $curso }})">{{ $curso->nombre }}</td>
 
+                                    <td class="pl-2 w-96 min-w-96 cursor-pointer"
+                                        wire:click="prueba({{ $curso }})">{{ $curso->descripcion }}</td>
+
+                                    <td class="px-2 w-20 min-w-20 text-right cursor-pointer"
+                                        wire:click="prueba({{ $curso }})">
+                                        ${{ number_format($curso->costo, 2, ',', '.') }}</td>
+
+                                    <td class="w-14 text-center">
+                                        <a href="#" title="Eliminar" wire:click="delete({{ $curso }})">
+                                            <i class="fa-solid fa-trash text-gray-500"></i>
+                                        </a>
+                                    </td>
+                                    <td class="w-14 text-center">
+                                        <a href="#" wire:click="edit({{ $curso }})" title="Editar"
+                                            class="group text-center">
+                                            <span
+                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
+                                            <span
+                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
+                                            <span
+                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @else
+                <div class="mt-4 bg-white text-base font-semibold sm:px-10 px-5 py-2 shadow">
+                    <span>Sin resultados</span>
+                </div>
+            @endif
+
+            @if ($cursos->hasPages())
+                <div class="px-4 py-2 text-center mt-4">
+                    {{ $cursos->onEachSide(0)->links() }}
+                </div>
+            @endif
+
+        </div>
+
+        <div class="mt-10 flex items-center border-y p-2 text-sm font-bold bg-white uppercase">
+            <div class="w-[72px] mr-4">
+                <img src="{{ asset('/storage/cursos/' . $imgc) }}" alt="" title=""
+                    class="rounded w-full">
+            </div>
+            <p>{{ $nombrec }}</p>
+        </div>
+
+        <!-- Tabla Requisitos -->
+
+        <div class="mt-10">
+            
+            <div class="flex items-center justify-between text-lg px-4 md:px-8 py-1 max-w-screen-xl mx-auto">
+                <p class="text-sm font-bold uppercase">Requisitos</p>
+                @livewire('admin.crear-adminrequisitos')
+            </div>
+
+            @if ($requisitos->count())
+
+                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-xs text-gray-600">
+
+                    <table class="table-fixed  w-full rounded font-light text-left h-auto border-collapse">
+
+                        <tbody class="text-left">
+
+                            @foreach ($requisitos as $requisito)
+                                <tr class="h-12 hover:bg-gray-200 active:bg-gray-300">
+
+                                    <td class="px-2">{{ $requisito->descripcion }}</td>
+
+                                    <td class="w-14 text-center">
+                                        <a href="#" title="Eliminar" wire:click="delete({{ $curso }})">
+                                            <i class="fa-solid fa-trash text-gray-500"></i>
+                                        </a>
+                                    </td>
+                                    <td class="w-14 text-center">
+                                        <a href="#" wire:click="edit({{ $curso }})" title="Editar"
+                                            class="group text-center">
+                                            <span
+                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
+                                            <span
+                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
+                                            <span
+                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @else
+                <div class="mt-4 bg-white text-base font-semibold sm:px-10 px-5 py-2 shadow">
+                    <span>Sin resultados</span>
+                </div>
+            @endif
+
+        </div>
+
+        <!-- Tabla Alcances -->
+
+        <div class="mt-10">
+
+            <div class="flex items-center justify-between text-lg px-4 md:px-8 py-1 max-w-screen-xl mx-auto">
+                <p class="text-sm font-bold uppercase">Alcances</p>
+                @livewire('admin.crear-adminalcances')
+            </div>
+
+
+            @if ($alcances->count())
+
+                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-xs text-gray-600">
+
+                    <table class="table-fixed  w-full rounded font-light text-left h-auto border-collapse">
+
+                        <tbody class="text-left">
+
+                            @foreach ($alcances as $alcance)
+                                <tr class="h-12 hover:bg-gray-200 active:bg-gray-300">
+
+                                    <td class="px-2">{{ $alcance->descripcion }}</td>
+
+                                    <td class="w-14 text-center">
+                                        <a href="#" title="Eliminar" wire:click="delete({{ $curso }})">
+                                            <i class="fa-solid fa-trash text-gray-500"></i>
+                                        </a>
+                                    </td>
+                                    <td class="w-14 text-center">
+                                        <a href="#" wire:click="edit({{ $curso }})" title="Editar"
+                                            class="group text-center">
+                                            <span
+                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
+                                            <span
+                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
+                                            <span
+                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            @else
+                <div class="mt-4 bg-white text-base font-semibold sm:px-10 px-5 py-2 shadow">
+                    <span>Sin resultados</span>
+                </div>
+            @endif
+
+        </div>
+
+
+
+        <!--Modal delete -->
+
+        <x-confirmation-modal wire:model="open_delete">
+
+            <x-slot name="title">
+                Esta acción no podrá ser reversada
+            </x-slot>
+
+            <x-slot name="content">
+                ¿Está seguro de proceder con la eliminación del curso?
+            </x-slot>
+
+            <x-slot name="footer">
+                <x-secondary-button wire:click="$set('open_delete', false)" class="mr-2">
+                    Cancelar
+                </x-secondary-button>
+
+                <x-danger-button wire:click="destroy" wire:loading.attr="disabled" class="disabled:opacity-25 ml-2">
+                    Aceptar
+                </x-danger-button>
+            </x-slot>
+        </x-confirmation-modal>
+
+        <x-dialog-modal wire:model="open_edit">
+
+            <x-slot name="title">
+                <p class="font-bold text-left pb-4 border-b">Actualizar curso</p>
+            </x-slot>
+
+            <x-slot name="content">
+
+                <div class="flex flex-col md:flex-row">
+
+                    <div class="mb-4 mr-0 md:mr-4 md:mb-0 w-full md:w-[420px] rounded border p-4 bg-white">
+                        <div class="text-xs text-left lg:text-sm">
+                            <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Selecciona una
+                                Imagen</label>
                         </div>
-                    @endforeach
 
-            </div>
-        @else
-            <div class="mt-4 bg-white text-base font-semibold sm:px-10 px-5 py-2 shadow">
-                <span>0 resultados para </span> <span class="text-red-700"> "{{ $buscar }}" </span>
-            </div>
+                        <div class="mt-4 min-h-32">
+                            @if ($imagenva)
+                                <img src="{{ $imagenva->temporaryUrl() }}"
+                                    class="w-full p-2 border border-zinc-500 rounded" width="240px">
+                            @else
+                                <img src="{{ asset('../storage/cursos/' . $imagen) }}" alt="" title=""
+                                    class="w-full p-2 border border-zinc-500 rounded" width="240px">
+                            @endif
+                        </div>
 
-        @endif
+                        <div wire:loading wire:target="imagenva" class="w-full mt-2 text-xs font-medium">
+                            <strong>¡Cargando Imagen! </strong>
+                            <span>Espere mientras se carga la imagen...</span>
+                        </div>
 
-        @if ($cursos->hasPages())
-            <div class="px-4 py-2 text-center mt-10">
-                {{ $cursos->onEachSide(0)->links() }}
-            </div>
-        @endif
+                        <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="imagenva"
+                            wire:model="imagenva" class="text-[8px]" required />
+                        <x-input-error for="imagenva" />
+
+                    </div>
+
+                    <div class="w-full border p-4 bg-white rounded">
+
+                        <div class="mb-4">
+                            <x-label for="nombre" value="{{ __('Nombre') }}" />
+                            <x-input id="nombre" class="block mt-1 w-full" type="text" name="nombre"
+                                wire:model="nombre" required autofocus />
+                            <x-input-error for="nombre" />
+                        </div>
+
+                        <div class="mb-4">
+                            <x-label for="descripcion" value="{{ __('Descripción') }}" />
+                            <x-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion"
+                                wire:model="descripcion" required autofocus />
+                            <x-input-error for="descripcion" />
+                        </div>
+
+                        <div class="mb-4 md:mb-0">
+                            <x-label for="costo" value="{{ __('Costo') }}" class="text-zinc-800" />
+                            <x-input id="costo"
+                                class="w-40 block mt-1 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                                type="number" step="any" name="costo" wire:model="costo" required
+                                autofocus />
+                            <x-input-error for="costo" />
+                        </div>
+
+                    </div>
+                </div>
+            </x-slot>
+
+            <x-slot name="footer">
+                <div class="flex">
+                    <x-secondary-button wire:click="cancelar" wire:target="cancelar" class="mr-4">
+                        Cancelar
+                    </x-secondary-button>
+
+                    <x-button wire:click="update" wire:loading.attr="disabled" wire:target="update">
+                        Aceptar
+                    </x-button>
+                </div>
+            </x-slot>
+
+        </x-dialog-modal>
 
     </div>
-
-    
-    <!--Modal delete -->
-
-    <x-confirmation-modal wire:model="open_delete">
-
-        <x-slot name="title">
-            Esta acción no podrá ser reversada
-        </x-slot>
-
-        <x-slot name="content">
-            ¿Está seguro de proceder con la eliminación del curso?
-        </x-slot>
-
-        <x-slot name="footer">
-            <x-secondary-button wire:click="$set('open_delete', false)" class="mr-2">
-                Cancelar
-            </x-secondary-button>
-
-            <x-danger-button wire:click="destroy" wire:loading.attr="disabled" class="disabled:opacity-25 ml-2">
-                Aceptar
-            </x-danger-button>
-        </x-slot>
-    </x-confirmation-modal>
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-    @if (session('creado') == 'ok')
-        <script>
-            Swal.fire({
-                icon: 'success',
-                text: 'curso creado satisfactoriamente.',
-                confirmButtonColor: '#65a30d',
-                confirmButtonText: 'OK'
-            })
-        </script>
-    @endif
-
-    @if (session('eliminado') == 'ok')
-        <script>
-            Swal.fire({
-                text: 'El curso fue eliminado con éxito',
-                confirmButtonColor: '#65a30d',
-                confirmButtonText: 'OK'
-            })
-        </script>
-    @endif
-
-    @if (session('actualizado') == 'ok')
-        <script>
-            Swal.fire({
-                icon: 'success',
-                text: 'curso Actualizado con éxito',
-                confirmButtonColor: '#65a30d',
-                confirmButtonText: 'OK'
-            })
-        </script>
-    @endif
-
-</div>
