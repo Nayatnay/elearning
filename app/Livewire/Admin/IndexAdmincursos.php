@@ -32,11 +32,11 @@ class IndexAdmincursos extends Component
         ];
     }
 
-    public function mount(Curso $curso) // Lo estoy usando para eliminar el nombre de la imagen que se selecciono anteriormente en el modal
+    public function mount(Curso $curso) 
     {
         $this->curso = $curso;
-        $this->identificador = rand();
-        $this->chequeo = null;
+        $this->identificador = rand(); // Lo estoy usando para eliminar el nombre de la imagen que se selecciono anteriormente en el modal
+        //$this->chequeo = null;
     }
 
     public function updatingBuscar()
@@ -108,7 +108,7 @@ class IndexAdmincursos extends Component
             $ident = $this->curso->id;
             $nombrec = $this->curso->nombre;
             $imgc = $this->curso->imagen;
-            $this->chequeo = null;
+           // $this->chequeo = null;
         } else {
             foreach ($cursos as $cursito) {
                 $ident = $cursito->id;

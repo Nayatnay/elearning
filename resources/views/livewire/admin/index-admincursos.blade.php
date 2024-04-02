@@ -90,23 +90,24 @@
 
         <!-- Tabla Requisitos -->
 
-        <div class="mt-10">
-            
-            <div class="flex items-center justify-between text-lg px-4 md:px-8 py-1 max-w-screen-xl mx-auto">
-                <p class="text-sm font-bold uppercase">Requisitos</p>
-                @livewire('admin.crear-adminrequisitos')
+        <div class="">
+
+            <div class="flex items-center justify-between text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto border-b border-gray-600">
+                <p class="font-bold uppercase">Requisitos</p>
+                <a href="{{ route('admin_requisitos') }}"
+                    class="bg-lime-600 text-white font-extrabold rounded px-1.5">+</a>
             </div>
 
             @if ($requisitos->count())
 
-                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-xs text-gray-600">
+                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-sm text-gray-600">
 
                     <table class="table-fixed  w-full rounded font-light text-left h-auto border-collapse">
 
                         <tbody class="text-left">
 
                             @foreach ($requisitos as $requisito)
-                                <tr class="h-12 hover:bg-gray-200 active:bg-gray-300">
+                                <tr class="h-8 hover:bg-gray-200 active:bg-gray-300">
 
                                     <td class="px-2">{{ $requisito->descripcion }}</td>
 
@@ -132,7 +133,7 @@
                     </table>
                 </div>
             @else
-                <div class="mt-4 bg-white text-base font-semibold sm:px-10 px-5 py-2 shadow">
+                <div class="text-sm text-gray-700 sm:px-7 px-5 py-2">
                     <span>Sin resultados</span>
                 </div>
             @endif
@@ -141,24 +142,25 @@
 
         <!-- Tabla Alcances -->
 
-        <div class="mt-10">
+        <div class="">
 
-            <div class="flex items-center justify-between text-lg px-4 md:px-8 py-1 max-w-screen-xl mx-auto">
-                <p class="text-sm font-bold uppercase">Alcances</p>
-                @livewire('admin.crear-adminalcances')
+            <div class="flex items-center justify-between text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto  border-b border-gray-600">
+                <p class="font-bold uppercase">Alcances</p>
+                <a href="{{ route('admin_alcances') }}"
+                    class="bg-lime-600 text-white font-extrabold rounded px-1.5">+</a>
             </div>
 
 
             @if ($alcances->count())
 
-                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-xs text-gray-600">
+                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-sm text-gray-600">
 
                     <table class="table-fixed  w-full rounded font-light text-left h-auto border-collapse">
 
                         <tbody class="text-left">
 
                             @foreach ($alcances as $alcance)
-                                <tr class="h-12 hover:bg-gray-200 active:bg-gray-300">
+                                <tr class="h-8 hover:bg-gray-200 active:bg-gray-300">
 
                                     <td class="px-2">{{ $alcance->descripcion }}</td>
 
@@ -184,14 +186,12 @@
                     </table>
                 </div>
             @else
-                <div class="mt-4 bg-white text-base font-semibold sm:px-10 px-5 py-2 shadow">
+                <div class="text-sm text-gray-700 sm:px-7 px-5 py-2">
                     <span>Sin resultados</span>
                 </div>
             @endif
 
         </div>
-
-
 
         <!--Modal delete -->
 
@@ -215,6 +215,8 @@
                 </x-danger-button>
             </x-slot>
         </x-confirmation-modal>
+
+        <!--Modal edit -->
 
         <x-dialog-modal wire:model="open_edit">
 
@@ -297,3 +299,4 @@
         </x-dialog-modal>
 
     </div>
+</div>

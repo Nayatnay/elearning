@@ -11,6 +11,7 @@ class Alcance extends Model
     use HasFactory;
 
     protected $fillable = [
+        'id_curso',
         'descripcion',
     ];
 
