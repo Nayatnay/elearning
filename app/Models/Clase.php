@@ -15,12 +15,11 @@ class Clase extends Model
         'video',
     ];
 
-        //Relacion uno a muchos (inversa)
+//Relacion uno a muchos
 
-        public function curso()
-        {
-            return $this->belongsTo('App\Models\Curso', 'id_curso');
-        }
-    
-        
+public function clacurso()
+{
+    return $this->hasMany('App\Models\Clacurso', 'id_clase');
+}
+ 
 }

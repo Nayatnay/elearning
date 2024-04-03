@@ -11,7 +11,8 @@ class IndexAdminrequisitos extends Component
 {
     use WithPagination;
 
-    public $buscar, $requisito, $curso;
+    public $buscar, $requisito;
+    //public $curso;
     public $open_delete = false;
     public $open_edit = false;
     public $descripcion;
@@ -19,7 +20,7 @@ class IndexAdminrequisitos extends Component
     protected function rules()
     {
         return [
-            'curso' => 'required',
+            // 'curso' => 'required',
             'descripcion' => 'required',
         ];
     }
@@ -54,7 +55,7 @@ class IndexAdminrequisitos extends Component
 
     public function edit(requisito $requisito)
     {
-        $this->curso = $requisito->id_curso;
+        //$this->curso = $requisito->id_curso;
         $this->requisito = $requisito;
         $this->descripcion = $requisito->descripcion;
         $this->open_edit = true;
@@ -62,13 +63,13 @@ class IndexAdminrequisitos extends Component
 
     public function update()
     {
-        $this->requisito->id_curso = $this->curso;
-        
+        //$this->requisito->id_curso = $this->curso;
+
         $validatedData = $this->validate();
         $this->requisito->update($validatedData);
 
         $this->reset(['open_edit', 'descripcion']);  //cierra el modal y limpia los campos del formulario
-        
+
         $this->dispatch('index-adminrequisitos');
     }
 
@@ -76,8 +77,9 @@ class IndexAdminrequisitos extends Component
     {
         $requisitos = Requisito::where('descripcion', 'LIKE', '%' . $this->buscar . '%')
             ->orderBy('id', 'desc')->paginate(5);
-            $cursos = Curso::all()->sortBy('nombre');
 
-        return view('livewire.admin.index-adminrequisitos', compact('requisitos', 'cursos'));
+        //$cursos = Curso::all()->sortBy('nombre');
+
+        return view('livewire.admin.index-adminrequisitos', compact('requisitos'));
     }
 }

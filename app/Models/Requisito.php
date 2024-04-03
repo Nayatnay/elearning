@@ -11,16 +11,13 @@ class Requisito extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_curso',
         'descripcion',
     ];
 
-    //Relacion uno a muchos (inversa)
+    //Relacion uno a muchos
 
-    public function curso()
+    public function reqcurso()
     {
-        return $this->belongsTo('App\Models\Curso', 'id_curso');
+        return $this->hasMany('App\Models\Reqcurso', 'id_requisito');
     }
-
-    
 }

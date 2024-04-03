@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="my-8 p-4 max-w-screen-xl mx-auto">
+    <div class="mt-8 p-4 max-w-screen-xl mx-auto">
 
         <!-- Buscador -->
 
@@ -35,10 +35,7 @@
                                     <td class="pl-2 w-48 min-w-48 font-bold uppercase cursor-pointer">
                                         {{ $requisito->descripcion }}
                                     </td>
-                                    <td class="pl-2 w-48 min-w-48 font-bold uppercase cursor-pointer">
-                                        {{ $requisito->curso->nombre }}
-                                    </td>
-
+                                    
                                     <td class="w-14 text-center">
                                         <a href="#" title="Eliminar" wire:click="delete({{ $requisito }})">
                                             <i class="fa-solid fa-trash text-gray-500"></i>
@@ -115,7 +112,7 @@
                 <x-input-error for="descripcion" />
             </div>
 
-            <div class=" mb-4">
+            {{--<div class=" mb-4">
                 <x-label for="curso" value="{{ __('Curso') }}" class="text-zinc-800" />
                 <select name="curso" wire:model.defer="curso"
                     class="w-full px-2 py-3 text-sm rounded-md border border-gray-200 focus:border-gray-300 focus:ring-0 text-zinc-800">
@@ -125,7 +122,7 @@
                     @endforeach
                 </select>
                 <x-input-error for="curso" />
-            </div>
+            </div>--}}
 
         </x-slot>
 

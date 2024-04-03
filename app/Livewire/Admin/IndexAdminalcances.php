@@ -11,7 +11,7 @@ class IndexAdminalcances extends Component
 {
     use WithPagination;
 
-    public $buscar, $alcance, $curso;
+    public $buscar, $alcance;
     public $open_delete = false;
     public $open_edit = false;
     public $descripcion;
@@ -19,7 +19,6 @@ class IndexAdminalcances extends Component
     protected function rules()
     {
         return [
-            'curso' => 'required',
             'descripcion' => 'required',
         ];
     }
@@ -54,7 +53,6 @@ class IndexAdminalcances extends Component
 
     public function edit(Alcance $alcance)
     {
-        $this->curso = $alcance->id_curso;
         $this->alcance = $alcance;
         $this->descripcion = $alcance->descripcion;
         $this->open_edit = true;
@@ -62,8 +60,6 @@ class IndexAdminalcances extends Component
 
     public function update()
     {
-        $this->alcance->id_curso = $this->curso;
-
         $validatedData = $this->validate();
         $this->alcance->update($validatedData);
 
@@ -76,8 +72,7 @@ class IndexAdminalcances extends Component
     {
         $alcances = Alcance::where('descripcion', 'LIKE', '%' . $this->buscar . '%')
             ->orderBy('id', 'desc')->paginate(5);
-            $cursos = Curso::all()->sortBy('nombre');
 
-        return view('livewire.admin.index-adminalcances', compact('alcances', 'cursos'));
+        return view('livewire.admin.index-adminalcances', compact('alcances'));
     }
 }

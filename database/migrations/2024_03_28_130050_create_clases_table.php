@@ -13,13 +13,10 @@ return new class extends Migration
     {
         Schema::create('clases', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('id_curso');
             $table->string('tema');
             $table->string('video');
             $table->timestamps();
 
-            // Llave foranea
-            $table->foreign('id_curso')->references('id')->on('cursos')->onDelete('cascade');
         });
     }
 

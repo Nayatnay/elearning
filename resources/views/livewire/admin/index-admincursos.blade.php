@@ -9,7 +9,7 @@
         </div>
     </div>
 
-    <div class="my-8 p-4 max-w-screen-xl mx-auto">
+    <div class="mt-8 p-4 max-w-screen-xl mx-auto">
 
         <!-- Buscador -->
 
@@ -92,7 +92,8 @@
 
         <div class="">
 
-            <div class="flex items-center justify-between text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto border-b border-gray-600">
+            <div
+                class="flex items-center justify-between text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto border-b border-gray-600">
                 <p class="font-bold uppercase">Requisitos</p>
                 <a href="{{ route('admin_requisitos') }}"
                     class="bg-lime-600 text-white font-extrabold rounded px-1.5">+</a>
@@ -144,7 +145,8 @@
 
         <div class="">
 
-            <div class="flex items-center justify-between text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto  border-b border-gray-600">
+            <div
+                class="flex items-center justify-between text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto  border-b border-gray-600">
                 <p class="font-bold uppercase">Alcances</p>
                 <a href="{{ route('admin_alcances') }}"
                     class="bg-lime-600 text-white font-extrabold rounded px-1.5">+</a>
@@ -192,111 +194,109 @@
             @endif
 
         </div>
+    </div>
+    <!--Modal delete -->
 
-        <!--Modal delete -->
+    <x-confirmation-modal wire:model="open_delete">
 
-        <x-confirmation-modal wire:model="open_delete">
+        <x-slot name="title">
+            Esta acción no podrá ser reversada
+        </x-slot>
 
-            <x-slot name="title">
-                Esta acción no podrá ser reversada
-            </x-slot>
+        <x-slot name="content">
+            ¿Está seguro de proceder con la eliminación del curso?
+        </x-slot>
 
-            <x-slot name="content">
-                ¿Está seguro de proceder con la eliminación del curso?
-            </x-slot>
+        <x-slot name="footer">
+            <x-secondary-button wire:click="$set('open_delete', false)" class="mr-2">
+                Cancelar
+            </x-secondary-button>
 
-            <x-slot name="footer">
-                <x-secondary-button wire:click="$set('open_delete', false)" class="mr-2">
+            <x-danger-button wire:click="destroy" wire:loading.attr="disabled" class="disabled:opacity-25 ml-2">
+                Aceptar
+            </x-danger-button>
+        </x-slot>
+    </x-confirmation-modal>
+
+    <!--Modal edit -->
+
+    <x-dialog-modal wire:model="open_edit">
+
+        <x-slot name="title">
+            <p class="font-bold text-left pb-4 border-b">Actualizar curso</p>
+        </x-slot>
+
+        <x-slot name="content">
+
+            <div class="flex flex-col md:flex-row">
+
+                <div class="mb-4 mr-0 md:mr-4 md:mb-0 w-full md:w-[420px] rounded border p-4 bg-white">
+                    <div class="text-xs text-left lg:text-sm">
+                        <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Selecciona una
+                            Imagen</label>
+                    </div>
+
+                    <div class="mt-4 min-h-32">
+                        @if ($imagenva)
+                            <img src="{{ $imagenva->temporaryUrl() }}"
+                                class="w-full p-2 border border-zinc-500 rounded" width="240px">
+                        @else
+                            <img src="{{ asset('../storage/cursos/' . $imagen) }}" alt="" title=""
+                                class="w-full p-2 border border-zinc-500 rounded" width="240px">
+                        @endif
+                    </div>
+
+                    <div wire:loading wire:target="imagenva" class="w-full mt-2 text-xs font-medium">
+                        <strong>¡Cargando Imagen! </strong>
+                        <span>Espere mientras se carga la imagen...</span>
+                    </div>
+
+                    <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="imagenva"
+                        wire:model="imagenva" class="text-[8px]" required />
+                    <x-input-error for="imagenva" />
+
+                </div>
+
+                <div class="w-full border p-4 bg-white rounded">
+
+                    <div class="mb-4">
+                        <x-label for="nombre" value="{{ __('Nombre') }}" />
+                        <x-input id="nombre" class="block mt-1 w-full" type="text" name="nombre"
+                            wire:model="nombre" required autofocus />
+                        <x-input-error for="nombre" />
+                    </div>
+
+                    <div class="mb-4">
+                        <x-label for="descripcion" value="{{ __('Descripción') }}" />
+                        <x-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion"
+                            wire:model="descripcion" required autofocus />
+                        <x-input-error for="descripcion" />
+                    </div>
+
+                    <div class="mb-4 md:mb-0">
+                        <x-label for="costo" value="{{ __('Costo') }}" class="text-zinc-800" />
+                        <x-input id="costo"
+                            class="w-40 block mt-1 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+                            type="number" step="any" name="costo" wire:model="costo" required autofocus />
+                        <x-input-error for="costo" />
+                    </div>
+
+                </div>
+            </div>
+        </x-slot>
+
+        <x-slot name="footer">
+            <div class="flex">
+                <x-secondary-button wire:click="cancelar" wire:target="cancelar" class="mr-4">
                     Cancelar
                 </x-secondary-button>
 
-                <x-danger-button wire:click="destroy" wire:loading.attr="disabled" class="disabled:opacity-25 ml-2">
+                <x-button wire:click="update" wire:loading.attr="disabled" wire:target="update">
                     Aceptar
-                </x-danger-button>
-            </x-slot>
-        </x-confirmation-modal>
+                </x-button>
+            </div>
+        </x-slot>
 
-        <!--Modal edit -->
+    </x-dialog-modal>
 
-        <x-dialog-modal wire:model="open_edit">
-
-            <x-slot name="title">
-                <p class="font-bold text-left pb-4 border-b">Actualizar curso</p>
-            </x-slot>
-
-            <x-slot name="content">
-
-                <div class="flex flex-col md:flex-row">
-
-                    <div class="mb-4 mr-0 md:mr-4 md:mb-0 w-full md:w-[420px] rounded border p-4 bg-white">
-                        <div class="text-xs text-left lg:text-sm">
-                            <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Selecciona una
-                                Imagen</label>
-                        </div>
-
-                        <div class="mt-4 min-h-32">
-                            @if ($imagenva)
-                                <img src="{{ $imagenva->temporaryUrl() }}"
-                                    class="w-full p-2 border border-zinc-500 rounded" width="240px">
-                            @else
-                                <img src="{{ asset('../storage/cursos/' . $imagen) }}" alt="" title=""
-                                    class="w-full p-2 border border-zinc-500 rounded" width="240px">
-                            @endif
-                        </div>
-
-                        <div wire:loading wire:target="imagenva" class="w-full mt-2 text-xs font-medium">
-                            <strong>¡Cargando Imagen! </strong>
-                            <span>Espere mientras se carga la imagen...</span>
-                        </div>
-
-                        <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="imagenva"
-                            wire:model="imagenva" class="text-[8px]" required />
-                        <x-input-error for="imagenva" />
-
-                    </div>
-
-                    <div class="w-full border p-4 bg-white rounded">
-
-                        <div class="mb-4">
-                            <x-label for="nombre" value="{{ __('Nombre') }}" />
-                            <x-input id="nombre" class="block mt-1 w-full" type="text" name="nombre"
-                                wire:model="nombre" required autofocus />
-                            <x-input-error for="nombre" />
-                        </div>
-
-                        <div class="mb-4">
-                            <x-label for="descripcion" value="{{ __('Descripción') }}" />
-                            <x-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion"
-                                wire:model="descripcion" required autofocus />
-                            <x-input-error for="descripcion" />
-                        </div>
-
-                        <div class="mb-4 md:mb-0">
-                            <x-label for="costo" value="{{ __('Costo') }}" class="text-zinc-800" />
-                            <x-input id="costo"
-                                class="w-40 block mt-1 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-                                type="number" step="any" name="costo" wire:model="costo" required
-                                autofocus />
-                            <x-input-error for="costo" />
-                        </div>
-
-                    </div>
-                </div>
-            </x-slot>
-
-            <x-slot name="footer">
-                <div class="flex">
-                    <x-secondary-button wire:click="cancelar" wire:target="cancelar" class="mr-4">
-                        Cancelar
-                    </x-secondary-button>
-
-                    <x-button wire:click="update" wire:loading.attr="disabled" wire:target="update">
-                        Aceptar
-                    </x-button>
-                </div>
-            </x-slot>
-
-        </x-dialog-modal>
-
-    </div>
 </div>

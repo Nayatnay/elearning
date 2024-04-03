@@ -20,19 +20,19 @@ class Curso extends Model
 
     //Relacion uno a muchos
 
-    public function requisitos()
+    public function reqcurso()
     {
-        return $this->hasMany('App\Models\Requisitos', 'id_curso');
+        return $this->hasMany('App\Models\Reqcurso', 'id_curso');
     }
 
-    public function alcances()
+    public function alcurso()
     {
-        return $this->hasMany('App\Models\Alcances', 'id_curso');
+        return $this->hasMany('App\Models\Alcurso', 'id_curso');
     }
 
-    public function clases()
+    public function clacurso()
     {
-        return $this->hasMany('App\Models\Clases', 'id_curso');
+        return $this->hasMany('App\Models\Clacurso', 'id_curso');
     }
 
     

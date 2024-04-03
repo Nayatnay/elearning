@@ -11,13 +11,12 @@ class CrearAdminalcances extends Component
 {
     use WithPagination;
 
-    public $descripcion, $curso;
+    public $descripcion;
     public $open = false;
 
     protected $listeners = ['render'];
 
     protected $rules = [
-        'curso' => 'required',
         'descripcion' => 'required',
     ];
 
@@ -31,7 +30,6 @@ class CrearAdminalcances extends Component
         $this->validate();
 
         Alcance::create([
-            'id_curso' => $this->curso,
             'descripcion' => $this->descripcion,
         ]);
 
@@ -41,7 +39,6 @@ class CrearAdminalcances extends Component
 
     public function render()
     {
-        $cursos = Curso::all()->sortBy('nombre');
-        return view('livewire.admin.crear-adminalcances', compact('cursos'));
+        return view('livewire.admin.crear-adminalcances');
     }
 }

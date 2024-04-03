@@ -11,13 +11,14 @@ class CrearAdminrequisitos extends Component
 {
     use WithPagination;
 
-    public $descripcion, $curso;
+    public $descripcion;
+    //public $curso;
     public $open = false;
 
     protected $listeners = ['render'];
 
     protected $rules = [
-        'curso' => 'required',
+        //'curso' => 'required',
         'descripcion' => 'required',
     ];
 
@@ -31,7 +32,7 @@ class CrearAdminrequisitos extends Component
         $this->validate();       
 
         Requisito::create([
-            'id_curso' => $this->curso,
+            //'id_curso' => $this->curso,
             'descripcion' => $this->descripcion,
         ]);
 
@@ -41,7 +42,7 @@ class CrearAdminrequisitos extends Component
 
     public function render()
     {
-        $cursos = Curso::all()->sortBy('nombre');
-        return view('livewire.admin.crear-adminrequisitos', compact('cursos'));
+        //$cursos = Curso::all()->sortBy('nombre');
+        return view('livewire.admin.crear-adminrequisitos');
     }
 }

@@ -4,6 +4,7 @@ use App\Http\Controllers\IndexController;
 use App\Livewire\Admin\CrearAdmincursos;
 use App\Livewire\Admin\CrearAdminrequisitos;
 use App\Livewire\Admin\IndexAdminalcances;
+use App\Livewire\Admin\IndexAdminclases;
 use App\Livewire\Admin\IndexAdmincursos;
 use App\Livewire\Admin\IndexAdminrequisitos;
 use App\Livewire\Carrito\IndexCarrito;
@@ -36,9 +37,6 @@ Route::get('carrito', IndexCarrito::class)->name('carrito');
 
 //Rutas de admninistracion
 route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');
-route::get('admin_crearcursos', CrearAdmincursos::class)->name('admin_crearcursos');
-
 route::get('admin_requisitos', IndexAdminrequisitos::class)->name('admin_requisitos');
-route::get('admin_crearrequisitos', CrearAdminrequisitos::class)->name('admin_crearrequisitos');
-
 route::get('admin_alcances', IndexAdminalcances::class)->name('admin_alcances');
+route::get('admin_clases', IndexAdminclases::class)->name('admin_clases');

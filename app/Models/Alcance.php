@@ -11,16 +11,13 @@ class Alcance extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_curso',
         'descripcion',
     ];
 
-        //Relacion uno a muchos (inversa)
+    //Relacion uno a muchos
 
-        public function curso()
-        {
-            return $this->belongsTo('App\Models\Curso', 'id_curso');
-        }
-    
-        
+    public function alcurso()
+    {
+        return $this->hasMany('App\Models\Alcurso', 'id_alcance');
+    }
 }

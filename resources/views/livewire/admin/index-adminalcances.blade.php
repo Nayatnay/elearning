@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="my-8 p-4 max-w-screen-xl mx-auto">
+    <div class="mt-8 p-4 max-w-screen-xl mx-auto">
 
         <!-- Buscador -->
 
@@ -35,15 +35,13 @@
                                     <td class="pl-2 w-48 min-w-48 font-bold uppercase cursor-pointer">
                                         {{ $alcance->descripcion }}
                                     </td>
-                                    <td class="pl-2 w-48 min-w-48 font-bold uppercase cursor-pointer">
-                                        {{ $alcance->curso->nombre }}
-                                    </td>
-
+                                    
                                     <td class="w-14 text-center">
                                         <a href="#" title="Eliminar" wire:click="delete({{ $alcance }})">
                                             <i class="fa-solid fa-trash text-gray-500"></i>
                                         </a>
                                     </td>
+
                                     <td class="w-14 text-center">
                                         <a href="#" wire:click="edit({{ $alcance }})" title="Editar"
                                             class="group text-center">
@@ -113,18 +111,6 @@
                 <x-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion"
                     wire:model.defer="descripcion" required autofocus />
                 <x-input-error for="descripcion" />
-            </div>
-
-            <div class=" mb-4">
-                <x-label for="curso" value="{{ __('Curso') }}" class="text-zinc-800" />
-                <select name="curso" wire:model.defer="curso"
-                    class="w-full px-2 py-3 text-sm rounded-md border border-gray-200 focus:border-gray-300 focus:ring-0 text-zinc-800">
-                    <option value="">Seleccionar un Curso</option>
-                    @foreach ($cursos as $curso)
-                        <option value="{{ $curso->id }}">{{ $curso->nombre }}</option>
-                    @endforeach
-                </select>
-                <x-input-error for="curso" />
             </div>
 
         </x-slot>
