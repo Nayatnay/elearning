@@ -3,7 +3,9 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Alcance;
+use App\Models\Alcurso;
 use App\Models\Curso;
+use App\Models\Reqcurso;
 use App\Models\Requisito;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
@@ -118,9 +120,9 @@ class IndexAdmincursos extends Component
             }
         }
 
-        $requisitos = Requisito::where('id_curso', '=', $ident)->get();
-        $alcances = Alcance::where('id_curso', '=', $ident)->get();
+        $reqcurso = Reqcurso::where('id_curso', '=', $ident)->get();
+        $alcurso = Alcurso::where('id_curso', '=', $ident)->get();
 
-        return view('livewire.admin.index-admincursos', compact('cursos', 'requisitos', 'alcances', 'nombrec', 'ident', 'imgc'));
+        return view('livewire.admin.index-admincursos', compact('cursos', 'reqcurso', 'alcurso', 'nombrec', 'ident', 'imgc'));
     }
 }

@@ -99,7 +99,7 @@
                     class="bg-lime-600 text-white font-extrabold rounded px-1.5">+</a>
             </div>
 
-            @if ($requisitos->count())
+            @if ($reqcurso->count())
 
                 <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-sm text-gray-600">
 
@@ -107,27 +107,17 @@
 
                         <tbody class="text-left">
 
-                            @foreach ($requisitos as $requisito)
+                            @foreach ($reqcurso as $requisito)
                                 <tr class="h-8 hover:bg-gray-200 active:bg-gray-300">
 
-                                    <td class="px-2">{{ $requisito->descripcion }}</td>
+                                    <td class="px-2">{{ $requisito->requisito->descripcion }}</td>
 
-                                    <td class="w-14 text-center">
-                                        <a href="#" title="Eliminar" wire:click="delete({{ $curso }})">
-                                            <i class="fa-solid fa-trash text-gray-500"></i>
+                                    <td class="w-12 md:w-20 text-center">
+                                        <a href="#" title="Eliminar" wire:click="deletereq({{ $requisito }})"
+                                            class="bg-red-500 text-white font-extrabold rounded px-1.5">-</a>
                                         </a>
                                     </td>
-                                    <td class="w-14 text-center">
-                                        <a href="#" wire:click="edit({{ $curso }})" title="Editar"
-                                            class="group text-center">
-                                            <span
-                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                            <span
-                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                            <span
-                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                        </a>
-                                    </td>
+
                                 </tr>
                             @endforeach
                         </tbody>
@@ -143,7 +133,7 @@
 
         <!-- Tabla Alcances -->
 
-        <div class="">
+        <div class="mt-8">
 
             <div
                 class="flex items-center justify-between text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto  border-b border-gray-600">
@@ -153,7 +143,7 @@
             </div>
 
 
-            @if ($alcances->count())
+            @if ($alcurso->count())
 
                 <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-sm text-gray-600">
 
@@ -161,27 +151,16 @@
 
                         <tbody class="text-left">
 
-                            @foreach ($alcances as $alcance)
+                            @foreach ($alcurso as $alcance)
                                 <tr class="h-8 hover:bg-gray-200 active:bg-gray-300">
 
-                                    <td class="px-2">{{ $alcance->descripcion }}</td>
+                                    <td class="px-2">{{ $alcance->alcance->descripcion }}</td>
 
-                                    <td class="w-14 text-center">
-                                        <a href="#" title="Eliminar" wire:click="delete({{ $curso }})">
-                                            <i class="fa-solid fa-trash text-gray-500"></i>
-                                        </a>
+                                    <td class="w-12 md:w-20  text-center">
+                                        <a href="#" title="Eliminar" wire:click="deletealc({{ $alcance }})"
+                                            class="bg-red-500 text-white font-extrabold rounded px-1.5">-</a>
                                     </td>
-                                    <td class="w-14 text-center">
-                                        <a href="#" wire:click="edit({{ $curso }})" title="Editar"
-                                            class="group text-center">
-                                            <span
-                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                            <span
-                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                            <span
-                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                        </a>
-                                    </td>
+
                                 </tr>
                             @endforeach
                         </tbody>
