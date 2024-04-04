@@ -9,7 +9,7 @@ class IndexMain extends Component
 {
     public function render()
     {
-        $cursos = Curso::paginate(8);
+        $cursos = Curso::orderBy('id', 'desc')->paginate(8);
 
         return view('livewire.index.index-main', compact('cursos'));
     }

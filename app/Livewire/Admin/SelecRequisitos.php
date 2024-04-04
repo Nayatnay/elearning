@@ -10,7 +10,7 @@ use Livewire\Component;
 
 class SelecRequisitos extends Component
 {
-    public $curso, $requisito, $req;
+    public $curso, $requisito;
 
     public function mount($curso)
     {

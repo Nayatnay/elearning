@@ -10,15 +10,19 @@
 
     <div class="mt-4 p-4 max-w-screen-xl mx-auto">
 
+        <div class=" my-2 text-red-700 hover:text-lime-700">
+            <a href="{{route('admin_cursos')}}" class="px-4"><i class="fa-solid fa-arrow-left"></i></a>
+        </div>
+
         <div class="text-sm font-bold uppercase p-2 border-b border-gray-300">
-            <p>Alcances</p>
+            <p>Lista de Alcances</p>
         </div>
 
         @if ($alcances->count())
 
             <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-sm">
 
-                <table class="table-fixed  w-full rounded font-bold text-left h-auto border-collapse">
+                <table class="table-fixed  w-full rounded font-light text-left h-auto border-collapse">
 
                     <tbody class="text-left">
 

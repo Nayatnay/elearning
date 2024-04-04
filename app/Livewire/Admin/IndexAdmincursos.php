@@ -65,6 +65,18 @@ class IndexAdmincursos extends Component
         $this->dispatch('index-admincursos');
     }
 
+    public function deletereq(Reqcurso $requisito)
+    {
+        $requisito->delete();
+        $this->dispatch('index-admincursos');
+    }
+
+    public function deletealc(Alcurso $alcance)
+    {
+        $alcance->delete();
+        $this->dispatch('index-admincursos');
+    }
+
     public function edit(curso $curso)
     {
         $this->curso = $curso;
