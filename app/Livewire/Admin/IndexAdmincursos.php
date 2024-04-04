@@ -36,7 +36,7 @@ class IndexAdmincursos extends Component
     {
         $this->curso = $curso;
         $this->identificador = rand(); // Lo estoy usando para eliminar el nombre de la imagen que se selecciono anteriormente en el modal
-        //$this->chequeo = null;
+        
     }
 
     public function updatingBuscar()
@@ -121,6 +121,6 @@ class IndexAdmincursos extends Component
         $requisitos = Requisito::where('id_curso', '=', $ident)->get();
         $alcances = Alcance::where('id_curso', '=', $ident)->get();
 
-        return view('livewire.admin.index-admincursos', compact('cursos', 'requisitos', 'alcances', 'nombrec', 'imgc'));
+        return view('livewire.admin.index-admincursos', compact('cursos', 'requisitos', 'alcances', 'nombrec', 'ident', 'imgc'));
     }
 }

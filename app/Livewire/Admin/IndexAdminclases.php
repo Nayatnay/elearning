@@ -26,7 +26,7 @@ class IndexAdminclases extends Component
         ];
     }
 
-    public function mount(Clase $clase) 
+    public function mount(Clase $clase)
     {
         $this->clase = $clase;
         $this->identificador = rand(); // Lo estoy usando para eliminar el nombre del video seleccionado anteriormente en el modal
@@ -45,9 +45,11 @@ class IndexAdminclases extends Component
 
     public function destroy()
     {
+        //dd($this->clase);
+
         $this->clase->delete();
         $this->reset(['open_delete']);  //cierra el modal     
-        $this->dispatch('index-adminclases');
+        return redirect()->route('admin_clases');
     }
 
     public function cancelar()
@@ -81,7 +83,7 @@ class IndexAdminclases extends Component
 
         $this->reset(['open_edit', 'tema', 'video']);  //cierra el modal y limpia los campos del formulario
         $this->identificador = rand();
-        $this->dispatch('index-adminclases');
+        return redirect()->route('admin_clases');
     }
 
     public function render()

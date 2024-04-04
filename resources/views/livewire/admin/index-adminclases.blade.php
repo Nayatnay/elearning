@@ -23,9 +23,8 @@
 
             @if ($clases->count())
 
-                <div
-                    class="grid gap-x-4 gap-y-4 md:gap-y-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 
-                items-center justify-center">
+                <div class="grid gap-x-4 gap-y-4 md:gap-y-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 
+                xl:grid-cols-4 items-center justify-center">
 
                     @foreach ($clases as $clase)
                         <div class="border border-gray-300 rounded-lg bg-gray-100">
@@ -130,17 +129,18 @@
                         <video width="320" height="240" controls poster="img/poster.png">
                             <source src="{{ $video->temporaryUrl() }}" type="video/mp4">
                         </video>
+                        
                     @else
-                        <video class="" controls poster="img/poster.png">
-                            <source src="{{ URL::asset('/storage/clases/' . $clase->video) }}" type="video/mp4">
-                            Su navegador no soporta la etiqueta de vídeo.
+                        <video width="320" height="240" controls poster="img/poster.png">
+                            <source src="{{ asset('/storage/clases/' . $clase->video) }}" type="video/mp4">
                         </video>
+                        
                     @endif
                 </div>
 
                 <div wire:loading wire:target="videovo" class="w-full mt-2 text-xs font-medium">
                     <strong>¡Cargando video! </strong>
-                    <span>Espere mientras se carga la video...</span>
+                    <span>Espere mientras se carga el video...</span>
                 </div>
 
             </div>

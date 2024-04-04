@@ -95,7 +95,7 @@
             <div
                 class="flex items-center justify-between text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto border-b border-gray-600">
                 <p class="font-bold uppercase">Requisitos</p>
-                <a href="{{ route('admin_requisitos') }}"
+                <a href="{{ route('selec_requisitos', $ident) }}"
                     class="bg-lime-600 text-white font-extrabold rounded px-1.5">+</a>
             </div>
 
@@ -148,7 +148,7 @@
             <div
                 class="flex items-center justify-between text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto  border-b border-gray-600">
                 <p class="font-bold uppercase">Alcances</p>
-                <a href="{{ route('admin_alcances') }}"
+                <a href="{{ route('selec_alcances', $ident) }}"
                     class="bg-lime-600 text-white font-extrabold rounded px-1.5">+</a>
             </div>
 
