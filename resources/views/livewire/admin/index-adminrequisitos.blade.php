@@ -3,7 +3,7 @@
     <div class="bg-gray-100 shadow sticky top-24 z-[100]">
         <div class="flex items-center justify-between text-lg px-4 md:px-8 py-3 max-w-screen-xl mx-auto">
             <h2 class="font-light">
-                {{ __('Administrar requisitos') }}
+                {{ __('Requisitos') }}
             </h2>
 
             @livewire('admin.crear-adminrequisitos')

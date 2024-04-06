@@ -31,6 +31,11 @@ class SelecAlcances extends Component
         $this->dispatch('selec-alcances');
     }
 
+    public function deletealc(Alcurso $curalc)
+    {
+        $curalc->delete();
+        $this->dispatch('selec-alcances');
+    }
 
     public function render()
     {
@@ -44,6 +49,8 @@ class SelecAlcances extends Component
             $alcances = Alcance::all();
         }
 
-        return view('livewire.admin.selec-alcances', compact('alcances', 'curso'));
+        $cursoalc = Alcurso::where('id_curso', '=', $curso->id)->get();
+
+        return view('livewire.admin.selec-alcances', compact('alcances', 'curso', 'cursoalc'));
     }
 }

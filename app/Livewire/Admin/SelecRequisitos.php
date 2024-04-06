@@ -32,18 +32,26 @@ class SelecRequisitos extends Component
         $this->dispatch('selec-requisitos');
     }
 
+    public function deletereq(Reqcurso $cureq)
+    {
+        $cureq->delete();
+        $this->dispatch('selec-requisitos');
+    }
+
     public function render()
     {
         $curso = $this->curso;
-        
+
         $req_curso = Reqcurso::where('id_curso', '=', $curso->id)->pluck('id_requisito')->toArray();
-       
+
         if ($req_curso <> null) {
             $requisitos = Requisito::all()->whereNotIn('id', $req_curso);
         } else {
             $requisitos = Requisito::all();
         }
 
-        return view('livewire.admin.selec-requisitos', compact('requisitos', 'curso'));
+        $cursoreq = Reqcurso::where('id_curso', '=', $curso->id)->get();
+
+        return view('livewire.admin.selec-requisitos', compact('requisitos', 'curso', 'cursoreq'));
     }
 }

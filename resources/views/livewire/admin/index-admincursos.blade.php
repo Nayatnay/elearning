@@ -17,42 +17,47 @@
             <x-input type="text" wire:model.live="buscar" class="w-full" placeholder="Buscar en la lista" />
         </div>
 
+
         <!-- Tabla -->
 
         <div class="mt-10">
             @if ($cursos->count())
 
-                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-xs text-gray-600">
+                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-sm text-gray-600">
 
                     <table class="table-fixed  w-full rounded font-light text-left h-auto border-collapse">
 
                         <tbody class="text-left">
 
                             @foreach ($cursos as $curso)
-                                <tr class="h-12 hover:bg-gray-200 active:bg-gray-300">
-                                    <td class="w-[48px] pl-2 cursor-pointer" wire:click="prueba({{ $curso }})">
+                                <tr class="h-16 hover:bg-gray-200 active:bg-gray-300">
+                                    <td class="w-[64px] pl-2 cursor-pointer">
                                         <img src="{{ asset('/storage/cursos/' . $curso->imagen) }}" alt=""
                                             title="" class="rounded w-full">
                                     </td>
 
-                                    <td class="pl-2 w-48 min-w-48 font-bold uppercase cursor-pointer"
-                                        wire:click="prueba({{ $curso }})">{{ $curso->nombre }}</td>
+                                    <td class="pl-2 w-48 min-w-48 font-bold uppercase cursor-pointer">
+                                        {{ $curso->nombre }}
+                                    </td>
 
-                                    <td class="pl-2 w-96 min-w-96 cursor-pointer"
-                                        wire:click="prueba({{ $curso }})">{{ $curso->descripcion }}</td>
+                                    <td class="pl-2 w-96 min-w-96 cursor-pointer">
+                                        {{ $curso->descripcion }}
+                                    </td>
 
-                                    <td class="px-2 w-20 min-w-20 text-right cursor-pointer"
-                                        wire:click="prueba({{ $curso }})">
-                                        ${{ number_format($curso->costo, 2, ',', '.') }}</td>
+                                    <td class="px-2 w-20 min-w-20 text-right cursor-pointer">
+                                        ${{ number_format($curso->costo, 2, ',', '.') }}
+                                    </td>
 
-                                    <td class="w-14 text-center">
-                                        <a href="#" title="Eliminar" wire:click="delete({{ $curso }})">
+                                    <td class="w-10 text-center">
+                                        <a href="#" title="Eliminar" wire:click="delete({{ $curso }})"
+                                            class="p-2">
                                             <i class="fa-solid fa-trash text-gray-500"></i>
                                         </a>
                                     </td>
-                                    <td class="w-14 text-center">
+
+                                    <td class="w-10 text-center">
                                         <a href="#" wire:click="edit({{ $curso }})" title="Editar"
-                                            class="group text-center">
+                                            class="p-2 group text-center">
                                             <span
                                                 class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
                                             <span
@@ -61,6 +66,20 @@
                                                 class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
                                         </a>
                                     </td>
+
+                                    <td class="w-10 text-center">
+                                        <a href="{{ route('selec_requisitos', $curso) }}" title="Requisitos"
+                                            class="p-2">
+                                            <i class="fa-solid fa-file-contract text-red-700"></i>
+                                        </a>
+                                    </td>
+                                    
+                                    <td class="w-10 text-center">
+                                        <a href="{{ route('selec_alcances', $curso) }}" title="Alcances" class="p-2">
+                                            <i class="fa-solid fa-bullseye"></i>
+                                        </a>
+                                    </td>
+
                                 </tr>
                             @endforeach
                         </tbody>
@@ -80,100 +99,8 @@
 
         </div>
 
-        <div class="mt-10 flex items-center border-y p-2 text-sm font-bold bg-white uppercase">
-            <div class="w-[72px] mr-4">
-                <img src="{{ asset('/storage/cursos/' . $imgc) }}" alt="" title=""
-                    class="rounded w-full">
-            </div>
-            <p>{{ $nombrec }}</p>
-        </div>
-
-        <!-- Tabla Requisitos -->
-
-        <div class="">
-
-            <div
-                class="flex items-center justify-between text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto border-b border-gray-600">
-                <p class="font-bold uppercase">Requisitos</p>
-                <a href="{{ route('selec_requisitos', $ident) }}"
-                    class="bg-lime-600 text-white font-extrabold rounded px-1.5">+</a>
-            </div>
-
-            @if ($reqcurso->count())
-
-                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-sm text-gray-600">
-
-                    <table class="table-fixed  w-full rounded font-light text-left h-auto border-collapse">
-
-                        <tbody class="text-left">
-
-                            @foreach ($reqcurso as $requisito)
-                                <tr class="h-8 hover:bg-gray-200 active:bg-gray-300">
-
-                                    <td class="px-2">{{ $requisito->requisito->descripcion }}</td>
-
-                                    <td class="w-12 md:w-20 text-center">
-                                        <a href="#" title="Eliminar" wire:click="deletereq({{ $requisito }})"
-                                            class="bg-red-500 text-white font-extrabold rounded px-1.5">-</a>
-                                        </a>
-                                    </td>
-
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            @else
-                <div class="text-sm text-gray-700 sm:px-7 px-5 py-2">
-                    <span>Sin resultados</span>
-                </div>
-            @endif
-
-        </div>
-
-        <!-- Tabla Alcances -->
-
-        <div class="mt-8">
-
-            <div
-                class="flex items-center justify-between text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto  border-b border-gray-600">
-                <p class="font-bold uppercase">Alcances</p>
-                <a href="{{ route('selec_alcances', $ident) }}"
-                    class="bg-lime-600 text-white font-extrabold rounded px-1.5">+</a>
-            </div>
-
-
-            @if ($alcurso->count())
-
-                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-sm text-gray-600">
-
-                    <table class="table-fixed  w-full rounded font-light text-left h-auto border-collapse">
-
-                        <tbody class="text-left">
-
-                            @foreach ($alcurso as $alcance)
-                                <tr class="h-8 hover:bg-gray-200 active:bg-gray-300">
-
-                                    <td class="px-2">{{ $alcance->alcance->descripcion }}</td>
-
-                                    <td class="w-12 md:w-20  text-center">
-                                        <a href="#" title="Eliminar" wire:click="deletealc({{ $alcance }})"
-                                            class="bg-red-500 text-white font-extrabold rounded px-1.5">-</a>
-                                    </td>
-
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
-            @else
-                <div class="text-sm text-gray-700 sm:px-7 px-5 py-2">
-                    <span>Sin resultados</span>
-                </div>
-            @endif
-
-        </div>
     </div>
+
     <!--Modal delete -->
 
     <x-confirmation-modal wire:model="open_delete">

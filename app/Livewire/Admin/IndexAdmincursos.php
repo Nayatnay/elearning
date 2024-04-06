@@ -65,18 +65,6 @@ class IndexAdmincursos extends Component
         $this->dispatch('index-admincursos');
     }
 
-    public function deletereq(Reqcurso $requisito)
-    {
-        $requisito->delete();
-        $this->dispatch('index-admincursos');
-    }
-
-    public function deletealc(Alcurso $alcance)
-    {
-        $alcance->delete();
-        $this->dispatch('index-admincursos');
-    }
-
     public function edit(curso $curso)
     {
         $this->curso = $curso;
@@ -106,35 +94,12 @@ class IndexAdmincursos extends Component
         $this->dispatch('index-admincursos');
     }
 
-    public function prueba(Curso $curso)
-    {
-        $this->chequeo = 1;
-        $this->curso = $curso;
-    }
-
     public function render()
     {
         $cursos = Curso::where('nombre', 'LIKE', '%' . $this->buscar . '%')
             ->orwhere('descripcion', 'LIKE', '%' . $this->buscar . '%')
             ->orderBy('id', 'desc')->paginate(5);
 
-        if ($this->chequeo <> null) {
-            $ident = $this->curso->id;
-            $nombrec = $this->curso->nombre;
-            $imgc = $this->curso->imagen;
-           // $this->chequeo = null;
-        } else {
-            foreach ($cursos as $cursito) {
-                $ident = $cursito->id;
-                $nombrec = $cursito->nombre;
-                $imgc = $cursito->imagen;
-                break;
-            }
-        }
-
-        $reqcurso = Reqcurso::where('id_curso', '=', $ident)->get();
-        $alcurso = Alcurso::where('id_curso', '=', $ident)->get();
-
-        return view('livewire.admin.index-admincursos', compact('cursos', 'reqcurso', 'alcurso', 'nombrec', 'ident', 'imgc'));
+        return view('livewire.admin.index-admincursos', compact('cursos'));
     }
 }
