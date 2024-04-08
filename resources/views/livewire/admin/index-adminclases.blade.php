@@ -23,16 +23,24 @@
 
             @if ($clases->count())
 
-                <div class="grid gap-x-4 gap-y-4 md:gap-y-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 
+                <div
+                    class="grid gap-x-4 gap-y-4 md:gap-y-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 
                 xl:grid-cols-4 items-center justify-center">
 
                     @foreach ($clases as $clase)
                         <div class="border border-gray-300 rounded-lg bg-gray-100">
 
-                            <video class="rounded-t-lg" controls poster="img/poster.png">
-                                <source src="{{ URL::asset('/storage/clases/' . $clase->video) }}" type="video/mp4">
-                                Su navegador no soporta la etiqueta de vídeo.
-                            </video>
+                            <div>
+                                <video class="rounded-t-lg" controls poster="img/poster1.png">
+                                    <source src="{{ URL::asset('/storage/clases/' . $clase->video) }}" type="video/mp4">
+                                    Su navegador no soporta la etiqueta de vídeo.
+                                </video> 
+                            </div>
+                            <div>
+                                <img src="{{ asset('/storage/clases/' . $clase->poster) }}" alt=""
+                                    title="" class="rounded-t-lg w-full">
+                            </div>
+
 
                             <p class="p-2 font-bold">{{ $clase->tema }}</p>
 
@@ -114,33 +122,63 @@
 
         <x-slot name="content">
 
-            <div class="mb-4 w-full rounded border p-2 bg-white">
+            <div class="flex mb-4 ">
+                <div class="basis-1/2 mr-1 rounded border p-2 bg-white">
 
-                <div class="text-xs text-left lg:text-sm">
-                    <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Selecciona
-                        video</label>
-                    <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="videovo"
-                        wire:model="videovo" class="text-[8px]" required />
-                    <x-input-error for="videovo" />
+                    <div class="text-xs text-left lg:text-sm">
+                        <label for="{{ $identif_poster }}" class="cursor-pointer hover:underline">Selecciona
+                            poster</label>
+                        <input id="{{ $identif_poster }}" type="file" style="visibility:hidden" name="postervo"
+                            wire:model="postervo" class="text-[8px]" required />
+                        <x-input-error for="postervo" />
+                    </div>
+
+                    <div class="mt-4 min-h-32 w-40">
+                        @if ($postervo)
+                            <img src="{{ $postervo->temporaryUrl() }}" class="p-2 border border-zinc-500 rounded"
+                                width="240px">
+                        @else
+                            <img src="{{ asset('/storage/clases/' . $poster) }}"
+                                class="p-2 border border-zinc-500 rounded" width="240px">
+                        @endif
+                    </div>
+
+                    <div wire:loading wire:target="postervo" class="w-full mt-2 text-xs font-medium">
+                        <strong>¡Cargando poster! </strong>
+                        <span>Espere mientras se carga el poster...</span>
+                    </div>
+
                 </div>
 
-                <div class="mt-4 min-h-32">
-                    @if ($videovo)
-                        <video width="320" height="240" controls poster="img/poster.png">
-                            <source src="{{ $video->temporaryUrl() }}" type="video/mp4">
-                        </video>
-                        
-                    @else
-                        <video width="320" height="240" controls poster="img/poster.png">
-                            <source src="{{ asset('/storage/clases/' . $clase->video) }}" type="video/mp4">
-                        </video>
-                        
-                    @endif
-                </div>
+                <div class="basis-1/2 mr-1 rounded border p-2 bg-white">
 
-                <div wire:loading wire:target="videovo" class="w-full mt-2 text-xs font-medium">
-                    <strong>¡Cargando video! </strong>
-                    <span>Espere mientras se carga el video...</span>
+                    <div class="text-xs text-left lg:text-sm">
+                        <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Selecciona
+                            video</label>
+                        <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="videovo"
+                            wire:model="videovo" class="text-[8px]" required />
+                        <x-input-error for="videovo" />
+                        
+                    </div>
+
+                    <div class="mt-4 min-h-32">
+                        @if ($videovo)
+                        <video width="320" height="240" controls poster="img/poster1.png">
+                            <source src="{{ $videovo->temporaryUrl() }}" type="video/mp4">
+                        </video>
+                        @else
+                        <video width="320" height="240" controls poster="img/poster1.png">
+                            <source src="{{ URL::asset('/storage/clases/' . $video) }}" type="video/mp4">
+                        </video>
+                        <p>{{$video}}</p>
+                        @endif
+                    </div>
+
+                    <div wire:loading wire:target="videovo" class="w-full mt-2 text-xs font-medium">
+                        <strong>¡Cargando video! </strong>
+                        <span>Espere mientras se carga el video...</span>
+                    </div>
+
                 </div>
 
             </div>

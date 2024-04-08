@@ -13,29 +13,57 @@
 
         <x-slot name="content" class="">
 
-            <div class="mb-4 w-full rounded border p-2 bg-white">
+            <div class="flex mb-4 ">
 
-                <div class="text-xs lg:text-sm">
-                    <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Cargar Video</label>
-                    <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="video"
-                    wire:model="video" class="text-[8px]" required />
-                <x-input-error for="video" />
+                <div class="basis-1/2 mr-1 rounded border p-2 bg-white">
+
+                    <div class="text-xs lg:text-sm">
+                        <label for="{{ $identif_poster }}" class="cursor-pointer hover:underline">Cargar Poster del
+                            Video</label>
+                        <input id="{{ $identif_poster }}" type="file" style="visibility:hidden" name="poster"
+                            wire:model="poster" class="text-[8px]" required />
+                        <x-input-error for="poster" />
+                    </div>
+
+                    <div class="my-2 min-h-32 w-40">
+                        @if ($poster)
+                            <img src="{{ $poster->temporaryUrl() }}" class="w-full p-2 border border-zinc-500 rounded"
+                                width="160px">
+                        @endif
+                    </div>
+
+                    <div wire:loading wire:target="poster" class="w-full mt-2 text-xs font-medium">
+                        <strong>¡Cargando poster! </strong>
+                        <span>Espere mientras se carga el poster...</span>
+                    </div>
+
                 </div>
 
-                <div class="my-2 min-h-32">
-                    @if ($video)
-                        <video width="320" height="240" controls poster="img/poster.png">
-                            <source src="{{ $video->temporaryUrl() }}" type="video/mp4">
-                        </video>
-                    @endif
-                </div>
+                <div class="basis-1/2 ml-1 rounded border p-2 bg-white">
 
-                <div wire:loading wire:target="video" class="w-full mt-2 text-xs font-medium">
-                    <strong>¡Cargando video! </strong>
-                    <span>Espere mientras se carga el video...</span>
+                    <div class="text-xs lg:text-sm w-40">
+                        <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Cargar Video</label>
+                        <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="video"
+                            wire:model="video" class="text-[8px]" required />
+                        <x-input-error for="video" />
+                    </div>
+
+                    <div class="my-2 min-h-32">
+                        @if ($video)
+                            <video width="320" height="240" controls poster="img/poster.png">
+                                <source src="{{ $video->temporaryUrl() }}" type="video/mp4">
+                            </video>
+                        @endif
+                    </div>
+
+                    <div wire:loading wire:target="video" class="w-full mt-2 text-xs font-medium">
+                        <strong>¡Cargando video! </strong>
+                        <span>Espere mientras se carga el video...</span>
+                    </div>
+
                 </div>
-                
             </div>
+
 
             <div class="mb-4">
                 <x-label for="tema" value="{{ __('tema') }}" />

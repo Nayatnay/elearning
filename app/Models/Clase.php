@@ -13,6 +13,7 @@ class Clase extends Model
     protected $fillable = [
         'tema',
         'video',
+        'poster',
     ];
 
 //Relacion uno a muchos

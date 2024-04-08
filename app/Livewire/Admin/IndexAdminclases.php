@@ -15,14 +15,15 @@ class IndexAdminclases extends Component
     public $buscar, $clase;
     public $open_delete = false;
     public $open_edit = false;
-    public $identificador, $video, $tema;
-    public $videovo;
+    public $identificador, $identif_poster, $video, $poster, $tema;
+    public $videovo, $postervo;
 
     protected function rules()
     {
         return [
             'tema' => 'required',
             'video' => 'required',
+            'poster' => 'required',
         ];
     }
 
@@ -30,6 +31,7 @@ class IndexAdminclases extends Component
     {
         $this->clase = $clase;
         $this->identificador = rand(); // Lo estoy usando para eliminar el nombre del video seleccionado anteriormente en el modal
+        $this->identif_poster = rand(); // Lo estoy usando para eliminar el nombre del poster del video
     }
 
     public function updatingBuscar()
@@ -45,8 +47,6 @@ class IndexAdminclases extends Component
 
     public function destroy()
     {
-        //dd($this->clase);
-
         $this->clase->delete();
         $this->reset(['open_delete']);  //cierra el modal     
         return redirect()->route('admin_clases');
@@ -54,35 +54,48 @@ class IndexAdminclases extends Component
 
     public function cancelar()
     {
-        $this->reset(['open_edit', 'tema', 'video']);
+        $this->reset(['open_edit', 'tema', 'video', 'poster']);
         $this->identificador = rand();
+        $this->identif_poster = rand();
+
+        $this->postervo = null;
+        $this->videovo = null;
     }
 
     public function edit(Clase $clase)
     {
-        //dd($clase->video);
         $this->clase = $clase;
         $this->tema = $clase->tema;
+        $this->poster = $clase->poster;
         $this->video = $clase->video;
         $this->open_edit = true;
     }
 
     public function update()
     {
+        if ($this->postervo <> null) {
+            $this->poster = $this->postervo;
+            $fileName = time() . '.' . $this->poster->extension();
+            $this->poster->storeAs('public/clases', $fileName);
+            $this->poster = $fileName;
+        }
+
         if ($this->videovo <> null) {
             $this->video = $this->videovo;
-            $fileName = time() . '.' . $this->video->extension();
-            $this->video->storeAs('public/clases', $fileName);
-            $this->video = $fileName;
+            $fileNamevid = time() . '.' . $this->video->extension();
+            $this->video->storeAs('public/clases', $fileNamevid);
+            $this->video = $fileNamevid;
         }
 
         $validatedData = $this->validate();
         $this->clase->update($validatedData);
 
+        $this->postervo = null;
         $this->videovo = null;
 
-        $this->reset(['open_edit', 'tema', 'video']);  //cierra el modal y limpia los campos del formulario
+        $this->reset(['open_edit', 'tema', 'video', 'poster']);  //cierra el modal y limpia los campos del formulario
         $this->identificador = rand();
+        $this->identif_poster = rand();
         return redirect()->route('admin_clases');
     }
 
