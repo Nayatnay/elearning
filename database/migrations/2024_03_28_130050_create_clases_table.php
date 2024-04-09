@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string('tema');
             $table->string('video');
-            $table->string('poster');
             $table->timestamps();
 
         });

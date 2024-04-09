@@ -27,7 +27,7 @@ class DatabaseSeeder extends Seeder
         Storage::disk('public')->deleteDirectory('cursos');
         Storage::disk('public')->makeDirectory('cursos');
 
-        Curso::factory(8)->create();
+        Curso::factory(2)->create();
 
 
     }

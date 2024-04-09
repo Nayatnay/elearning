@@ -31,16 +31,12 @@
                         <div class="border border-gray-300 rounded-lg bg-gray-100">
 
                             <div>
-                                <video class="rounded-t-lg" controls poster="img/poster1.png">
-                                    <source src="{{ URL::asset('/storage/clases/' . $clase->video) }}" type="video/mp4">
+                                <video class="rounded-t-lg" controls preload="metadata" id="myVid">
+                                    <source src="{{ URL::asset('/storage/clases/' . $clase->video) . '#t=2' }}"
+                                        type="video/mp4">
                                     Su navegador no soporta la etiqueta de vídeo.
-                                </video> 
+                                </video>
                             </div>
-                            <div>
-                                <img src="{{ asset('/storage/clases/' . $clase->poster) }}" alt=""
-                                    title="" class="rounded-t-lg w-full">
-                            </div>
-
 
                             <p class="p-2 font-bold">{{ $clase->tema }}</p>
 
@@ -122,77 +118,45 @@
 
         <x-slot name="content">
 
-            <div class="flex mb-4 ">
-                <div class="basis-1/2 mr-1 rounded border p-2 bg-white">
+            <div class="mb-4 rounded border p-2 bg-white">
 
-                    <div class="text-xs text-left lg:text-sm">
-                        <label for="{{ $identif_poster }}" class="cursor-pointer hover:underline">Selecciona
-                            poster</label>
-                        <input id="{{ $identif_poster }}" type="file" style="visibility:hidden" name="postervo"
-                            wire:model="postervo" class="text-[8px]" required />
-                        <x-input-error for="postervo" />
-                    </div>
-
-                    <div class="mt-4 min-h-32 w-40">
-                        @if ($postervo)
-                            <img src="{{ $postervo->temporaryUrl() }}" class="p-2 border border-zinc-500 rounded"
-                                width="240px">
-                        @else
-                            <img src="{{ asset('/storage/clases/' . $poster) }}"
-                                class="p-2 border border-zinc-500 rounded" width="240px">
-                        @endif
-                    </div>
-
-                    <div wire:loading wire:target="postervo" class="w-full mt-2 text-xs font-medium">
-                        <strong>¡Cargando poster! </strong>
-                        <span>Espere mientras se carga el poster...</span>
-                    </div>
+                <div class="text-xs text-left lg:text-sm">
+                    <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Selecciona
+                        video</label>
+                    <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="videovo"
+                        wire:model="videovo" class="text-[8px]" required />
+                    <x-input-error for="videovo" />
 
                 </div>
 
-                <div class="basis-1/2 mr-1 rounded border p-2 bg-white">
-
-                    <div class="text-xs text-left lg:text-sm">
-                        <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Selecciona
-                            video</label>
-                        <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="videovo"
-                            wire:model="videovo" class="text-[8px]" required />
-                        <x-input-error for="videovo" />
-                        
-                    </div>
-
-                    <div class="mt-4 min-h-32">
-                        @if ($videovo)
-                        <video width="320" height="240" controls poster="img/poster1.png">
+                <div class="mt-4 min-h-32">
+                    @if ($videovo)
+                        <video width="320" height="240" controls controls preload="metadata" id="myVid">
                             <source src="{{ $videovo->temporaryUrl() }}" type="video/mp4">
                         </video>
-                        @else
-                        <video width="320" height="240" controls poster="img/poster1.png">
-                            <source src="{{ URL::asset('/storage/clases/' . $video) }}" type="video/mp4">
+                    @else
+                        <video width="320" height="240" controls controls preload="metadata" id="myVid">
+                            <source src="{{ URL::asset('/storage/clases/' . $video) . '#t=2' }}" type="video/mp4">
                         </video>
-                        <p>{{$video}}</p>
-                        @endif
-                    </div>
+                        <p>{{ $video }}</p>
+                    @endif
+                </div>
 
-                    <div wire:loading wire:target="videovo" class="w-full mt-2 text-xs font-medium">
-                        <strong>¡Cargando video! </strong>
-                        <span>Espere mientras se carga el video...</span>
-                    </div>
-
+                <div wire:loading wire:target="videovo" class="w-full mt-2 text-xs font-medium">
+                    <strong>¡Cargando video! </strong>
+                    <span>Espere mientras se carga el video...</span>
                 </div>
 
             </div>
 
-            <div class="w-full border p-4 bg-white rounded">
-
-                <div class="mb-4">
-                    <x-label for="tema" value="{{ __('Tema') }}" />
-                    <x-input id="tema" class="block mt-1 w-full" type="text" name="tema" wire:model="tema"
-                        required autofocus />
-                    <x-input-error for="tema" />
-                </div>
-
+            <div class="mb-4">
+                <x-label for="tema" value="{{ __('Tema') }}" />
+                <x-input id="tema" class="block mt-1 w-full" type="text" name="tema" wire:model="tema"
+                    required autofocus />
+                <x-input-error for="tema" />
             </div>
+
+
 
         </x-slot>
 
@@ -209,5 +173,14 @@
         </x-slot>
 
     </x-dialog-modal>
+
+    <script>
+        var el = document.getElementById('myVid');
+        el.addEventListener('play', () => {
+            el.currentTime = 0;
+        }, {
+            once: true
+        });
+    </script>
 
 </div>
