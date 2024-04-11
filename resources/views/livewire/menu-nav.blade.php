@@ -4,7 +4,7 @@
         [
             'name' => 'cursos',
             'route' => route('cursos'),
-            'active' => request()->routeIs('cursos'),
+            'active' => request()->routeIs('cursos', 'detalledelcurso'),
         ],
 
         [

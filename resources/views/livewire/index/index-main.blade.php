@@ -210,11 +210,11 @@
                             class="flex flex-col items-center justify-between border border-gray-300 rounded-lg bg-gray-100">
 
                             <div class="flex flex-col h-[50%] items-start">
-                                <a href="#">
+                                <a href="{{route('detalledelcurso', $curso)}}">
                                     <img src="{{ asset('/storage/cursos/' . $curso->imagen) }}" alt=""
                                         title="" class="w-full rounded-tl-lg rounded-tr-lg" width="">
                                 </a>
-                                <a href="#" class="p-4 text-lg">
+                                <a href="{{route('detalledelcurso', $curso)}}" class="p-4 text-lg">
                                     <p class="text-ellipsis line-clamp-2 font-normal">{{ $curso->nombre }}</p>
                                 </a>
                             </div>
@@ -243,7 +243,7 @@
                                             class="mt-0.5 ml-0.5 text-sm font-light">{{ $decimal }}</span>
                                     @endif
                                 </div>
-                                <a href="#">
+                                <a href="{{route('detalledelcurso', $curso)}}">
                                     <div class="my-2 text-center bg-gray-300 p-2 rounded text-sm">
                                         Ver Información
                                     </div>

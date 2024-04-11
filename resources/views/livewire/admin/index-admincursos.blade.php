@@ -80,6 +80,12 @@
                                         </a>
                                     </td>
 
+                                    <td class="w-10 text-center">
+                                        <a href="{{ route('selec_clases', $curso) }}" title="Clases" class="p-2">
+                                            <i class="fa-solid fa-book text-blue-700"></i>
+                                        </a>
+                                    </td>
+                                    
                                 </tr>
                             @endforeach
                         </tbody>

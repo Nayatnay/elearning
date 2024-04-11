@@ -9,8 +9,10 @@ use App\Livewire\Admin\IndexAdmincursos;
 use App\Livewire\Admin\IndexAdminreqalc;
 use App\Livewire\Admin\IndexAdminrequisitos;
 use App\Livewire\Admin\SelecAlcances;
+use App\Livewire\Admin\SelecClases;
 use App\Livewire\Admin\SelecRequisitos;
 use App\Livewire\Carrito\IndexCarrito;
+use App\Livewire\Cursos\DetalleCurso;
 use App\Livewire\Cursos\IndexCursos;
 use App\Livewire\Eventos\IndexEventos;
 use App\Livewire\Index\IndexMain;
@@ -38,11 +40,13 @@ Route::get('eventos', IndexEventos::class)->name('eventos');
 Route::get('inscripciones', IndexInscripciones::class)->name('inscripciones');
 Route::get('carrito', IndexCarrito::class)->name('carrito');
 
+route::get('selec_requisitos/{curso}', SelecRequisitos::class)->name('selec_requisitos');
+route::get('selec_alcances/{curso}', SelecAlcances::class)->name('selec_alcances');
+route::get('selec_clases/{curso}', SelecClases::class)->name('selec_clases');
+route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurso');
+
 //Rutas de admninistracion
 route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');
 route::get('admin_requisitos', IndexAdminrequisitos::class)->name('admin_requisitos');
 route::get('admin_alcances', IndexAdminalcances::class)->name('admin_alcances');
 route::get('admin_clases', IndexAdminclases::class)->name('admin_clases');
-
-route::get('selec_requisitos/{curso}', SelecRequisitos::class)->name('selec_requisitos');
-route::get('selec_alcances/{curso}', SelecAlcances::class)->name('selec_alcances');

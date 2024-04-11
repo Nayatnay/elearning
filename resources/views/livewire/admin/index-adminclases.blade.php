@@ -31,15 +31,15 @@
                         <div class="border border-gray-300 rounded-lg bg-gray-100">
 
                             <div>
-                                <video class="rounded-t-lg" controls preload="metadata" id="myVid">
+                                <video class="rounded-t-lg" controls preload="metadata">
                                     <source src="{{ URL::asset('/storage/clases/' . $clase->video) . '#t=2' }}"
                                         type="video/mp4">
                                     Su navegador no soporta la etiqueta de vídeo.
                                 </video>
                             </div>
-
-                            <p class="p-2 font-bold">{{ $clase->tema }}</p>
-
+                            <div>
+                                <p class="p-2 text-lg font-bold">{{ $clase->tema }}</p>
+                            </div>
                             <div
                                 class="w-full p-2 flex items-center justify-between border-t border-gray-200 bg-gray-200">
                                 <a href="#" title="Eliminar" class="px-2"
@@ -118,39 +118,32 @@
 
         <x-slot name="content">
 
-            <div class="mb-4 rounded border p-2 bg-white">
+            <div class="mb-4 p-2">
 
                 <div class="text-xs text-left lg:text-sm">
-                    <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Selecciona
+                    <label for="{{ $identificador }}"
+                        class="bg-gray-700 text-white p-2 rounded cursor-pointer hover:underline"
+                        onclick="myfunction()">Cambiar
                         video</label>
                     <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="videovo"
                         wire:model="videovo" class="text-[8px]" required />
                     <x-input-error for="videovo" />
-
                 </div>
 
-                <div class="mt-4 min-h-32">
-                    @if ($videovo)
-                        <video width="320" height="240" controls controls preload="metadata" id="myVid">
-                            <source src="{{ $videovo->temporaryUrl() }}" type="video/mp4">
-                        </video>
-                    @else
-                        <video width="320" height="240" controls controls preload="metadata" id="myVid">
-                            <source src="{{ URL::asset('/storage/clases/' . $video) . '#t=2' }}" type="video/mp4">
-                        </video>
-                        <p>{{ $video }}</p>
-                    @endif
-                </div>
+                @if ($videovo)
+                    <div class="block text-gray-800 font-medium text-xs p-1" id="etiq">
+                        <p>Video cargado satisfactoriamente</p>
+                    </div>
+                @endif
 
-                <div wire:loading wire:target="videovo" class="w-full mt-2 text-xs font-medium">
-                    <strong>¡Cargando video! </strong>
-                    <span>Espere mientras se carga el video...</span>
+                <div class="text-red-700 text-xs p-1 font-medium" wire:loading wire:target="videovo">
+                    <p><strong>¡Cargando video! </strong>Espere mientras se carga el video...</p>
                 </div>
 
             </div>
 
             <div class="mb-4">
-                <x-label for="tema" value="{{ __('Tema') }}" />
+                <x-label for="tema" value="{{ __('Tema de la clase') }}" />
                 <x-input id="tema" class="block mt-1 w-full" type="text" name="tema" wire:model="tema"
                     required autofocus />
                 <x-input-error for="tema" />
@@ -175,12 +168,21 @@
     </x-dialog-modal>
 
     <script>
+        function myfunction() {
+            document.getElementById("etiq").style.display = "none";
+        }
+    </script>
+
+
+    {{-- <script>
         var el = document.getElementById('myVid');
+
+        console.log(el);
         el.addEventListener('play', () => {
             el.currentTime = 0;
         }, {
             once: true
         });
-    </script>
+    </script> --}}
 
 </div>

@@ -13,26 +13,25 @@
 
         <x-slot name="content" class="">
 
-            <div class="mb-4 rounded border p-2 bg-white">
+            <div class="mb-4 p-2">
 
-                <div class="text-xs lg:text-sm w-40">
-                    <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Cargar Video</label>
+                <div class="text-xs lg:text-sm">
+                    <label for="{{ $identificador }}" 
+                    class="bg-gray-700 text-white p-2 rounded cursor-pointer hover:underline"
+                    onclick="myfunction()">Cargar Video</label>
                     <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="video"
                         wire:model="video" class="text-[8px]" required />
                     <x-input-error for="video" />
                 </div>
 
-                <div class="my-2 min-h-32">
-                    @if ($video)
-                        <video width="320" height="240" controls  preload="metadata">
-                            <source src="{{ $video->temporaryUrl()}}" type="video/mp4">
-                        </video>
-                    @endif
-                </div>
+                @if ($video)
+                    <div class="block text-gray-800 font-medium text-xs p-1" id="etiq">
+                        <p>Video cargado satisfactoriamente</p>
+                    </div>
+                @endif
 
-                <div wire:loading wire:target="video" class="w-full mt-2 text-xs font-medium">
-                    <strong>¡Cargando video! </strong>
-                    <span>Espere mientras se carga el video...</span>
+                <div class="text-red-700 text-xs p-1 font-medium" wire:loading wire:target="video">
+                    <p><strong>¡Cargando video! </strong>Espere mientras se carga el video...</p>
                 </div>
 
             </div>
@@ -59,5 +58,11 @@
         </x-slot>
 
     </x-dialog-modal>
+
+    <script>
+        function myfunction() {
+            document.getElementById("etiq").style.display = "none";
+        }
+    </script>
 
 </div>
