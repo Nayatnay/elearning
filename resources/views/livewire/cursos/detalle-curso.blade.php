@@ -35,12 +35,13 @@
     <div
         class="my-8 md:my-12 md:max-w-screen-xl md:mx-auto flex flex-col md:flex-row items-center md:items-start md:justify-between px-4 md:px-6">
 
-        <div class="min-w-[100px] xl:min-w-[256px]">
+        <div class="min-w-[100px] xl:min-w-[360px]">
             <img src="{{ asset('/storage/cursos/' . $curso->imagen) }}" alt="" title="" width=""
                 class="rounded w-full">
         </div>
 
         <div class="w-full mt-4 md:mt-0 mx-4 px-4">
+            <p class="hidden md:block text-xl lg:text-3xl text-orange-700 uppercase">{{ $curso->nombre }}</p>
             <p class="hidden md:block text-xl lg:text-3xl">{{ $curso->descripcion }}</p>
 
             <div class="flex items-start text-orange-600 pt-2">
@@ -108,7 +109,7 @@
         <div class="mt-4">
             @foreach ($clases as $clase)
                 <div class="p-1">
-                    <a href="#" class="hover:text-blue-600"><i class="fa-solid fa-circle-play mr-2"></i>{{ $clase->clase->tema }}</a>
+                    <a href="{{route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id])}}" class="hover:text-blue-600"><i class="fa-solid fa-circle-play mr-2"></i>{{ $clase->clase->tema }}</a>
                 </div>
             @endforeach
         </div>

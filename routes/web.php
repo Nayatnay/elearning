@@ -12,6 +12,7 @@ use App\Livewire\Admin\SelecAlcances;
 use App\Livewire\Admin\SelecClases;
 use App\Livewire\Admin\SelecRequisitos;
 use App\Livewire\Carrito\IndexCarrito;
+use App\Livewire\Cursos\ClasesCurso;
 use App\Livewire\Cursos\DetalleCurso;
 use App\Livewire\Cursos\IndexCursos;
 use App\Livewire\Eventos\IndexEventos;
@@ -44,6 +45,7 @@ route::get('selec_requisitos/{curso}', SelecRequisitos::class)->name('selec_requ
 route::get('selec_alcances/{curso}', SelecAlcances::class)->name('selec_alcances');
 route::get('selec_clases/{curso}', SelecClases::class)->name('selec_clases');
 route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurso');
+route::get('clasesdelcurso/{curso}/{clase}', ClasesCurso::class)->name('clasesdelcurso');
 
 //Rutas de admninistracion
 route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');

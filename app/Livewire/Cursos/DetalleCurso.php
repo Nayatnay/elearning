@@ -14,8 +14,7 @@ class DetalleCurso extends Component
 
     public function mount(Curso $curso) 
     {
-        $this->curso = $curso;
-            
+        $this->curso = $curso;         
     }
 
     public function render()

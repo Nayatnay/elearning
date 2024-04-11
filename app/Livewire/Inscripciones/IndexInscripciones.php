@@ -2,12 +2,15 @@
 
 namespace App\Livewire\Inscripciones;
 
+use App\Models\Curso;
 use Livewire\Component;
 
 class IndexInscripciones extends Component
 {
     public function render()
     {
-        return view('livewire.inscripciones.index-inscripciones');
+        $cursos = Curso::orderBy('id', 'desc')->paginate(8);
+
+        return view('livewire.inscripciones.index-inscripciones', compact('cursos'));
     }
 }
