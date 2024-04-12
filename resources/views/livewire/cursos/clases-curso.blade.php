@@ -7,8 +7,8 @@
          md:items-start md:justify-between px-4 md:px-6">
 
             <div class="md:mr-4">
-                <div class="min-w-[100px] xl:min-w-[720px] border border-gray-800">
-                    <video controls preload="metadata">
+                <div class="min-w-[100px] xl:min-w-[840px] border border-gray-800">
+                    <video controls preload="metadata" autoplay>
                         <source src="{{ URL::asset('/storage/clases/' . $clas_selec->video) }}" type="video/mp4">
                         Su navegador no soporta la etiqueta de vídeo.
                     </video>
@@ -59,18 +59,18 @@
         <div class="md:max-w-screen-xl md:mx-auto my-20 border border-gray-400 bg-gray-200 shadow-lg rounded-xl p-8 ">
             <div class="flex flex-col items-center justify-center lg:flex-row ">
                 <div class="w-full lg:mr-4 text-center lg:text-left">
-                    <p class="text-4xl">¡Da el primer paso!</p>
-                    <p class="text-2xl mt-2">Una extensa variedad de categorías a escoger</p>
+                    <p class="text-4xl">¡Aprendizaje a tu alcance!</p>
+                    <p class="text-2xl mt-2">Escoge un curso en nuestra lista de categorías </p>
     
                 </div>
-                <a href="#">
+                <a href="{{route('inscripciones')}}">
                     <div
                         class="mt-6 rounded-full w-60 border-4 border-transparent  bg-white hover:bg-gray-200 active:bg-gray-300 hover:border-white px-10 py-4 text-center font-bold text-base">
                         Comienza aquí
                     </div>
                 </a>
             </div>
-            <p class="mt-6 text-xs font-medium text-center lg:text-left"> Repostería tradicional, gastronomía exótica,
+            <p class="mt-6 text-sm font-medium text-center lg:text-left"> Repostería tradicional, gastronomía exótica,
                 comida internacional y exquisiteces de la India
             <p>
         </div>

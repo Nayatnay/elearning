@@ -18,11 +18,6 @@ class ClasesCurso extends Component
         
     }
 
-    public function newclass(Clacurso $clase)
-    {
-        $this->clase = $clase;
-    }
-
     public function render()
     {
         $curso = $this->curso;
