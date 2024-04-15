@@ -53,11 +53,11 @@
             <div class="hidden sm:flex sm:items-center sm:ml-6 space-x-4">
                 <!-- Cart -->
                 
-                <button class=" w-8 h-8 text-xl text-gray-400 hover:text-red-800 transition ease-in-out duration-150">
+                {{--<button class=" w-8 h-8 text-xl text-gray-400 hover:text-red-800 transition ease-in-out duration-150">
                     <a href="{{ route('carrito') }}">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </a>
-                </button>
+                </button>--}}
                 @if (Route::has('login'))
                     @auth
                         <!-- Settings Dropdown -->
@@ -116,7 +116,7 @@
                     @else
                         <!-- Session -->
                         <button
-                            class=" w-8 h-8 text-xl text-gray-400 hover:text-red-800 transition ease-in-out duration-150">
+                            class="w-8 h-8 text-xl border border-gray-400 rounded-full text-gray-400 hover:text-red-800 transition ease-in-out duration-150">
                             <a href="{{ route('login') }}">
                                 <i class="fa-solid fa-user"></i>
                             </a>
@@ -152,10 +152,10 @@
                             </x-responsive-nav-link>
                         @endforeach
                     </div>
-                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                    {{--<a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('carrito') }}" data-turbo="false">
                         Carrito de compras
-                    </a>
+                    </a>--}}
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('profile.show') }}" data-turbo="false">
                         Perfil
@@ -190,10 +190,10 @@
                             </x-responsive-nav-link>
                         @endforeach
                     </div>
-                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                    {{--<a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('carrito') }}" data-turbo="false">
                         Carrito de compras
-                    </a>
+                    </a>--}}
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('login') }}" data-turbo="false">
                         Iniciar sesión

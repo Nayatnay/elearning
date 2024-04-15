@@ -69,37 +69,26 @@
         </div>
 
         <div class="mt-0 w-full md:w-[520px] h-full">
-            @auth
-                <div class="mt-6 md:mt-0 rounded-lg md:border border-gray-300 w-full text-center text-sm md:p-6 pb-4">
-                    <p>Usuario <strong>{{ ucwords(Auth::user()->name) }}</strong></p>
 
-                    <div class="mt-8 w-full">
+            <div class="mt-6 md:mt-0 rounded-lg md:border border-gray-300 w-full text-center text-sm md:p-6 pb-4">
+                @auth
+                    <p class="mb-4">Usuario <strong>{{ ucwords(Auth::user()->name) }}</strong></p>
+                @endauth
+                {{-- <div class="mt-8 w-full">
                         <form action="" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{ $curso->id }}">
                             <input type="submit" value="Agregar al carrito"
                                 class="cursor-pointer w-full block text-xs font-medium px-4 py-2 border rounded-full bg-yellow-300 hover:bg-yellow-200">
                         </form>
-                    </div>
-                    <div class="mt-4 w-full">
-                        <a href="#"
-                            class="block text-xs font-medium px-4 py-2 border rounded-full bg-orange-600 hover:bg-orange-500 text-white">Comprar
-                            ahora</a>
-                    </div>
+                    </div> --}}
+                <div class="w-full">
+                    <a href="#" wire:click="verifylogin"
+                        class="block text-xs font-medium px-4 py-2 border rounded-full bg-orange-600 hover:bg-orange-500 text-white">Comprar
+                        ahora</a>
                 </div>
-            @else
-                <div class="rounded-lg md:border border-gray-300 w-full text-center text-sm md:p-6 pb-4">
-                    
-                    <div class="mt-8 md:mt-0 w-full">
-                        <form action="#" method="post">
-                            @csrf
-                            <input type="hidden" name="id" value="{{ $curso->id }}">
-                            <input type="submit" value="Agregar al carrito"
-                                class="cursor-pointer w-full block text-xs font-medium px-4 py-2 border rounded-full bg-yellow-300 hover:bg-yellow-200">
-                        </form>
-                    </div>
-                </div>
-            @endauth
+            </div>
+
         </div>
     </div>
     <div class="max-w-screen-xl md:mx-auto text-base mx-4 md:pt-4 pb-10">
@@ -107,16 +96,20 @@
             <p>Temario del curso</p>
         </div>
         <div class="mt-4">
+
             @foreach ($clases as $clase)
                 <div class="p-1">
-                    <a href="{{route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id])}}" class="hover:text-blue-600"><i class="fa-solid fa-circle-play mr-2"></i>{{ $clase->clase->tema }}</a>
+                    <a href="{{ route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id, 'inscrito' => $inscrito]) }}"
+                        class="hover:text-blue-600"><i
+                            class="fa-solid fa-circle-play mr-2"></i>{{ $clase->clase->tema }}</a>
                 </div>
             @endforeach
+
         </div>
 
     </div>
 
-     <!-- Pie de pagina -->
-     <x-footer></x-footer>
+    <!-- Pie de pagina -->
+    <x-footer></x-footer>
 
 </div>

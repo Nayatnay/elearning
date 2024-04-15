@@ -7,22 +7,74 @@
          md:items-start md:justify-between px-4 md:px-6">
 
             <div class="md:mr-4">
-                <div class="min-w-[100px] xl:min-w-[840px] border border-gray-800">
-                    <video controls preload="metadata" autoplay>
-                        <source src="{{ URL::asset('/storage/clases/' . $clas_selec->video) }}" type="video/mp4">
-                        Su navegador no soporta la etiqueta de vídeo.
-                    </video>
-                </div>
+                @auth
+                    @if ($inscrito == 1)
+                        <div class="min-w-[100px] xl:min-w-[840px] border border-gray-800">
+                            <video controls preload="metadata" autoplay>
+                                <source src="{{ URL::asset('/storage/clases/' . $clas_selec->video) }}" type="video/mp4">
+                                Su navegador no soporta la etiqueta de vídeo.
+                            </video>
+                        </div>
+                        <div>
+                            <p class="bg-white p-2 text-2xl text-gray-700 font-bold">{{ $clas_selec->tema }}</p>
+                        </div>
+                    @else
+                        <div class="relative min-w-[100px] xl:min-w-[840px] border border-gray-800">
 
-                <div>
-                    <p class="bg-white p-2 text-2xl text-gray-700 font-bold">{{ $clas_selec->tema }}</p>
-                </div>
+                            <video preload="metadata">
+                                <source src="{{ URL::asset('/storage/clases/' . $clas_selec->video) . '#t=6' }}"
+                                    type="video/mp4">
+                                Su navegador no soporta la etiqueta de vídeo.
+                            </video>
+
+                            <div
+                                class="w-full h-full flex flex-col items-center justify-center absolute top-0 z-10 
+                                md:text-2xl p-10 text-center uppercase border border-gray-800 bg-black text-white 
+                                bg-opacity-50 ">
+                                <p>Adquiere este curso para tener acceso a todas las lecciones</p>
+                                <div class="w-full mt-8">
+                                    <a href="#" wire:click="verifylogin"
+                                        class="md:text-xl font-medium px-4 py-2 border rounded-full bg-orange-600 hover:bg-orange-500 text-white">Comprar
+                                        ahora</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div>
+                            <p class="bg-white p-2 text-2xl text-gray-700 font-bold">{{ $clas_selec->tema }}</p>
+                        </div>
+                    @endif
+                @else
+                    <div class="relative min-w-[100px] xl:min-w-[840px] border border-gray-800">
+
+                        <video preload="metadata">
+                            <source src="{{ URL::asset('/storage/clases/' . $clas_selec->video) . '#t=6' }}"
+                                type="video/mp4">
+                            Su navegador no soporta la etiqueta de vídeo.
+                        </video>
+
+                        <div
+                            class="w-full h-full flex flex-col items-center justify-center absolute top-0 z-10 md:text-2xl p-10 text-center uppercase 
+                        border border-gray-800 bg-black text-white bg-opacity-50 ">
+                            <p>Adquiere este curso para tener acceso a todas las lecciones</p>
+                            <div class="w-full mt-8">
+                                <a href="#" wire:click="verifylogin"
+                                    class="md:text-xl font-medium px-4 py-2 border rounded-full bg-orange-600 hover:bg-orange-500 text-white">Comprar
+                                    ahora</a>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div>
+                        <p class="bg-white p-2 text-2xl text-gray-700 font-bold">{{ $clas_selec->tema }}</p>
+                    </div>
+                @endauth
 
             </div>
 
             <div class="w-full mt-10 md:mt-0 md:ml-4 border rounded-xl bg-white shadow p-4">
-                <p class="text-xl lg:text-3xl text-orange-700 uppercase">{{ $curso->nombre }}</p>
-                <p class="text-xl lg:text-3xl">{{ $curso->descripcion }}</p>
+                <p class="text-xl lg:text-2xl text-orange-700 uppercase">{{ $curso->nombre }}</p>
+                <p class="text-xl">{{ $curso->descripcion }}</p>
 
 
                 <div class="mt-10 md:mt-0 text-sm md:pt-4 pb-10 text-gray-700">
@@ -33,7 +85,7 @@
                         @foreach ($clases as $clase)
                             @if ($clase->id_clase == $clas_selec->id)
                                 <div class="p-1">
-                                    <a href="{{ route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id]) }}"
+                                    <a href="{{ route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id, 'inscrito' => $inscrito]) }}"
                                         class="text-blue-600">
                                         <i class="fa-solid fa-circle-play mr-2"></i>
                                         {{ $clase->clase->tema }}
@@ -41,7 +93,7 @@
                                 </div>
                             @else
                                 <div class="p-1">
-                                    <a href="{{ route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id]) }}"
+                                    <a href="{{ route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id, 'inscrito' => $inscrito]) }}"
                                         class="hover:text-blue-600">
                                         <i class="fa-solid fa-circle-play mr-2"></i>
                                         {{ $clase->clase->tema }}
@@ -61,9 +113,9 @@
                 <div class="w-full lg:mr-4 text-center lg:text-left">
                     <p class="text-4xl">¡Aprendizaje a tu alcance!</p>
                     <p class="text-2xl mt-2">Escoge un curso en nuestra lista de categorías </p>
-    
+
                 </div>
-                <a href="{{route('inscripciones')}}">
+                <a href="{{ route('inscripciones') }}">
                     <div
                         class="mt-6 rounded-full w-60 border-4 border-transparent  bg-white hover:bg-gray-200 active:bg-gray-300 hover:border-white px-10 py-4 text-center font-bold text-base">
                         Comienza aquí
@@ -74,9 +126,9 @@
                 comida internacional y exquisiteces de la India
             <p>
         </div>
-    
+
     </div>
-    
+
     <!-- Pie de pagina -->
     <x-footer></x-footer>
 

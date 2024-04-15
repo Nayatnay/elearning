@@ -16,7 +16,11 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
 
-            <div>
+            <div class="mt-4">
+                <p class="font-bold text-2xl">Inicia sesión</p>
+            </div>
+
+            <div class="mt-4">
                 <x-label for="email" value="{{ __('Correo Electrónico') }}" />
                 <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
             </div>
@@ -43,6 +47,15 @@
                 <x-button class="ms-4">
                     {{ __('Iniciar sesión') }}
                 </x-button>
+
+            </div>
+
+            <div class="mt-10 border-t border-gray-600 py-2 text-center text-sm font-light">
+                <p class="mb-2">¿Eres nuevo por acá?</p>
+                <a class="text-sm hover:underline bg-gray-400 text-black border border-gray-500 rounded block w-full p-2 ring-zinc-500 focus:ring"
+                 href="{{ route('register') }}">
+                    Crea tu cuenta
+                </a>
             </div>
         </form>
     </x-authentication-card>

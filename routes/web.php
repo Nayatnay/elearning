@@ -39,21 +39,13 @@ Route::get('cursos', IndexCursos::class)->name('cursos');
 Route::get('recetas', IndexRecetas::class)->name('recetas');
 Route::get('eventos', IndexEventos::class)->name('eventos');
 Route::get('inscripciones', IndexInscripciones::class)->name('inscripciones');
-Route::get('carrito', IndexCarrito::class)->name('carrito');
+//Route::get('carrito', IndexCarrito::class)->name('carrito');
 
-/*/Rutas carrito
-
-Route::post('cart/add', [CartController::class, 'add'])->name('add');
-Route::post('adicion', [CarroController::class, 'adicion'])->name('adicion');
-Route::get('cart/clear', [CartController::class, 'clear'])->name('clear');
-Route::post('cart/removeitem', [CarroController::class, 'removeItem'])->name('removeitem');
-Route::post('cart/updateqty', [CarroController::class, 'updateqty'])->name('updateqty');
-*/
 route::get('selec_requisitos/{curso}', SelecRequisitos::class)->name('selec_requisitos');
 route::get('selec_alcances/{curso}', SelecAlcances::class)->name('selec_alcances');
 route::get('selec_clases/{curso}', SelecClases::class)->name('selec_clases');
 route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurso');
-route::get('clasesdelcurso/{curso}/{clase}', ClasesCurso::class)->name('clasesdelcurso');
+route::get('clasesdelcurso/{curso}/{clase}/{inscrito}', ClasesCurso::class)->name('clasesdelcurso');
 
 //Rutas de admninistracion
 route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');

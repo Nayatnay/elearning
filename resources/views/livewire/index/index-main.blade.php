@@ -79,7 +79,7 @@
                         <img src="{{ asset('/img/recetas.jpg') }}" alt="" title=""
                             class="w-full rounded-tl-md rounded-tr-md">
                         <p class="p-4">
-                            Recetas
+                            Recetas paso a paso
                         </p>
                     </a>
                 </div>
@@ -88,7 +88,7 @@
                         <img src="{{ asset('/img/eventos.jpg') }}" alt="" title=""
                             class="w-full rounded-tl-md rounded-tr-md">
                         <p class="p-4">
-                            Eventos
+                            Eventos y Noticias
                         </p>
                     </a>
                 </div>
