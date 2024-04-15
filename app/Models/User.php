@@ -65,4 +65,11 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    //Relacion uno a muchos
+
+    public function inscripcion()
+    {
+        return $this->hasMany('App\Models\Inscripcion', 'id_user');
+    }
 }

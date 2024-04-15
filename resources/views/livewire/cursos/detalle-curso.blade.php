@@ -74,7 +74,7 @@
                     <p>Usuario <strong>{{ ucwords(Auth::user()->name) }}</strong></p>
 
                     <div class="mt-8 w-full">
-                        <form action="#" method="post">
+                        <form action="" method="post">
                             @csrf
                             <input type="hidden" name="id" value="{{ $curso->id }}">
                             <input type="submit" value="Agregar al carrito"
@@ -102,8 +102,8 @@
             @endauth
         </div>
     </div>
-    <div class="max-w-screen-xl md:mx-auto text-sm mx-4 md:pt-4 pb-10">
-        <div class="text-xl font-medium">
+    <div class="max-w-screen-xl md:mx-auto text-base mx-4 md:pt-4 pb-10">
+        <div class="text-2xl font-medium">
             <p>Temario del curso</p>
         </div>
         <div class="mt-4">

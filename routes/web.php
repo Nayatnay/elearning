@@ -41,6 +41,14 @@ Route::get('eventos', IndexEventos::class)->name('eventos');
 Route::get('inscripciones', IndexInscripciones::class)->name('inscripciones');
 Route::get('carrito', IndexCarrito::class)->name('carrito');
 
+/*/Rutas carrito
+
+Route::post('cart/add', [CartController::class, 'add'])->name('add');
+Route::post('adicion', [CarroController::class, 'adicion'])->name('adicion');
+Route::get('cart/clear', [CartController::class, 'clear'])->name('clear');
+Route::post('cart/removeitem', [CarroController::class, 'removeItem'])->name('removeitem');
+Route::post('cart/updateqty', [CarroController::class, 'updateqty'])->name('updateqty');
+*/
 route::get('selec_requisitos/{curso}', SelecRequisitos::class)->name('selec_requisitos');
 route::get('selec_alcances/{curso}', SelecAlcances::class)->name('selec_alcances');
 route::get('selec_clases/{curso}', SelecClases::class)->name('selec_clases');

@@ -19,11 +19,12 @@
             'active' => request()->routeIs('eventos'),
         ],
 
-        [
+       /* [
             'name' => 'inscripciones',
             'route' => route('inscripciones'),
             'active' => request()->routeIs('inscripciones'),
         ],
+        */
     ];
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100  shadow sticky top-0 z-[200]">

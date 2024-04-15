@@ -35,5 +35,8 @@ class Curso extends Model
         return $this->hasMany('App\Models\Clacurso', 'id_curso');
     }
 
-    
+    public function inscripcion()
+    {
+        return $this->hasMany('App\Models\Inscripcion', 'id_curso');
+    }
 }
