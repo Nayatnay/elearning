@@ -44,9 +44,11 @@ class IndexCursos extends Component
 
     public function render()
     {
-        $cursos = Curso::where('nombre', 'LIKE', '%' . $this->buscar . '%')
-            ->orwhere('descripcion', 'LIKE', '%' . $this->buscar . '%')
-            ->orderBy($this->sort, $this->direc)->paginate(8);
+        $cursos = Curso::where('publicado', '=', 1)
+        ->Where(function ($query) {
+            $query->where('nombre', 'LIKE', '%' . $this->buscar . '%')
+            ->orwhere('descripcion', 'LIKE', '%' . $this->buscar . '%');
+        })->orderby($this->sort, $this->direc)->paginate(8);
 
         return view('livewire.cursos.index-cursos', compact('cursos'));
     }

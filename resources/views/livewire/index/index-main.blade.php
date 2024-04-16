@@ -133,7 +133,7 @@
 
             @if ($cursos->count())
 
-                <p class="text-center text-2xl uppercase">Cursos populares</p>
+                <p class="text-center text-2xl uppercase">Cursos disponibles</p>
 
                 <div
                     class="text-black grid gap-x-4 gap-y-4 md:gap-y-8 grid-cols-1 sm:grid-cols-2 

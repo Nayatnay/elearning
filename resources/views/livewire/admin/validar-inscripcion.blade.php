@@ -23,28 +23,29 @@
                         <tbody class="text-left">
 
                             @foreach ($inscripciones as $inscripcion)
-                                <tr class="hover:bg-gray-200 active:bg-gray-300 border-b border-black h-16">
+                                <tr class="hover:bg-gray-50 active:bg-gray-300 border-b border-black h-16">
 
-                                    <td class="pl-2 w-80 min-w-80 font-bold uppercase cursor-pointer">
-                                        {{ $inscripcion->user->name }} <br> 
-                                        <span class="text-blue-500 lowercase">{{ $inscripcion->user->email }}</span>
+                                    <td class="pl-2 w-80 min-w-80 font-bold uppercase">
+                                        <p>{{ $inscripcion->user->name }}</p> 
+                                        <p class="text-blue-500 lowercase">{{ $inscripcion->user->email }}</p>
+                                        <p class="">{{ $inscripcion->user->telf }}</p>
                                     </td>
 
-                                    <td class="pl-2 w-40 min-w-40 font-bold uppercase cursor-pointer">
-                                        {{ $inscripcion->user->telf }} 
-                                    </td>
-
-                                    <td class="pl-2 w-60 min-w-60 cursor-pointer">
+                                    <td class="pl-2 w-60 min-w-60 text-lg">
                                         {{ $inscripcion->curso->nombre }}
                                     </td>
 
-                                    <td class="pl-2 w-20 min-w-20 cursor-pointer">
+                                    <td class="pl-2 w-60 min-w-60 text-red-800 font-medium">
+                                        USD${{number_format($inscripcion->curso->costo, 2, '.', '')}}
+                                    </td>
+
+                                    <td class="pl-2 w-20 min-w-20">
                                         {{ $inscripcion->turno }}
                                     </td>
 
                                     <td class="w-14 min-w-14 text-center">
                                         <a href="#" title="Eliminar" wire:click="validar({{ $inscripcion }})"
-                                            class="p-2 hover:underline text-red-800 font-bold">
+                                            class="p-2 hover:underline text-red-800 font-medium">
                                             Validar
                                         </a>
                                     </td>

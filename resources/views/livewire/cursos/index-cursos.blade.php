@@ -29,7 +29,7 @@
 
                 <div
                     class="text-black grid gap-x-4 gap-y-4 md:gap-y-8 grid-cols-1 sm:grid-cols-2 
-        lg:grid-cols-3 xl:grid-cols-4 px-4 py-8">
+                    lg:grid-cols-3 xl:grid-cols-4 px-4 py-8">
 
                     @foreach ($cursos as $curso)
                         <div
@@ -80,14 +80,18 @@
                     @endforeach
 
                 </div>
-
-                @if ($cursos->hasPages())
-                    <div class="w-1/2 mx-auto px-4 py-2 text-center">
-                        {{ $cursos->onEachSide(0)->links() }}
-                    </div>
-                @endif
-
+            @else
+                <div class="mt-8 bg-white text-base font-semibold sm:px-10 px-5 py-2">
+                    <span>No hay resultados</span>
+                </div>
             @endif
+
+            @if ($cursos->hasPages())
+                <div class="w-1/2 mx-auto px-4 py-2 text-center">
+                    {{ $cursos->onEachSide(0)->links() }}
+                </div>
+            @endif
+
         </div>
     </div>
 

@@ -94,6 +94,18 @@ class IndexAdmincursos extends Component
         $this->dispatch('index-admincursos');
     }
 
+    public function postear(Curso $curso)
+    {
+        $curso->publicado = 1;
+        $curso->update();
+    }
+
+    public function pausar(Curso $curso)
+    {
+        $curso->publicado = 0;
+        $curso->update();
+    }
+
     public function render()
     {
         $cursos = Curso::where('nombre', 'LIKE', '%' . $this->buscar . '%')

@@ -22,6 +22,7 @@ class CursoFactory extends Factory
             'descripcion' => fake()->paragraph(),
             'imagen' => fake()->image('public/storage/cursos', 640, 480, null, false),
             'costo' => fake()->randomDigit(),
+            'publicado' => 0,
         ];
     }
 

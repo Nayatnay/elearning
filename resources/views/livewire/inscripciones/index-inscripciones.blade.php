@@ -15,7 +15,7 @@
                                     class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-red-800 rounded-full">
                                     <p class="text-lg md:text-2xl text-white font-bold">1</p>
                                 </div>
-                                <p class="ml-3 text-red-800 text-xs font-medium sm:text-base sm:font-light">Ingresa el
+                                <p class="ml-3 text-red-800 font-bold text-xs sm:text-base">Ingresa el
                                     turno de tu preferencia
                                 </p>
                             </div>
@@ -28,7 +28,7 @@
                                     <p class="text-lg md:text-2xl text-white font-bold">2</p>
                                 </div>
                                 <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Te contactaremos para
-                                    formalizar inscripción</p>
+                                    formalizar la inscripción</p>
                             </div>
 
                             <div class="border-l border-red-800 ml-4 md:ml-5 pb-3"></div>
@@ -60,9 +60,9 @@
                                         class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-red-800 rounded-full">
                                         <p class="text-lg md:text-2xl text-white font-bold">2</p>
                                     </div>
-                                    <p class="ml-3 text-red-800 text-xs font-medium sm:text-base sm:font-light">Te
+                                    <p class="ml-3 text-red-800 font-bold text-xs sm:text-base">Te
                                         contactaremos para
-                                        formalizar inscripción</p>
+                                        formalizar la inscripción</p>
                                 </div>
 
                                 <div class="border-l border-red-800 ml-4 md:ml-5 pb-3"></div>
@@ -96,7 +96,7 @@
                                     </div>
                                     <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Te
                                         contactaremos para
-                                        formalizar inscripción</p>
+                                        formalizar la inscripción</p>
                                 </div>
 
                                 <div class="border-l border-red-800 ml-4 md:ml-5 pb-3"></div>
@@ -106,7 +106,7 @@
                                         class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-red-800 rounded-full">
                                         <p class="text-lg md:text-2xl text-white font-bold">3</p>
                                     </div>
-                                    <p class="ml-3 text-red-800 text-xs font-medium sm:text-base sm:font-light">¡Estás
+                                    <p class="ml-3 text-red-800 font-bold text-xs sm:text-base">¡Estás
                                         listo!
                                         Comienza tu aprendizaje</p>
                                 </div>

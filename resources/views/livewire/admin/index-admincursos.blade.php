@@ -30,7 +30,7 @@
                         <tbody class="text-left">
 
                             @foreach ($cursos as $curso)
-                                <tr class="h-16 hover:bg-gray-200 active:bg-gray-300">
+                                <tr class="h-16 hover:bg-gray-50">
                                     <td class="w-[64px] pl-2 cursor-pointer">
                                         <img src="{{ asset('/storage/cursos/' . $curso->imagen) }}" alt=""
                                             title="" class="rounded w-full">
@@ -40,7 +40,7 @@
                                         {{ $curso->nombre }}
                                     </td>
 
-                                    <td class="pl-2 w-96 min-w-96 cursor-pointer">
+                                    <td class="pl-2 w-80 min-w-80 cursor-pointer">
                                         {{ $curso->descripcion }}
                                     </td>
 
@@ -50,42 +50,54 @@
 
                                     <td class="w-10 text-center">
                                         <a href="#" title="Eliminar" wire:click="delete({{ $curso }})"
-                                            class="p-2">
-                                            <i class="fa-solid fa-trash text-gray-500"></i>
+                                            class="p-2 border border-transparent rounded-lg hover:border-gray-800">
+                                            <i class="fa-solid fa-trash"></i>
                                         </a>
                                     </td>
 
                                     <td class="w-10 text-center">
                                         <a href="#" wire:click="edit({{ $curso }})" title="Editar"
-                                            class="p-2 group text-center">
-                                            <span
-                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                            <span
-                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                            <span
-                                                class="h-1 w-1 bg-lime-600 rounded-full inline-block group-hover:bg-orange-600"></span>
-                                        </a>
+                                            class="p-2 border border-transparent rounded-lg hover:border-gray-800">
+                                            <i class="fa-solid fa-pen"></i> </a>
                                     </td>
 
                                     <td class="w-10 text-center">
                                         <a href="{{ route('selec_requisitos', $curso) }}" title="Requisitos"
-                                            class="p-2">
-                                            <i class="fa-solid fa-file-contract text-red-700"></i>
+                                            class="p-2 border border-transparent rounded-lg hover:border-gray-800">
+                                            <i class="fa-solid fa-file-contract"></i>
                                         </a>
                                     </td>
-                                    
+
                                     <td class="w-10 text-center">
-                                        <a href="{{ route('selec_alcances', $curso) }}" title="Alcances" class="p-2">
+                                        <a href="{{ route('selec_alcances', $curso) }}" title="Alcances"
+                                            class="p-2 border border-transparent rounded-lg hover:border-gray-800">
                                             <i class="fa-solid fa-bullseye"></i>
                                         </a>
                                     </td>
 
                                     <td class="w-10 text-center">
-                                        <a href="{{ route('selec_clases', $curso) }}" title="Clases" class="p-2">
-                                            <i class="fa-solid fa-book text-blue-700"></i>
+                                        <a href="{{ route('selec_clases', $curso) }}" title="Clases"
+                                            class="p-2 border border-transparent rounded-lg hover:border-gray-800">
+                                            <i class="fa-solid fa-book"></i>
                                         </a>
                                     </td>
-                                    
+
+                                    @if ($curso->publicado == 0)
+                                        <td class="w-14 text-center text-xs">
+                                            <a href="#" wire:click="postear({{$curso}})" title="Postear"
+                                                class="p-2 border border-transparent rounded-lg hover:border-gray-800">
+                                                Postear
+                                            </a>
+                                        </td>
+                                    @else
+                                        <td class="w-14 text-center text-xs text-red-600">
+                                            <a href="#" wire:click="pausar({{$curso}})" title="Pausar"
+                                                class="p-2 border border-transparent rounded-lg hover:border-red-500">
+                                                Pausar
+                                            </a>
+                                        </td>
+                                    @endif
+
                                 </tr>
                             @endforeach
                         </tbody>

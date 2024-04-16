@@ -84,6 +84,10 @@
                                         {{ __('Perfil') }}
                                     </x-dropdown-link>
 
+                                    <x-dropdown-link href="{{ route('miscursos') }}">
+                                        {{ __('Mis cursos') }}
+                                    </x-dropdown-link>
+
                                     <x-dropdown-link href="{{ route('admin_cursos') }}">
                                         {{ __('Administrar Cursos') }}
                                     </x-dropdown-link>
@@ -163,6 +167,10 @@
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('profile.show') }}" data-turbo="false">
                         Perfil
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="{{ route('miscursos') }}" data-turbo="false">
+                        Mis cursos
                     </a>
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_cursos') }}" data-turbo="false">

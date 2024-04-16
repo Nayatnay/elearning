@@ -47,6 +47,7 @@ class CrearAdmincursos extends Component
             'descripcion' => $this->descripcion,
             'imagen' => $fileName,
             'costo' => $this->costo,
+            'publicado' => 0,
         ]);
 
         $this->reset(['open', 'nombre', 'descripcion', 'imagen', 'costo']);

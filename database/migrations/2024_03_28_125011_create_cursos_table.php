@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('descripcion');
             $table->string('imagen', 2048);
             $table->decimal('costo', 8, 2);
+            $table->integer('publicado');
             $table->timestamps();
 
         });

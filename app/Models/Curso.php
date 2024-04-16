@@ -16,6 +16,7 @@ class Curso extends Model
         'descripcion',
         'imagen',
         'costo',
+        'publicado',
     ];
 
     //Relacion uno a muchos

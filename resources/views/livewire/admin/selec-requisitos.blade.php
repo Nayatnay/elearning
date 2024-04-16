@@ -11,8 +11,11 @@
 
     <div class="mt-4 p-4 max-w-screen-xl mx-auto">
 
-        <div class=" my-2 text-red-700 hover:text-lime-700">
-            <a href="{{ route('admin_cursos') }}" class="px-4"><i class="fa-solid fa-arrow-left"></i></a>
+        <div>
+            <a href="{{ route('admin_cursos') }}"
+                class="px-2 py-1 text-red-700 border border-transparent rounded-lg hover:text-lime-700 hover:border-lime-700">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
         </div>
 
         <div>
