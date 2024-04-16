@@ -100,6 +100,10 @@
                                         {{ __('Clases') }}
                                     </x-dropdown-link>
 
+                                    <x-dropdown-link href="{{ route('admin_validar') }}">
+                                        {{ __('Validaciones') }}
+                                    </x-dropdown-link>
+
                                     <div class="border-t border-gray-200"></div>
 
                                     <!-- Authentication -->
@@ -175,6 +179,10 @@
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_clases') }}" data-turbo="false">
                         Clases
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="{{ route('admin_validar') }}" data-turbo="false">
+                        Validaciones
                     </a>
                     <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf

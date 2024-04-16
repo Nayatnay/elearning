@@ -5,127 +5,144 @@
 
                 <div class="w-full md:w-[60%] text-4xl sm:text-5xl mr-4">
 
-                    <p class="font-bold mb-10">Estudia cocina en la escuela #1 de la zona</p>
+                    <span class="font-bold mb-10">Curso: </span>
+                    <span class="text-red-800">{{ $curso->nombre }}</span>
 
-                    <div class="flex flex-col justify-center ">
-
-                        <div class="flex items-center">
-                            <div
-                                class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-lime-600 rounded-full">
-                                <p class="text-lg md:text-2xl text-white font-bold">1</p>
+                    <div class="flex flex-col justify-center mt-6">
+                        @if ($inscrip == null)
+                            <div class="flex items-center">
+                                <div
+                                    class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-red-800 rounded-full">
+                                    <p class="text-lg md:text-2xl text-white font-bold">1</p>
+                                </div>
+                                <p class="ml-3 text-red-800 text-xs font-medium sm:text-base sm:font-light">Ingresa el
+                                    turno de tu preferencia
+                                </p>
                             </div>
-                            <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Ingresa tus datos en el
-                                formulario</p>
-                        </div>
-                        <div class="border-l border-lime-600 ml-4 md:ml-5 pb-3"></div>
 
-                        <div class="flex items-center">
-                            <div
-                                class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-lime-600 rounded-full">
-                                <p class="text-lg md:text-2xl text-white font-bold">2</p>
+                            <div class="border-l border-red-800 ml-4 md:ml-5 pb-3"></div>
+
+                            <div class="flex items-center">
+                                <div
+                                    class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                    <p class="text-lg md:text-2xl text-white font-bold">2</p>
+                                </div>
+                                <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Te contactaremos para
+                                    formalizar inscripción</p>
                             </div>
-                            <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Ingresa una contraseña (Sólo
-                                primera vez)</p>
-                        </div>
-                        <div class="border-l border-lime-600 ml-4 md:ml-5 pb-3"></div>
 
-                        <div class="flex items-center">
-                            <div
-                                class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-lime-600 rounded-full">
-                                <p class="text-lg md:text-2xl text-white font-bold">3</p>
+                            <div class="border-l border-red-800 ml-4 md:ml-5 pb-3"></div>
+
+                            <div class="flex items-center">
+                                <div
+                                    class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                    <p class="text-lg md:text-2xl text-white font-bold">3</p>
+                                </div>
+                                <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">¡Estás listo! Comienza tu
+                                    aprendizaje</p>
                             </div>
-                            <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Te contactaremos para
-                                formalizar inscripción</p>
-                        </div>
-                        <div class="border-l border-lime-600 ml-4 md:ml-5 pb-3"></div>
+                        @else
+                            @if ($inscrip->liberado == 0)
+                                <div class="flex items-center">
+                                    <div
+                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                        <p class="text-lg md:text-2xl text-white font-bold">1</p>
+                                    </div>
+                                    <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Ingresa
+                                        el turno de tu preferencia
+                                    </p>
+                                </div>
 
-                        <div class="flex items-center">
-                            <div
-                                class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-lime-600 rounded-full">
-                                <p class="text-lg md:text-2xl text-white font-bold">4</p>
-                            </div>
-                            <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">¡Estás listo! Comienza tu
-                                aprendizaje</p>
-                        </div>
+                                <div class="border-l border-red-800 ml-4 md:ml-5 pb-3"></div>
 
+                                <div class="flex items-center">
+                                    <div
+                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-red-800 rounded-full">
+                                        <p class="text-lg md:text-2xl text-white font-bold">2</p>
+                                    </div>
+                                    <p class="ml-3 text-red-800 text-xs font-medium sm:text-base sm:font-light">Te
+                                        contactaremos para
+                                        formalizar inscripción</p>
+                                </div>
+
+                                <div class="border-l border-red-800 ml-4 md:ml-5 pb-3"></div>
+
+                                <div class="flex items-center">
+                                    <div
+                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                        <p class="text-lg md:text-2xl text-white font-bold">3</p>
+                                    </div>
+                                    <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">¡Estás listo!
+                                        Comienza tu
+                                        aprendizaje</p>
+                                </div>
+                            @else
+                                <div class="flex items-center">
+                                    <div
+                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                        <p class="text-lg md:text-2xl text-white font-bold">1</p>
+                                    </div>
+                                    <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Ingresa
+                                        el turno de tu preferencia
+                                    </p>
+                                </div>
+
+                                <div class="border-l border-red-800 ml-4 md:ml-5 pb-3"></div>
+
+                                <div class="flex items-center">
+                                    <div
+                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                        <p class="text-lg md:text-2xl text-white font-bold">2</p>
+                                    </div>
+                                    <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Te
+                                        contactaremos para
+                                        formalizar inscripción</p>
+                                </div>
+
+                                <div class="border-l border-red-800 ml-4 md:ml-5 pb-3"></div>
+
+                                <div class="flex items-center">
+                                    <div
+                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-red-800 rounded-full">
+                                        <p class="text-lg md:text-2xl text-white font-bold">3</p>
+                                    </div>
+                                    <p class="ml-3 text-red-800 text-xs font-medium sm:text-base sm:font-light">¡Estás
+                                        listo!
+                                        Comienza tu aprendizaje</p>
+                                </div>
+                            @endif
+                        @endif
                     </div>
                 </div>
 
                 <div class="mt-12 md:mt-0 text-5xl w-full md:w-[35%]">
+                    @if ($inscrip == null)
+                        <div class="border rounded-lg shadow-lg bg-white">
 
-                    <div class="border rounded-lg shadow-lg bg-white">
+                            <div class="p-3 bg-red-800 text-white text-center rounded-tl-lg rounded-tr-lg">
+                                <p class="uppercase font-bold text-sm">Envíanos el turno de tu preferencia</p>
+                            </div>
 
-                        <div class="mb-8 p-3 bg-lime-600 text-white text-center rounded-tl-lg rounded-tr-lg">
-                            <p class="uppercase font-bold text-2xl">Inscríbete aquí</p>
-                        </div>
-
-                        <form method="POST" action="" class="text-sm m-4">
-                            @csrf
-    
-                            <div>
-                                <x-label for="name" value="{{ __('Nombre y Apellido') }}" />
-                                <x-input id="name" class="block mt-1 w-full" type="text" name="name"
-                                    :value="old('name')" required autocomplete="name" />
-                                <x-input-error for="name" />
-                            </div>
-    
-                            <div class="mt-4">
-                                <x-label for="email" value="{{ __('Email') }}" />
-                                <x-input id="email" class="block mt-1 w-full" type="email" name="email"
-                                    :value="old('email')" required autocomplete="email" />
-                                <x-input-error for="email" />
-                            </div>
-    
-                            <div class="mt-4">
-                                <x-label for="doc" value="{{ __('Documento Identidad') }}" />
-                                <x-input id="doc" class="block mt-1 w-full" type="text" name="doc"
-                                    :value="old('doc')" required autocomplete="doc" />
-                                <x-input-error for="doc" />
-                            </div>
-    
-                            <div class="mt-4 w-48">
-                                <x-label for="fechanac" value="{{ __('Fecha de Nacimiento') }}"
-                                    class="ml-4 text-zinc-800" />
-                                <x-input id="fechanac" class="block mt-1 w-full" type="date" name="fechanac"
-                                    :value="old('fechanac')" required autocomplete="fechanac" />
-                                <x-input-error for="fechanac" />
-                            </div>
-    
-                            <div class="mt-4">
-                                <x-label for="telf" value="{{ __('Teléfono Personal') }}" />
-                                <x-input id="telf" class="block mt-1 w-full" type="text" name="telf"
-                                    :value="old('telf')" required autocomplete="telf" />
-                            </div>
-    
-                            <div class="mt-8">
-                                <select name="curso" wire:model.defer="curso"
+                            <div class="mt-6 px-4">
+                                <select name="turno" wire:model="turno"
                                     class="pl-4 block mt-1 w-full border-gray-800 focus:border-gray-500 focus:ring-gray-500 rounded-md shadow-sm"
-                                    type="text" name="curso" :value="old('curso')" required autocomplete="curso">
-                                    <option value="0">Selecciona un curso</option>
-                                    @foreach ($cursos as $curs)
-                                        <option value="{{ $curs->id }}" class="">{{ $curs->nombre }}
-                                        </option>
-                                    @endforeach
-                                </select>
-                                <x-input-error for="curso" />
-                            </div>
-    
-                            <div class="mt-8">
-                                <select name="turno"
-                                    class="pl-4 block mt-1 w-full border-gray-800 focus:border-gray-500 focus:ring-gray-500 rounded-md shadow-sm"
-                                    type="text" name="turno" :value="old('turno')" required autocomplete="turno">
+                                    type="text" :value="old('turno')" required autocomplete="turno">
                                     <option value="">Selecciona un turno</option>
-                                    <option value="1">Mañana</option>
-                                    <option value="1">Tarde</option>
+                                    <option value="Mañana">Mañana</option>
+                                    <option value="Tarde">Tarde</option>
+                                    <option value="En Línea">En línea</option>
                                 </select>
                                 <x-input-error for="turno" />
                             </div>
-    
-                            <x-button class="mt-8">
-                                {{ __('Enviar') }}
-                            </x-button>
-                        </form>
-                    </div>
+
+                            <div class="pb-4 px-4">
+                                <x-button wire:click="save">
+                                    {{ __('Enviar') }}
+                                </x-button>
+                            </div>
+
+                        </div>
+                    @endif
                 </div>
             </div>
 
@@ -136,13 +153,16 @@
                         <p class="text-2xl mt-2">Una extensa variedad de categorías a escoger</p>
 
                     </div>
-                    <a href="#">
-                        <div class="mt-6 rounded-full w-60 border-4 border-transparent  bg-white hover:bg-gray-200 active:bg-gray-300 hover:border-white px-10 py-4 text-center font-bold text-base">
+                    <a href="{{ route('cursos') }}">
+                        <div
+                            class="mt-6 rounded-full w-60 border-4 border-transparent  bg-white hover:bg-gray-200 active:bg-gray-300 hover:border-white px-10 py-4 text-center font-bold text-base">
                             Comienza aquí
                         </div>
                     </a>
                 </div>
-                <p class="mt-6 text-xs font-medium text-center lg:text-left"> Repostería tradicional, gastronomía exótica, comida internacional y exquisiteces de la India<p>
+                <p class="mt-6 text-xs font-medium text-center lg:text-left"> Repostería tradicional, gastronomía
+                    exótica, comida internacional y exquisiteces de la India
+                <p>
             </div>
         </div>
     </div>

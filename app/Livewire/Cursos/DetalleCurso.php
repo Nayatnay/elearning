@@ -23,37 +23,31 @@ class DetalleCurso extends Component
 
     public function verifylogin()
     {
+        $curso = $this->curso;
         if (auth()->user()) {
-            dd('listo');
+            return redirect(route('inscripciones', compact('curso')));
         } else {
             return redirect(route('login'));
         }
     }
 
-    /*public function verifyinsc()
-    {
-        //dd($this->curso->id);
-        $inscrip = Inscripcion::where('id_user', '=', auth()->user()->id)
-            ->where('id_curso', '=', $this->curso->id)->first();
-        if ($inscrip == null) {
-            $this->inscrito = 0;
-        } else {
-            $this->inscrito = 1;
-        }
-    }
-*/
+
     public function render()
     {
-
         if (auth()->user()) {
             $inscrip = Inscripcion::where('id_user', '=', auth()->user()->id)
                 ->where('id_curso', '=', $this->curso->id)->first();
             if ($inscrip == null) {
                 $this->inscrito = 0;
             } else {
-                $this->inscrito = 1;
+
+                if ($inscrip->liberado == 1) {
+                    $this->inscrito = 1;
+                } else {
+                    $this->inscrito = 0;
+                }
             }
-        } 
+        }
 
         $inscrito = $this->inscrito;
         $curso = $this->curso;

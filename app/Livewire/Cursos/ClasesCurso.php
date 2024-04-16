@@ -20,8 +20,9 @@ class ClasesCurso extends Component
 
     public function verifylogin()
     {
+        $curso = $this->curso;
         if (auth()->user()) {
-            dd('listo');
+            return redirect(route('inscripciones', compact('curso')));
         } else {
             return redirect(route('login'));
         }

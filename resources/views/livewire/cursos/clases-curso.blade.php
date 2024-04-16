@@ -115,7 +115,7 @@
                     <p class="text-2xl mt-2">Escoge un curso en nuestra lista de categorías </p>
 
                 </div>
-                <a href="{{ route('inscripciones') }}">
+                <a href="{{ route('cursos') }}">
                     <div
                         class="mt-6 rounded-full w-60 border-4 border-transparent  bg-white hover:bg-gray-200 active:bg-gray-300 hover:border-white px-10 py-4 text-center font-bold text-base">
                         Comienza aquí

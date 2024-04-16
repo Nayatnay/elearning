@@ -16,6 +16,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_curso');
             $table->string('turno');
+            $table->integer('liberado');
             $table->timestamps();
             // Llave foranea
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');

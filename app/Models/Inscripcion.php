@@ -10,9 +10,10 @@ class Inscripcion extends Model
     use HasFactory;
 
     protected $fillable = [
-        'id_usuario',
+        'id_user',
         'id_curso',
         'turno',
+        'liberado',
     ];
 
     //Relacion uno a muchos (inversa)
