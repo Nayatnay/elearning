@@ -11,15 +11,23 @@ class Clase extends Model
     use HasFactory;
 
     protected $fillable = [
-        'tema',
+        'descripcion',
         'video',
     ];
 
-//Relacion uno a muchos
+    //Relacion uno a muchos
 
-public function clacurso()
-{
-    return $this->hasMany('App\Models\Clacurso', 'id_clase');
-}
- 
+    public function clacurso()
+    {
+        return $this->hasMany('App\Models\Clacurso', 'id_clase');
+    }
+
+    public function tema(): Attribute
+    {
+        return new Attribute(
+            $get = fn ($value) => ucfirst($value),
+            $set = fn ($value) => strtolower($value)
+        );
+    }
+
 }

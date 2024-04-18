@@ -2,7 +2,9 @@
 
 namespace App\Livewire\Admin;
 
+use App\Models\Clacurso;
 use App\Models\Clase;
+use App\Models\Curso;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
@@ -11,24 +13,25 @@ class CrearAdminclases extends Component
 {
     use WithFileUploads, WithPagination;
 
-    public $identificador, $tema, $video;
+    public $identificador, $descripcion, $video, $curso;
     public $open = false;
 
     protected $listeners = ['render'];
 
     protected $rules = [
-        'tema' => 'required',
+        'descripcion' => 'required',
         'video' => 'required|file|mimes:mp4|max:102400',
     ];
 
-    public function mount() // Lo estoy usando para eliminar el nombre de la imagen que se selecciono anteriormente en el modal
+    public function mount(Curso $curso) 
     {
-        $this->identificador = rand();
+        $this->curso = $curso;
+        $this->identificador = rand(); // Lo estoy usando para eliminar el nombre de la imagen que se selecciono anteriormente en el modal
     }
 
     public function cancelar()
     {
-        $this->reset(['open', 'tema', 'video']);
+        $this->reset(['open', 'descripcion', 'video']);
         $this->identificador = rand();
     }
 
@@ -39,14 +42,17 @@ class CrearAdminclases extends Component
         $fileName = time() . '.' . $this->video->extension();
         $this->video->storeAs('public/clases', $fileName);
 
-        Clase::create([
-            'tema' => $this->tema,
+        Clacurso::create([
+            'id_curso' => $this->curso->id,
+            'descripcion' => $this->descripcion,
             'video' => $fileName,
         ]);
 
-        $this->reset(['open', 'tema', 'video']);
+        $curso = $this->curso;
+
+        $this->reset(['open', 'descripcion', 'video']);
         $this->identificador = rand(); // reemplaza el valor del identificador. Reseteará el nombre del video seleccionada anteriormente
-        return redirect()->route('admin_clases');
+       return redirect()->route('selec_clases', compact('curso'));
     }
 
     public function render()

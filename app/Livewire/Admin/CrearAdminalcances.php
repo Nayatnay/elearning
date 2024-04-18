@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Alcance;
+use App\Models\Alcurso;
 use App\Models\Curso;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -11,7 +12,8 @@ class CrearAdminalcances extends Component
 {
     use WithPagination;
 
-    public $descripcion;
+    public $alcance, $descripcion;
+    public $curso;
     public $open = false;
 
     protected $listeners = ['render'];
@@ -20,6 +22,11 @@ class CrearAdminalcances extends Component
         'descripcion' => 'required',
     ];
 
+    public function mount(Curso $curso)
+    {
+        $this->curso = $curso;
+    }
+
     public function cancelar()
     {
         $this->reset(['open', 'descripcion']);
@@ -27,18 +34,23 @@ class CrearAdminalcances extends Component
 
     public function save()
     {
+      
         $this->validate();
 
-        Alcance::create([
+        Alcurso::create([
+            'id_curso' => $this->curso->id,
             'descripcion' => $this->descripcion,
         ]);
 
+        $curso = $this->curso;
+
         $this->reset(['open', 'descripcion']);
-        return redirect()->route('admin_alcances');
+        return redirect()->route('selec_alcances', compact('curso'));
     }
 
     public function render()
     {
-        return view('livewire.admin.crear-adminalcances');
+        $curso = $this->curso;
+        return view('livewire.admin.crear-adminalcances', compact('curso'));
     }
 }

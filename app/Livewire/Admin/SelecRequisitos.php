@@ -10,48 +10,54 @@ use Livewire\Component;
 
 class SelecRequisitos extends Component
 {
-    public $curso, $requisito;
+    public $curso, $requisito, $descripcion;
+    public $open_edit = false;
+
+    protected function rules()
+    {
+        return [
+            'descripcion' => 'required',
+        ];
+    }
 
     public function mount($curso)
     {
         $this->curso = Curso::find($curso);
     }
 
-    public function chequear(Requisito $requisito,)
+    public function cancelar()
     {
-        $consu = Reqcurso::where('id_curso', '=', $this->curso->id)
-            ->where('id_requisito', '=', $requisito->id)->first();
+        $this->reset(['open_edit', 'descripcion']);
+    }
 
-        if ($consu == null) {
-            Reqcurso::create([
-                'id_curso' => $this->curso->id,
-                'id_requisito' => $requisito->id,
-            ]);
-        }
 
+    public function edit(Reqcurso $requisito)
+    {
+        $this->requisito = $requisito;
+        $this->descripcion = $requisito->descripcion;
+        $this->open_edit = true;
+    }
+
+    public function update()
+    {
+        $validatedData = $this->validate();
+        $this->requisito->update($validatedData);
+
+        $this->reset(['open_edit', 'descripcion']);  //cierra el modal y limpia los campos del formulario
         $this->dispatch('selec-requisitos');
     }
 
-    public function deletereq(Reqcurso $cureq)
+    public function delete(Reqcurso $requisito)
     {
-        $cureq->delete();
+        $requisito->delete();
         $this->dispatch('selec-requisitos');
     }
 
     public function render()
     {
         $curso = $this->curso;
+        $requisitos = Reqcurso::where('id_curso', '=', $curso->id)->get();
 
-        $req_curso = Reqcurso::where('id_curso', '=', $curso->id)->pluck('id_requisito')->toArray();
-
-        if ($req_curso <> null) {
-            $requisitos = Requisito::all()->whereNotIn('id', $req_curso);
-        } else {
-            $requisitos = Requisito::all();
-        }
-
-        $cursoreq = Reqcurso::where('id_curso', '=', $curso->id)->get();
-
-        return view('livewire.admin.selec-requisitos', compact('requisitos', 'curso', 'cursoreq'));
+        return view('livewire.admin.selec-requisitos', compact('requisitos', 'curso'));
     }
 }

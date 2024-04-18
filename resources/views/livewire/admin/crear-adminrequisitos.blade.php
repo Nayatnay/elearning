@@ -20,18 +20,6 @@
                 <x-input-error for="descripcion" />
             </div>
 
-            {{--<div class=" mb-4">
-                <x-label for="curso" value="{{ __('Curso') }}" class="text-zinc-800" />
-                <select name="curso" wire:model.defer="curso"
-                    class="w-full px-2 py-3 text-sm rounded-md border border-gray-200 focus:border-gray-300 focus:ring-0 text-zinc-800">
-                    <option value="">Seleccionar un Curso</option>
-                    @foreach ($cursos as $curso)
-                        <option value="{{ $curso->id }}">{{ $curso->nombre }}</option>
-                    @endforeach
-                </select>
-                <x-input-error for="curso" />
-            </div>--}}
-
         </x-slot>
 
         <x-slot name="footer">

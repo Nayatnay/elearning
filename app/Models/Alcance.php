@@ -20,4 +20,12 @@ class Alcance extends Model
     {
         return $this->hasMany('App\Models\Alcurso', 'id_alcance');
     }
+
+    public function descripcion(): Attribute
+    {
+        return new Attribute(
+            $get = fn ($value) => ucfirst($value),
+            $set = fn ($value) => strtolower($value)
+        );
+    }
 }

@@ -3,6 +3,7 @@
 namespace App\Livewire\Admin;
 
 use App\Models\Curso;
+use App\Models\Reqcurso;
 use App\Models\Requisito;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -11,16 +12,20 @@ class CrearAdminrequisitos extends Component
 {
     use WithPagination;
 
-    public $descripcion;
-    //public $curso;
+    public $requisito, $descripcion;
+    public $curso;
     public $open = false;
 
     protected $listeners = ['render'];
 
     protected $rules = [
-        //'curso' => 'required',
         'descripcion' => 'required',
     ];
+
+    public function mount(Curso $curso)
+    {
+        $this->curso = $curso;
+    }
 
     public function cancelar()
     {
@@ -28,21 +33,24 @@ class CrearAdminrequisitos extends Component
     }
 
     public function save()
-    {    
-        $this->validate();       
+    {
+      
+        $this->validate();
 
-        Requisito::create([
-            //'id_curso' => $this->curso,
+        Reqcurso::create([
+            'id_curso' => $this->curso->id,
             'descripcion' => $this->descripcion,
         ]);
 
+        $curso = $this->curso;
+
         $this->reset(['open', 'descripcion']);
-        return redirect()->route('admin_requisitos');
+        return redirect()->route('selec_requisitos', compact('curso'));
     }
 
     public function render()
     {
-        //$cursos = Curso::all()->sortBy('nombre');
-        return view('livewire.admin.crear-adminrequisitos');
+        $curso = $this->curso;
+        return view('livewire.admin.crear-adminrequisitos', compact('curso'));
     }
 }

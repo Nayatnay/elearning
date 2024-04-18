@@ -19,7 +19,7 @@
             'active' => request()->routeIs('eventos'),
         ],
 
-       /* [
+        /* [
             'name' => 'inscripciones',
             'route' => route('inscripciones'),
             'active' => request()->routeIs('inscripciones'),
@@ -52,12 +52,12 @@
             <!-- menu derecho -->
             <div class="hidden sm:flex sm:items-center sm:ml-6 space-x-4">
                 <!-- Cart -->
-                
-                {{--<button class=" w-8 h-8 text-xl text-gray-400 hover:text-red-800 transition ease-in-out duration-150">
+
+                {{-- <button class=" w-8 h-8 text-xl text-gray-400 hover:text-red-800 transition ease-in-out duration-150">
                     <a href="{{ route('carrito') }}">
                         <i class="fa-solid fa-cart-shopping"></i>
                     </a>
-                </button>--}}
+                </button> --}}
                 @if (Route::has('login'))
                     @auth
                         <!-- Settings Dropdown -->
@@ -76,8 +76,9 @@
 
                                 <x-slot name="content">
                                     <!-- Account Management -->
-                                    <div class="block px-4 py-2 text-xs text-gray-400">
-                                        {{ __('Administrar cuenta') }}
+
+                                    <div class="block px-4 py-2 text-sm text-red-700 border-b">
+                                        <p>Hola {{ Auth::user()->name }}
                                     </div>
 
                                     <x-dropdown-link href="{{ route('profile.show') }}">
@@ -92,7 +93,7 @@
                                         {{ __('Administrar Cursos') }}
                                     </x-dropdown-link>
 
-                                    <x-dropdown-link href="{{ route('admin_requisitos') }}">
+                                    {{--<x-dropdown-link href="{{ route('admin_requisitos') }}">
                                         {{ __('Requisitos') }}
                                     </x-dropdown-link>
 
@@ -102,7 +103,7 @@
 
                                     <x-dropdown-link href="{{ route('admin_clases') }}">
                                         {{ __('Clases') }}
-                                    </x-dropdown-link>
+                                    </x-dropdown-link>--}}
 
                                     <x-dropdown-link href="{{ route('admin_validar') }}">
                                         {{ __('Validaciones') }}
@@ -153,6 +154,11 @@
         <div class="pt-2 pb-3 space-y-1">
             @if (Route::has('login'))
                 @auth
+
+                    <div class="block px-4 py-2 text-sm text-red-700 font-medium border-t">
+                        <p>Hola {{ Auth::user()->name }}
+                    </div>
+
                     <div class="border-y py-1">
                         @foreach ($nav_links as $nav_link)
                             <x-responsive-nav-link href="{{ $nav_link['route'] }}" :active="$nav_link['active']">
@@ -160,10 +166,11 @@
                             </x-responsive-nav-link>
                         @endforeach
                     </div>
-                    {{--<a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                    {{-- <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('carrito') }}" data-turbo="false">
                         Carrito de compras
-                    </a>--}}
+                    </a> --}}
+
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('profile.show') }}" data-turbo="false">
                         Perfil
@@ -176,7 +183,7 @@
                         href="{{ route('admin_cursos') }}" data-turbo="false">
                         Administrar Cursos
                     </a>
-                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                    {{--<a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_requisitos') }}" data-turbo="false">
                         Requisitos
                     </a>
@@ -187,7 +194,7 @@
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_clases') }}" data-turbo="false">
                         Clases
-                    </a>
+                    </a>--}}
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_validar') }}" data-turbo="false">
                         Validaciones
@@ -206,10 +213,10 @@
                             </x-responsive-nav-link>
                         @endforeach
                     </div>
-                    {{--<a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                    {{-- <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('carrito') }}" data-turbo="false">
                         Carrito de compras
-                    </a>--}}
+                    </a> --}}
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('login') }}" data-turbo="false">
                         Iniciar sesión

@@ -47,7 +47,7 @@
             <div class="flex items-start text-orange-600 pt-2">
                 <span class="text-base text-gray-800 mr-2">costo:</span>
                 <span class="text-xl font-semibold">US$</span>
-                <span class="text-xl font-semibold"> {{ $curso->costo }}</span>
+                <span class="text-xl font-semibold"> {{ number_format($curso->costo, 2, '.', '') }}</span>
             </div>
             <div class="text-lg mt-4 font-medium">
                 <p>Requisitos</p>

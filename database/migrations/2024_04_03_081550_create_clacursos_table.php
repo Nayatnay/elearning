@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('clacursos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_curso');
-            $table->unsignedBigInteger('id_clase');
+            $table->string('descripcion');
+            $table->string('video');
             $table->timestamps();
             // Llave foranea
             $table->foreign('id_curso')->references('id')->on('cursos')->onDelete('cascade');
-            $table->foreign('id_clase')->references('id')->on('clases')->onDelete('cascade');
         });
     }
 

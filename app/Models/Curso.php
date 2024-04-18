@@ -40,4 +40,21 @@ class Curso extends Model
     {
         return $this->hasMany('App\Models\Inscripcion', 'id_curso');
     }
+
+    public function nombre(): Attribute
+    {
+        return new Attribute(
+            $get = fn ($value) => ucwords($value),
+            $set = fn ($value) => strtolower($value)
+        );
+    }
+
+    public function descripcion(): Attribute
+    {
+        return new Attribute(
+            $get = fn ($value) => ucfirst($value),
+            $set = fn ($value) => strtolower($value)
+        );
+    }
+
 }

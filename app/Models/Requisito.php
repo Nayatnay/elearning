@@ -14,10 +14,12 @@ class Requisito extends Model
         'descripcion',
     ];
 
-    //Relacion uno a muchos
-
-    public function reqcurso()
+    public function descripcion(): Attribute
     {
-        return $this->hasMany('App\Models\Reqcurso', 'id_requisito');
+        return new Attribute(
+            $get = fn ($value) => ucfirst($value),
+            $set = fn ($value) => strtolower($value)
+        );
     }
+
 }

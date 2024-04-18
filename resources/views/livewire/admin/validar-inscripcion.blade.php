@@ -27,7 +27,7 @@
 
                                     <td class="pl-2 w-80 min-w-80 font-bold uppercase">
                                         <p>{{ $inscripcion->user->name }}</p> 
-                                        <p class="text-blue-500 lowercase">{{ $inscripcion->user->email }}</p>
+                                        <p class="text-red-800 lowercase">{{ $inscripcion->user->email }}</p>
                                         <p class="">{{ $inscripcion->user->telf }}</p>
                                     </td>
 

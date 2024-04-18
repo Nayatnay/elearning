@@ -6,51 +6,90 @@ use App\Models\Clacurso;
 use App\Models\Clase;
 use App\Models\Curso;
 use Livewire\Component;
+use Livewire\WithPagination;
+use Livewire\WithFileUploads;
 
 class SelecClases extends Component
 {
-    public $curso, $clase;
+    use WithPagination;
+    use WithFileUploads;
+
+    public $curso, $clase, $descripcion, $video;
+    public $open_delete = false;
+    public $open_edit = false;
+    public $identificador;
+    public $videovo;
+
+    protected function rules()
+    {
+        return [
+            'descripcion' => 'required',
+            'video' => 'required',
+        ];
+    }
 
     public function mount($curso)
     {
         $this->curso = Curso::find($curso);
+        $this->identificador = rand(); // Lo estoy usando para eliminar el nombre del video seleccionado anteriormente en el modal
     }
 
-    public function chequear(Clase $clase)
+    public function delete(Clacurso $clase)
     {
-        $consu = Clacurso::where('id_curso', '=', $this->curso->id)
-            ->where('id_clase', '=', $clase->id)->first();
+        $this->clase = $clase;
+        $this->open_delete = true;
+    }
 
-        if ($consu == null) {
-            Clacurso::create([
-                'id_curso' => $this->curso->id,
-                'id_clase' => $clase->id,
-            ]);
+    public function destroy()
+    {
+        $this->clase->delete();
+        $this->reset(['open_delete']);  //cierra el modal
+        $this->dispatch('selec-clases');
+    }
+
+    public function cancelar()
+    {
+        $this->reset(['open_edit', 'descripcion', 'video']);
+        $this->identificador = rand();
+
+        $this->videovo = null;
+    }
+
+    public function edit(Clacurso $clase)
+    {
+        $this->clase = $clase;
+        $this->descripcion = $clase->descripcion;
+        $this->video = $clase->video;
+        $this->open_edit = true;
+    }
+
+    public function update()
+    {
+        if ($this->videovo <> null) {
+            $this->video = $this->videovo;
+            $fileName = time() . '.' . $this->video->extension();
+            $this->video->storeAs('public/clases', $fileName);
+            $this->video = $fileName;
         }
 
-        $this->dispatch('selec-clases');
-    }
+        $validatedData = $this->validate();
+        $this->clase->update($validatedData);
 
-    public function deletecla(Clacurso $curcla)
-    {
-        $curcla->delete();
-        $this->dispatch('selec-clases');
+        $this->videovo = null;
+
+        $this->reset(['open_edit', 'descripcion', 'video']);  //cierra el modal y limpia los campos del formulario
+        $this->identificador = rand();
+        
+        $curso = $this->curso;
+
+        return redirect()->route('selec_clases', compact('curso'));
     }
 
     public function render()
     {
         $curso = $this->curso;
-       
-        $cla_curso = Clacurso::where('id_curso', '=', $curso->id)->pluck('id_clase')->toArray();
-       
-        if ($cla_curso <> null) {
-            $clases = Clase::all()->whereNotIn('id', $cla_curso);
-        } else {
-            $clases = Clase::all();
-        }
+        $clases = Clacurso::where('id_curso', '=', $curso->id)->paginate(8);
 
-        $cursocla = Clacurso::where('id_curso', '=', $curso->id)->get();
-
-        return view('livewire.admin.selec-clases', compact('clases', 'curso', 'cursocla'));
+        return view('livewire.admin.selec-clases', compact('clases', 'curso'));
     }
 }

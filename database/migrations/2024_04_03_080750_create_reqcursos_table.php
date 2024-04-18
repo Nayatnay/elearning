@@ -14,11 +14,10 @@ return new class extends Migration
         Schema::create('reqcursos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_curso');
-            $table->unsignedBigInteger('id_requisito');
+            $table->string('descripcion');
             $table->timestamps();
             // Llave foranea
             $table->foreign('id_curso')->references('id')->on('cursos')->onDelete('cascade');
-            $table->foreign('id_requisito')->references('id')->on('requisitos')->onDelete('cascade');
         });
     }
 
