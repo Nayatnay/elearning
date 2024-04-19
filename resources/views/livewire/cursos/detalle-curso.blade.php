@@ -52,20 +52,23 @@
             <div class="text-lg mt-4 font-medium">
                 <p>Requisitos</p>
             </div>
-            <div class="mt-2 text-sm md:text-base">
-                @foreach ($requisitos as $requisito)
-                    <p>▪ {{ $requisito->requisito->descripcion }}</p>
-                @endforeach
-            </div>
+            @if ($requisitos->count())
+                <div class="mt-2 text-sm md:text-base">
+                    @foreach ($requisitos as $requisito)
+                        <p>▪ {{ $requisito->descripcion }}</p>
+                    @endforeach
+                </div>
+            @endif
             <div class="text-lg mt-4 font-medium">
                 <p>Alcances</p>
             </div>
-            <div class="mt-2 text-sm md:text-base">
-                @foreach ($alcances as $alcance)
-                    <p>▪ {{ $alcance->alcance->descripcion }}</p>
-                @endforeach
-            </div>
-
+            @if ($alcances->count())
+                <div class="mt-2 text-sm md:text-base">
+                    @foreach ($alcances as $alcance)
+                        <p>▪ {{ $alcance->descripcion }}</p>
+                    @endforeach
+                </div>
+            @endif
         </div>
 
         <div class="mt-0 w-full md:w-[520px] h-full">
@@ -101,7 +104,7 @@
                 <div class="p-1">
                     <a href="{{ route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id, 'inscrito' => $inscrito]) }}"
                         class="hover:text-blue-600"><i
-                            class="fa-solid fa-circle-play mr-2"></i>{{ $clase->clase->tema }}</a>
+                            class="fa-solid fa-circle-play mr-2"></i>{{ $clase->descripcion }}</a>
                 </div>
             @endforeach
 

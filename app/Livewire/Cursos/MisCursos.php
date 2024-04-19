@@ -16,7 +16,7 @@ class MisCursos extends Component
         $curso = $micurso;
         $inscrito = $curso->liberado;
         $firstclase = Clacurso::where('id_curso', '=', $curso->id)->first();
-        $clase = $firstclase->id_clase;
+        $clase = $firstclase->id;
 
         return redirect()->route('clasesdelcurso', compact('curso', 'clase', 'inscrito'));
     }

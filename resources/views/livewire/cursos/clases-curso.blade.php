@@ -83,12 +83,12 @@
                     </div>
                     <div class="mt-4">
                         @foreach ($clases as $clase)
-                            @if ($clase->id_clase == $clas_selec->id)
+                            @if ($clase->id == $clas_selec->id)
                                 <div class="p-1">
                                     <a href="{{ route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id, 'inscrito' => $inscrito]) }}"
                                         class="text-blue-600">
                                         <i class="fa-solid fa-circle-play mr-2"></i>
-                                        {{ $clase->clase->tema }}
+                                        {{ $clase->descripcion }}
                                     </a>
                                 </div>
                             @else
@@ -96,7 +96,7 @@
                                     <a href="{{ route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id, 'inscrito' => $inscrito]) }}"
                                         class="hover:text-blue-600">
                                         <i class="fa-solid fa-circle-play mr-2"></i>
-                                        {{ $clase->clase->tema }}
+                                        {{ $clase->descripcion }}
                                     </a>
                                 </div>
                             @endif

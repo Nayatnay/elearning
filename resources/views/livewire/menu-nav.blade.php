@@ -93,7 +93,7 @@
                                         {{ __('Administrar Cursos') }}
                                     </x-dropdown-link>
 
-                                    {{--<x-dropdown-link href="{{ route('admin_requisitos') }}">
+                                    {{-- <x-dropdown-link href="{{ route('admin_requisitos') }}">
                                         {{ __('Requisitos') }}
                                     </x-dropdown-link>
 
@@ -103,7 +103,7 @@
 
                                     <x-dropdown-link href="{{ route('admin_clases') }}">
                                         {{ __('Clases') }}
-                                    </x-dropdown-link>--}}
+                                    </x-dropdown-link> --}}
 
                                     <x-dropdown-link href="{{ route('admin_validar') }}">
                                         {{ __('Validaciones') }}
@@ -124,12 +124,13 @@
                         </div>
                     @else
                         <!-- Session -->
-                        <button
-                            class="w-8 h-8 text-xl border border-gray-400 rounded-full text-gray-400 hover:text-red-800 transition ease-in-out duration-150">
-                            <a href="{{ route('login') }}">
-                                <i class="fa-solid fa-user"></i>
-                            </a>
-                        </button>
+
+                        <a href="{{ route('login') }}"
+                            class="w-8 h-8 text-xl border border-gray-400 rounded-full text-center text-gray-400 hover:text-red-800 transition ease-in-out duration-150">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+
+
                     @endauth
                 @endif
             </div>
@@ -183,7 +184,7 @@
                         href="{{ route('admin_cursos') }}" data-turbo="false">
                         Administrar Cursos
                     </a>
-                    {{--<a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                    {{-- <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_requisitos') }}" data-turbo="false">
                         Requisitos
                     </a>
@@ -194,7 +195,7 @@
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_clases') }}" data-turbo="false">
                         Clases
-                    </a>--}}
+                    </a> --}}
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_validar') }}" data-turbo="false">
                         Validaciones
