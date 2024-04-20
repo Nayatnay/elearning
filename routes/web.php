@@ -6,10 +6,12 @@ use App\Livewire\Admin\CrearAdminrequisitos;
 use App\Livewire\Admin\IndexAdminalcances;
 use App\Livewire\Admin\IndexAdminclases;
 use App\Livewire\Admin\IndexAdmincursos;
+use App\Livewire\Admin\IndexAdminrecetas;
 use App\Livewire\Admin\IndexAdminreqalc;
 use App\Livewire\Admin\IndexAdminrequisitos;
 use App\Livewire\Admin\SelecAlcances;
 use App\Livewire\Admin\SelecClases;
+use App\Livewire\Admin\SelecIngredientes;
 use App\Livewire\Admin\SelecRequisitos;
 use App\Livewire\Admin\ValidarInscripcion;
 use App\Livewire\Carrito\IndexCarrito;
@@ -43,16 +45,19 @@ Route::get('eventos', IndexEventos::class)->name('eventos');
 Route::get('inscripciones/{curso}', IndexInscripciones::class)->name('inscripciones');
 //Route::get('carrito', IndexCarrito::class)->name('carrito');
 
-route::get('selec_requisitos/{curso}', SelecRequisitos::class)->name('selec_requisitos');
-route::get('selec_alcances/{curso}', SelecAlcances::class)->name('selec_alcances');
-route::get('selec_clases/{curso}', SelecClases::class)->name('selec_clases');
 route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurso');
 route::get('clasesdelcurso/{curso}/{clase}/{inscrito}', ClasesCurso::class)->name('clasesdelcurso');
 route::get('miscursos', MisCursos::class)->name('miscursos');
 
 //Rutas de admninistracion
 route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');
-route::get('admin_requisitos', IndexAdminrequisitos::class)->name('admin_requisitos');
+route::get('selec_requisitos/{curso}', SelecRequisitos::class)->name('selec_requisitos');
+route::get('selec_alcances/{curso}', SelecAlcances::class)->name('selec_alcances');
+route::get('selec_clases/{curso}', SelecClases::class)->name('selec_clases');
+/*route::get('admin_requisitos', IndexAdminrequisitos::class)->name('admin_requisitos');
 route::get('admin_alcances', IndexAdminalcances::class)->name('admin_alcances');
-route::get('admin_clases', IndexAdminclases::class)->name('admin_clases');
+route::get('admin_clases', IndexAdminclases::class)->name('admin_clases');*/
 route::get('admin_validar', ValidarInscripcion::class)->name('admin_validar');
+route::get('admin_recetas', IndexAdminrecetas::class)->name('admin_recetas');
+route::get('selec_ingredientes/{curso}', SelecIngredientes::class)->name('selec_ingredientes');
+route::get('selec_indicaciones/{curso}', SelecIngredientes::class)->name('selec_indicaciones');
