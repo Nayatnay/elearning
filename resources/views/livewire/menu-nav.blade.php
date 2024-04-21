@@ -10,7 +10,7 @@
         [
             'name' => 'recetas',
             'route' => route('recetas'),
-            'active' => request()->routeIs('recetas'),
+            'active' => request()->routeIs('recetas', 'detallereceta'),
         ],
 
         [

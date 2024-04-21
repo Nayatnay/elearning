@@ -33,7 +33,7 @@
 
                     @foreach ($recetas as $receta)
                         <div>
-                            <a href="#">
+                            <a href="{{ route('detallereceta', $receta) }}">
                                 <div>
 
                                     <img src="{{ asset('/storage/recetas/' . $receta->imagen) }}" alt=""

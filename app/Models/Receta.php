@@ -18,6 +18,21 @@ class Receta extends Model
         'porciones',
     ];
 
+    //Relacion uno a muchos
+
+    public function ingrediente()
+    {
+        return $this->hasMany('App\Models\Ingrediente', 'id_receta');
+    }
+
+    //Relacion uno a muchos
+
+    public function indicacion()
+    {
+        return $this->hasMany('App\Models\Indicacion', 'id_receta');
+    }
+
+
     public function nombre(): Attribute
     {
         return new Attribute(

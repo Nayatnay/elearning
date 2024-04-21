@@ -3,6 +3,7 @@
 use App\Http\Controllers\IndexController;
 use App\Livewire\Admin\CrearAdmincursos;
 use App\Livewire\Admin\CrearAdminrequisitos;
+use App\Livewire\Admin\DetalleReceta;
 use App\Livewire\Admin\IndexAdminalcances;
 use App\Livewire\Admin\IndexAdminclases;
 use App\Livewire\Admin\IndexAdmincursos;
@@ -11,6 +12,7 @@ use App\Livewire\Admin\IndexAdminreqalc;
 use App\Livewire\Admin\IndexAdminrequisitos;
 use App\Livewire\Admin\SelecAlcances;
 use App\Livewire\Admin\SelecClases;
+use App\Livewire\Admin\SelecIndicaciones;
 use App\Livewire\Admin\SelecIngredientes;
 use App\Livewire\Admin\SelecRequisitos;
 use App\Livewire\Admin\ValidarInscripcion;
@@ -22,6 +24,7 @@ use App\Livewire\Cursos\MisCursos;
 use App\Livewire\Eventos\IndexEventos;
 use App\Livewire\Index\IndexMain;
 use App\Livewire\Inscripciones\IndexInscripciones;
+use App\Livewire\Recetas\DetalleReceta as RecetasDetalleReceta;
 use App\Livewire\Recetas\IndexRecetas;
 use Illuminate\Support\Facades\Route;
 
@@ -59,5 +62,7 @@ route::get('admin_alcances', IndexAdminalcances::class)->name('admin_alcances');
 route::get('admin_clases', IndexAdminclases::class)->name('admin_clases');*/
 route::get('admin_validar', ValidarInscripcion::class)->name('admin_validar');
 route::get('admin_recetas', IndexAdminrecetas::class)->name('admin_recetas');
-route::get('selec_ingredientes/{curso}', SelecIngredientes::class)->name('selec_ingredientes');
-route::get('selec_indicaciones/{curso}', SelecIngredientes::class)->name('selec_indicaciones');
+route::get('selec_ingredientes/{receta}', SelecIngredientes::class)->name('selec_ingredientes');
+route::get('selec_indicaciones/{receta}', SelecIndicaciones::class)->name('selec_indicaciones');
+
+route::get('detallereceta/{receta}', RecetasDetalleReceta::class)->name('detallereceta');

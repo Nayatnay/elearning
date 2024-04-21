@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('ingredientes', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_receta');
+            $table->string('descripcion');
             $table->timestamps();
+            // Llave foranea
+            $table->foreign('id_receta')->references('id')->on('recetas')->onDelete('cascade');
         });
     }
 
