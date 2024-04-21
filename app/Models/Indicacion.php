@@ -13,6 +13,7 @@ class Indicacion extends Model
     protected $fillable = [
         'id_receta',
         'descripcion',
+        'imagen',
     ];
 
     //Relacion uno a muchos (inversa)
@@ -25,7 +26,7 @@ class Indicacion extends Model
     public function descripcion(): Attribute
     {
         return new Attribute(
-            $get = fn ($value) => ucwords($value),
+            $get = fn ($value) => ucfirst($value),
             $set = fn ($value) => strtolower($value)
         );
     }

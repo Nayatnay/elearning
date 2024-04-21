@@ -25,7 +25,7 @@ class Ingrediente extends Model
     public function descripcion(): Attribute
     {
         return new Attribute(
-            $get = fn ($value) => ucwords($value),
+            $get = fn ($value) => ucfirst($value),
             $set = fn ($value) => strtolower($value)
         );
     }

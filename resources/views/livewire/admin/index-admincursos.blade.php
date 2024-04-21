@@ -30,7 +30,9 @@
                         <tbody class="text-left">
 
                             @foreach ($cursos as $curso)
+                            
                                 <tr class="h-16 hover:bg-gray-50">
+
                                     <td class="w-[64px] pl-2 cursor-pointer">
                                         <img src="{{ asset('/storage/cursos/' . $curso->imagen) }}" alt=""
                                             title="" class="rounded w-full">

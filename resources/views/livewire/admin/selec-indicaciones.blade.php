@@ -43,9 +43,15 @@
                             <tbody class="text-left">
 
                                 @foreach ($indicaciones as $indicacion)
-                                    <tr class="h-8 hover:bg-gray-200 active:bg-gray-300">
+                                    
+                                <tr class="h-16 hover:bg-gray-200 active:bg-gray-300">
 
                                         <td class="px-2">{{ $indicacion->descripcion }}</td>
+                                        
+                                        <td class="w-[64px] pl-2">
+                                            <img src="{{ asset('/storage/pasos/' . $indicacion->imagen) }}" alt=""
+                                                title="" class="rounded w-full">
+                                        </td>
 
                                         <td class="w-12 md:w-20 text-center">
                                             <a href="#" title="Editar" wire:click="edit({{ $indicacion }})">
@@ -85,6 +91,33 @@
         </x-slot>
 
         <x-slot name="content">
+
+            <div class="mb-4 mr-0 md:mr-4 md:mb-0 w-full md:w-[420px] rounded border p-4 bg-white">
+                <div class="text-xs text-left lg:text-sm">
+                    <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Selecciona una
+                        Imagen</label>
+                </div>
+
+                <div class="mt-4 min-h-32">
+                    @if ($imagenva)
+                        <img src="{{ $imagenva->temporaryUrl() }}"
+                            class="w-full p-2 border border-zinc-500 rounded" width="240px">
+                    @else
+                        <img src="{{ asset('../storage/pasos/' . $imagen) }}" alt="" title=""
+                            class="w-full p-2 border border-zinc-500 rounded" width="240px">
+                    @endif
+                </div>
+
+                <div wire:loading wire:target="imagenva" class="w-full mt-2 text-xs font-medium">
+                    <strong>¡Cargando Imagen! </strong>
+                    <span>Espere mientras se carga la imagen...</span>
+                </div>
+
+                <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="imagenva"
+                    wire:model="imagenva" class="text-[8px]" required />
+                <x-input-error for="imagenva" />
+
+            </div>
 
             <div class="mb-4">
                 <x-label for="descripcion" value="{{ __('Descripción') }}" />

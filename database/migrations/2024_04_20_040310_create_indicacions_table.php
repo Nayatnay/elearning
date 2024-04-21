@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_receta');
             $table->string('descripcion');
+            $table->string('imagen')->nullable();
             $table->timestamps();
             // Llave foranea
             $table->foreign('id_receta')->references('id')->on('recetas')->onDelete('cascade');

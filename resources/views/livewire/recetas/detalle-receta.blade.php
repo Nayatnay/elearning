@@ -47,15 +47,28 @@
 
         </div>
 
-        <div class="text-3xl mt-4 font-medium">
+        <div class="text-3xl mt-20 font-medium">
             <p>Indicaciones</p>
 
             @if ($indicaciones->count())
-                <div class="mt-2 text-sm md:text-base">
-                    @foreach ($indicaciones as $indicacion)
-                        <p>▪ {{ $indicacion->descripcion }}</p>
-                    @endforeach
-                </div>
+                @php
+                    $con = 0;
+                @endphp
+                @foreach ($indicaciones as $indicacion)
+                    <div class="mt-4 text-sm md:text-lg">
+
+                        @php
+                            $con++;
+                        @endphp
+                        <span class="font-bold text-2xl mr-2">{{ $con }}.</span>
+                        <span class="font-light">{{ $indicacion->descripcion }}</p>
+
+                    </div>
+                    <div class="mt-4">
+                        <img src="{{ asset('/storage/pasos/' . $indicacion->imagen) }}" alt="" title="" 
+                    class="rounded w-[512px]">
+                    </div>
+                @endforeach
             @endif
         </div>
     </div>

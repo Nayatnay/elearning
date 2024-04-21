@@ -13,6 +13,29 @@
 
         <x-slot name="content" class="">
 
+            <div class="mb-4 mr-0 md:mr-4 w-full md:w-[420px] rounded border p-4 bg-white">
+                <div class="text-xs text-left lg:text-sm">
+                    <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Selecciona una
+                        Imagen</label>
+
+                </div>
+
+                <div class="mt-4 min-h-24">
+                    @if ($imagen)
+                        <img src="{{ $imagen->temporaryUrl() }}" class="w-full p-2 border border-zinc-500 rounded">
+                    @endif
+                </div>
+
+                <div wire:loading wire:target="imagen" class="w-full mt-2 text-xs font-medium">
+                    <strong>¡Cargando Imagen! </strong>
+                    <span>Espere mientras se carga la imagen...</span>
+                </div>
+                <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="imagen"
+                    wire:model="imagen" class="text-[8px]" required />
+                <x-input-error for="imagen" />
+
+            </div>
+
             <div class="mb-4">
                 <x-label for="descripcion" value="{{ __('Descripción') }}" />
                 <x-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion"
