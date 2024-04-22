@@ -7,6 +7,7 @@ use App\Livewire\Admin\DetalleReceta;
 use App\Livewire\Admin\IndexAdminalcances;
 use App\Livewire\Admin\IndexAdminclases;
 use App\Livewire\Admin\IndexAdmincursos;
+use App\Livewire\Admin\IndexAdmineventos;
 use App\Livewire\Admin\IndexAdminrecetas;
 use App\Livewire\Admin\IndexAdminreqalc;
 use App\Livewire\Admin\IndexAdminrequisitos;
@@ -14,6 +15,7 @@ use App\Livewire\Admin\SelecAlcances;
 use App\Livewire\Admin\SelecClases;
 use App\Livewire\Admin\SelecIndicaciones;
 use App\Livewire\Admin\SelecIngredientes;
+use App\Livewire\Admin\SelecParrafos;
 use App\Livewire\Admin\SelecRequisitos;
 use App\Livewire\Admin\ValidarInscripcion;
 use App\Livewire\Carrito\IndexCarrito;
@@ -21,6 +23,7 @@ use App\Livewire\Cursos\ClasesCurso;
 use App\Livewire\Cursos\DetalleCurso;
 use App\Livewire\Cursos\IndexCursos;
 use App\Livewire\Cursos\MisCursos;
+use App\Livewire\Eventos\DetalleEvento;
 use App\Livewire\Eventos\IndexEventos;
 use App\Livewire\Index\IndexMain;
 use App\Livewire\Inscripciones\IndexInscripciones;
@@ -66,3 +69,8 @@ route::get('selec_ingredientes/{receta}', SelecIngredientes::class)->name('selec
 route::get('selec_indicaciones/{receta}', SelecIndicaciones::class)->name('selec_indicaciones');
 
 route::get('detallereceta/{receta}', RecetasDetalleReceta::class)->name('detallereceta');
+
+route::get('admin_eventos', IndexAdmineventos::class)->name('admin_eventos');
+route::get('selec_parrafos/{evento}', SelecParrafos::class)->name('selec_parrafos');
+
+route::get('detallevento/{evento}', DetalleEvento::class)->name('detallevento');
