@@ -1,6 +1,6 @@
 @section('title', 'Solicitud de empleo | Le Concassé')
 <div>
-    <div class="max-w-7xl mx-auto py-10 px-6 lg:px-8">
+    <div class="max-w-7xl mx-auto py-10 px-4 lg:px-8">
         <div class="md:w-1/2 mx-auto">
             <form method="POST" action="{{ route('register') }}">
                 @csrf
@@ -36,34 +36,53 @@
                     <x-input-error for="fechanac" />
                 </div>
 
-                <div class="mt-4 ">
-                    <div
-                        class="w-48 bg-gray-800 p-2 text-white  text-center text-sm rounded cursor-pointer hover:bg-gray-900">
-                        <label for="{{ $identificador }}">Cargar CV</label>
+                <div class="mt-8 ">
+
+                    <div class="mr-4">
+                        <label for="{{ $identificador }}" onclick="myfunction()"
+                            class="bg-gray-800 text-white px-4 py-1 rounded text-sm cursor-pointer hover:bg-gray-900">Cargar
+                            CV</label>
+                    </div>
+                    <div class="mt-4 text-orange-600 text-sm ">
+                        @if ($archivo)
+                            <p id="fileName"></p>
+                        @endif
                     </div>
 
-                    <div wire:loading wire:target="archivo" class="w-full mt-2 text-xs font-medium">
+
+                    <div wire:loading wire:target="archivo" class="w-full mt-4 text-xs font-medium text-orange-600">
                         <strong>¡Cargando Archivo! </strong>
                         <span>Espere mientras se carga el archivo...</span>
                     </div>
+                    @if ($archivo)
+                        <div class="mt-4 block text-gray-800 font-bold text-xs" id="etiq">
+                            <p>El Archivo fue cargado satisfactoriamente</p>
+                        </div>
+                    @endif
                     <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="archivo"
                         wire:model="archivo" class="text-[8px]" required onChange="onLoadFile(event.target.files)" />
-
                     <x-input-error for="archivo" />
-
-                    <p id="fileName"></p>
 
                 </div>
 
             </form>
         </div>
     </div>
+
     <!-- Pie de pagina -->
     <x-footer></x-footer>
 
     <script>
         function onLoadFile(files) {
             document.getElementById('fileName').innerHTML = files[0].name
+
+        }
+    </script>
+
+    <script>
+        function myfunction() {
+            document.getElementById("etiq").style.display = "none";
+            document.getElementById('fileName') = document.getElementById('. $identificador .').files[0].name;
         }
     </script>
 
