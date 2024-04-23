@@ -55,7 +55,7 @@
                     $con = 0;
                 @endphp
                 @foreach ($indicaciones as $indicacion)
-                    <div class="mt-4 text-sm md:text-lg">
+                    <div class="mt-4 text-sm md:text-lg text-justify">
 
                         @php
                             $con++;

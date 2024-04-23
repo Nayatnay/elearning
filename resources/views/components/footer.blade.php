@@ -1,6 +1,16 @@
 <div>
     <footer>
+
+        <div class="max-w-7xl mx-auto text-[10px] p-4">
+            
+                <a href="https://magefesa.com.ve/" target="_blank" class="hover:underline inline-flex flex-col items-center">
+                   <img src="{{ asset('img/magefesa.png') }}" alt="" width="128px">
+                    <p class="mt-1 uppercase ">sitio oficial Patrocinador</p>
+                </a>
+           
+        </div>
         <div class="text-xs px-2 py-6 sm:px-6 lg:px-8 sm:py-10 text-center bg-white">
+
             <div class="flex flex-wrap items-start max-w-7xl mx-auto p-2">
 
                 <div class="sm:basis-1/2 w-full text-left pl-2 py-2 pr-4 text-xs">
