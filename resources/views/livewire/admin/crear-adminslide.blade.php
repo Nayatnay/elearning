@@ -1,28 +1,30 @@
 <div>
     <div class="cursor-point font-light ">
         <p wire:click="$set('open', true)"
-            class="border-b-2 border-transparent hover:border-red-700 cursor-pointer">Nueva Indicacion</p>
+            class="border-b-2 border-transparent hover:border-red-700 cursor-pointer">Nueva
+        </p>
     </div>
 
     <!--Modal crear -->
     <x-dialog-modal wire:model="open">
 
         <x-slot name="title">
-            <p class="font-bold text-left pb-4 border-b text-zinc-800">Crear Nueva Indicación</p>
+            <p class="font-bold text-left pb-4 border-b text-zinc-800">Crear Nueva Diapositiva</p>
         </x-slot>
 
         <x-slot name="content" class="">
 
-            <div class="mb-4 mr-0 md:mr-4 w-full md:w-[420px] rounded border p-4 bg-white">
+            <div class="mb-4 mr-0 md:mr-4 md:mb-0 w-full md:w-[420px] rounded border p-4 bg-white">
                 <div class="text-xs text-left lg:text-sm">
                     <label for="{{ $identificador }}" class="cursor-pointer hover:underline">Selecciona una
                         Imagen</label>
 
                 </div>
 
-                <div class="mt-4 min-h-24">
+                <div class="mt-4 min-h-32">
                     @if ($imagen)
-                        <img src="{{ $imagen->temporaryUrl() }}" class="w-full p-2 border border-zinc-500 rounded">
+                        <img src="{{ $imagen->temporaryUrl() }}" class="w-full p-2 border border-zinc-500 rounded"
+                            width="240px">
                     @endif
                 </div>
 
@@ -36,13 +38,6 @@
 
             </div>
 
-            <div class="mb-4">
-                <x-label for="descripcion" value="{{ __('Descripción') }}" />
-                <x-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion"
-                    wire:model.defer="descripcion" required autofocus />
-                <x-input-error for="descripcion" />
-            </div>
-
         </x-slot>
 
         <x-slot name="footer">
@@ -51,7 +46,7 @@
                     Cancelar
                 </x-secondary-button>
 
-                <x-button wire:click="save" wire:loading.attr="disabled" wire:target="save">
+                <x-button wire:click="save" wire:loading.attr="disabled" wire:target="save, imagen">
                     Aceptar
                 </x-button>
             </div>

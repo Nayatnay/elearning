@@ -1,7 +1,7 @@
 <div>
-    <div class="text-sm cursor-point font-light ">
+    <div class="cursor-point font-light ">
         <p wire:click="$set('open', true)"
-            class="text-base border-b-2 border-transparent hover:border-red-700 cursor-pointer">Crear receta</p>
+            class="border-b-2 border-transparent hover:border-red-700 cursor-pointer">Crear receta</p>
     </div>
 
     <!--Modal crear -->

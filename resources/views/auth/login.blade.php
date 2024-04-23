@@ -52,7 +52,7 @@
 
             <div class="mt-10 border-t border-gray-600 py-2 text-center text-sm font-light">
                 <p class="mb-2">¿Eres nuevo por acá?</p>
-                <a class="text-sm hover:underline bg-gray-400 text-black border border-gray-500 rounded block w-full p-2 ring-zinc-500 focus:ring"
+                <a class="text-sm hover:underline bg-red-800 text-white border border-gray-500 rounded block w-full p-2 ring-zinc-500 focus:ring"
                  href="{{ route('register') }}">
                     Crea tu cuenta
                 </a>

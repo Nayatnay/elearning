@@ -19,12 +19,12 @@
             'active' => request()->routeIs('eventos', 'detallevento'),
         ],
 
-        /* [
-            'name' => 'inscripciones',
-            'route' => route('inscripciones'),
-            'active' => request()->routeIs('inscripciones'),
+        [
+            'name' => 'Empleos',
+            'route' => route('index_empleos'),
+            'active' => request()->routeIs('index_empleos'),
         ],
-        */
+        
     ];
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100  shadow sticky top-0 z-[200]">
@@ -99,6 +99,10 @@
 
                                     <x-dropdown-link href="{{ route('admin_eventos') }}">
                                         {{ __('Administrar Eventos') }}
+                                    </x-dropdown-link>
+
+                                    <x-dropdown-link href="{{ route('admin_slides') }}">
+                                        {{ __('Administrar Diapositivas') }}
                                     </x-dropdown-link>
 
                                     {{-- <x-dropdown-link href="{{ route('admin_requisitos') }}">
@@ -200,6 +204,11 @@
                         href="{{ route('admin_eventos') }}" data-turbo="false">
                         Administrar Eventos
                     </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                    href="{{ route('admin_slides') }}" data-turbo="false">
+                    Administrar Diapositivas
+                </a>
+
                     {{-- <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_requisitos') }}" data-turbo="false">
                         Requisitos

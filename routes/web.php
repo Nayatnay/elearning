@@ -11,6 +11,7 @@ use App\Livewire\Admin\IndexAdmineventos;
 use App\Livewire\Admin\IndexAdminrecetas;
 use App\Livewire\Admin\IndexAdminreqalc;
 use App\Livewire\Admin\IndexAdminrequisitos;
+use App\Livewire\Admin\IndexAdminslide;
 use App\Livewire\Admin\SelecAlcances;
 use App\Livewire\Admin\SelecClases;
 use App\Livewire\Admin\SelecIndicaciones;
@@ -23,6 +24,7 @@ use App\Livewire\Cursos\ClasesCurso;
 use App\Livewire\Cursos\DetalleCurso;
 use App\Livewire\Cursos\IndexCursos;
 use App\Livewire\Cursos\MisCursos;
+use App\Livewire\Empleos\IndexEmpleos;
 use App\Livewire\Eventos\DetalleEvento;
 use App\Livewire\Eventos\IndexEventos;
 use App\Livewire\Index\IndexMain;
@@ -54,6 +56,7 @@ Route::get('inscripciones/{curso}', IndexInscripciones::class)->name('inscripcio
 route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurso');
 route::get('clasesdelcurso/{curso}/{clase}/{inscrito}', ClasesCurso::class)->name('clasesdelcurso');
 route::get('miscursos', MisCursos::class)->name('miscursos');
+route::get('index_empleos', IndexEmpleos::class)->name('index_empleos');
 
 //Rutas de admninistracion
 route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');
@@ -64,13 +67,14 @@ route::get('selec_clases/{curso}', SelecClases::class)->name('selec_clases');
 route::get('admin_alcances', IndexAdminalcances::class)->name('admin_alcances');
 route::get('admin_clases', IndexAdminclases::class)->name('admin_clases');*/
 route::get('admin_validar', ValidarInscripcion::class)->name('admin_validar');
+
 route::get('admin_recetas', IndexAdminrecetas::class)->name('admin_recetas');
 route::get('selec_ingredientes/{receta}', SelecIngredientes::class)->name('selec_ingredientes');
 route::get('selec_indicaciones/{receta}', SelecIndicaciones::class)->name('selec_indicaciones');
-
 route::get('detallereceta/{receta}', RecetasDetalleReceta::class)->name('detallereceta');
 
 route::get('admin_eventos', IndexAdmineventos::class)->name('admin_eventos');
 route::get('selec_parrafos/{evento}', SelecParrafos::class)->name('selec_parrafos');
-
 route::get('detallevento/{evento}', DetalleEvento::class)->name('detallevento');
+
+route::get('admin_slides', IndexAdminslide::class)->name('admin_slides');

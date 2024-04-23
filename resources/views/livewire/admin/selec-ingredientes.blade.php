@@ -1,7 +1,7 @@
 @section('title', 'Admin Ingredientes | Le Concassé')
 <div class="min-h-screen">
     <div class="bg-gray-100 shadow sticky top-24 z-[100]">
-        <div class="flex items-center justify-between text-lg px-4 md:px-8 py-3 max-w-screen-xl mx-auto">
+        <div class="flex items-center justify-between px-4 md:px-8 py-3 max-w-screen-xl mx-auto">
 
             <div class="flex items-center">
                 <img src="{{ asset('/storage/Recetas/' . $receta->imagen) }}" alt="" title="" width="56px"

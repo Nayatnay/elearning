@@ -3,6 +3,73 @@
         <!-- Carousel wrapper -->
         <div class=" overflow-hidden relative h-48 sm:h-64 xl:h-[430px]">
             <!-- Item 1 -->
+            @foreach ($slides as $slide)
+                <div class=" ease-in-out duration-700" data-carousel-item>
+                    <img src="{{ asset('/storage/diapositivas/' . $slide->imagen) }}"
+                        class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
+                </div>
+            @endforeach
+        </div>
+        <!-- Slider indicators -->
+        @php
+            $a = 0;
+            $b = 1;
+        @endphp
+        <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
+            @foreach ($slides as $slide)
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide {{$b}}"
+                    data-carousel-slide-to="{{$a}}"></button>
+                    @php
+                        $a++;
+                        $b++;
+                    @endphp
+            @endforeach
+
+        </div>
+        <!-- Slider controls -->
+        <button type="button"
+            class="flex absolute top-0 left-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+            data-carousel-prev>
+            <span
+                class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+                <svg class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                    </path>
+                </svg>
+                <span class="hidden">Previous</span>
+            </span>
+        </button>
+        <button type="button"
+            class="flex absolute top-0 right-0 z-30 justify-center items-center px-4 h-full cursor-pointer group focus:outline-none"
+            data-carousel-next>
+            <span
+                class="inline-flex justify-center items-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 group-hover:bg-white/50 group-focus:ring-4 group-focus:ring-white group-focus:outline-none">
+                <svg class="w-5 h-5 text-white sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                    </path>
+                </svg>
+                <span class="hidden">Next</span>
+            </span>
+        </button>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    {{--<!-- sliders originales -->
+
+    <div id="default-carousel" class="relative" data-carousel="static">
+        <!-- Carousel wrapper -->
+        <div class=" overflow-hidden relative h-48 sm:h-64 xl:h-[430px]">
+            <!-- Item 1 -->
             <div class="hidden ease-in-out duration-700" data-carousel-item>
                 <img src="{{ asset('img/1.jpg') }}"
                     class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
@@ -54,7 +121,7 @@
                 <span class="hidden">Next</span>
             </span>
         </button>
-    </div>
+    </div>--}}
 
     <div class="w-full py-10">
 
@@ -62,7 +129,8 @@
 
             <p class="text-center text-2xl uppercase mb-5">Contenido</p>
 
-            <div class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-4 py-8 text-xl text-gray-700 font-medium">
+            <div
+                class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-4 py-8 text-xl text-gray-700 font-medium">
 
                 <div class="rounded-md border border-gray-300 bg-gray-100">
 
@@ -92,7 +160,7 @@
                         </p>
                     </a>
                 </div>
-                {{--<div class="rounded-md border border-gray-300 bg-gray-100">
+                {{-- <div class="rounded-md border border-gray-300 bg-gray-100">
                     <a href="{{ route('inscripciones') }}">
                         <img src="{{ asset('/img/inscripciones.jpg') }}" alt="" title=""
                             class="w-full rounded-tl-md rounded-tr-md">
@@ -100,7 +168,7 @@
                             Inscríbete
                         </p>
                     </a>
-                </div>--}}
+                </div> --}}
             </div>
         </div>
 
@@ -114,12 +182,14 @@
                 <div class="p-4  text-5xl md:ml-2 max-w-[512px]">
                     <p class="font-bold">Comienza ya</p>
                     <p class="text-2xl md:text-3xl mt-1">Aprende a defenderte como un chef</p>
-                    <p class="text-base mt-4 text-gray-700">Regístrate y adquiere nuestros cursos en línea o presencial</p>
+                    <p class="text-base mt-4 text-gray-700">Regístrate y adquiere nuestros cursos en línea o presencial
+                    </p>
 
-                    <a href="{{route('register')}}">
-                        <div class="md:inline-block my-8 px-12 py-2 border-2 border-lime-400 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800  text-center rounded-full ">
+                    <a href="{{ route('register') }}">
+                        <div
+                            class="md:inline-block my-8 px-12 py-2 border-2 border-lime-400 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800  text-center rounded-full ">
                             <p class="font-bold text-2xl ">Regístrate aquí</p>
-                            
+
                         </div>
                     </a>
                 </div>
