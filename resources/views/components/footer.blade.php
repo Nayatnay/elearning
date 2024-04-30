@@ -3,7 +3,7 @@
 
         <div class="max-w-7xl mx-auto text-[10px] p-4">
             
-                <a href="https://magefesa.com.ve/" target="_blank" class="hover:underline inline-flex flex-col items-center">
+                <a href="https://magefesa.com.ve/" target="_blank" class="hover:underline flex flex-col items-center">
                    <img src="{{ asset('img/magefesa.png') }}" alt="" width="128px">
                     <p class="mt-1 uppercase ">sitio oficial Patrocinador</p>
                 </a>

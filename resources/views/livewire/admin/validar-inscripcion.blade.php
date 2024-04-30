@@ -44,9 +44,16 @@
                                     </td>
 
                                     <td class="w-14 min-w-14 text-center">
-                                        <a href="#" title="Eliminar" wire:click="validar({{ $inscripcion }})"
+                                        <a href="#" title="Validar Inscripción" wire:click="validar({{ $inscripcion }})"
                                             class="p-2 hover:underline text-red-800 font-medium">
                                             Validar
+                                        </a>
+                                    </td>
+
+                                    <td class="w-14 min-w-14 text-center">
+                                        <a href="#" title="Anular Inscripción" wire:click="anular({{ $inscripcion }})"
+                                            class="p-2 hover:underline text-red-800 font-medium">
+                                            Anular
                                         </a>
                                     </td>
                                     
@@ -71,7 +78,7 @@
 
     </div>
 
-    <!--Modal delete -->
+    <!--Modal validar -->
 
     <x-confirmation-modal wire:model="open">
 
@@ -89,6 +96,29 @@
             </x-secondary-button>
 
             <x-danger-button wire:click="playplay" wire:loading.attr="disabled" class="disabled:opacity-25 ml-2">
+                Aceptar
+            </x-danger-button>
+        </x-slot>
+    </x-confirmation-modal>
+
+    <!--Modal anular -->
+
+    <x-confirmation-modal wire:model="open_cancel">
+
+        <x-slot name="title">
+            Esta acción no podrá ser reversada
+        </x-slot>
+
+        <x-slot name="content">
+            ¿Está seguro de proceder con la anulación?
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-secondary-button wire:click="$set('open_cancel', false)" class="mr-2">
+                Cancelar
+            </x-secondary-button>
+
+            <x-danger-button wire:click="playanular" wire:loading.attr="disabled" class="disabled:opacity-25 ml-2">
                 Aceptar
             </x-danger-button>
         </x-slot>

@@ -19,6 +19,7 @@ use App\Livewire\Admin\SelecIngredientes;
 use App\Livewire\Admin\SelecParrafos;
 use App\Livewire\Admin\SelecRequisitos;
 use App\Livewire\Admin\ValidarInscripcion;
+use App\Livewire\Admin\VerInscritos;
 use App\Livewire\Carrito\IndexCarrito;
 use App\Livewire\Cursos\ClasesCurso;
 use App\Livewire\Cursos\DetalleCurso;
@@ -66,6 +67,7 @@ route::get('selec_clases/{curso}', SelecClases::class)->name('selec_clases');
 /*route::get('admin_requisitos', IndexAdminrequisitos::class)->name('admin_requisitos');
 route::get('admin_alcances', IndexAdminalcances::class)->name('admin_alcances');
 route::get('admin_clases', IndexAdminclases::class)->name('admin_clases');*/
+route::get('inscritos/{curso}', VerInscritos::class)->name('inscritos');
 route::get('admin_validar', ValidarInscripcion::class)->name('admin_validar');
 
 route::get('admin_recetas', IndexAdminrecetas::class)->name('admin_recetas');

@@ -84,6 +84,13 @@
                                         </a>
                                     </td>
 
+                                    <td class="w-10 text-center">
+                                        <a href="{{ route('inscritos', $curso) }}" title="Inscritos"
+                                            class="p-2 border border-transparent rounded-lg hover:border-gray-800">
+                                            <i class="fa-solid fa-user-graduate"></i>
+                                        </a>
+                                    </td>
+
                                     @if ($curso->publicado == 0)
                                         <td class="w-14 text-center text-xs">
                                             <a href="#" wire:click="postear({{$curso}})" title="Postear"

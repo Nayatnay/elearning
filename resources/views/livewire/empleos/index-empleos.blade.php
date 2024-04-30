@@ -30,7 +30,7 @@
                 </div>
 
                 <div class="mt-4 w-48">
-                    <x-label for="fechanac" value="{{ __('Fecha de Nacimiento') }}" class="ml-4 text-zinc-800" />
+                    <x-label for="fechanac" value="{{ __('Fecha de Nacimiento') }}"  />
                     <x-input id="fechanac" class="block mt-1 w-full" type="date" name="fechanac" :value="old('fechanac')"
                         required autocomplete="fechanac" />
                     <x-input-error for="fechanac" />
@@ -56,6 +56,7 @@
                     </div>
                     @if ($archivo)
                         <div class="mt-4 block text-gray-800 font-bold text-xs" id="etiq">
+                            <p id="fileName"></p>
                             <p>El Archivo fue cargado satisfactoriamente</p>
                         </div>
                     @endif
