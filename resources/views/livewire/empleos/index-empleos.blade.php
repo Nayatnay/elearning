@@ -6,10 +6,11 @@
                 @csrf
 
                 <div class="mt-4">
-                    <p class="font-bold text-2xl">Formulario de solicitud de empleo</p>
+                    <p class="font-bold text-4xl">Formulario de solicitud de empleo</p>
+                    <p class="font-light">Rellena el formulario, carga tu CV en formato PDF y envía</p>
                 </div>
 
-                <div class="mt-4">
+                <div class="mt-8">
                     <x-label for="name" value="{{ __('Nombre y Apellido') }}" />
                     <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')"
                         required autocomplete="name" />
@@ -38,10 +39,16 @@
 
                 <div class="mt-8 ">
 
-                    <div class="mr-4">
-                        <label for="{{ $identificador }}" onclick="myfunction()"
-                            class="bg-gray-800 text-white px-4 py-1 rounded text-sm cursor-pointer hover:bg-gray-900">Cargar
-                            CV</label>
+                    <div class="flex items-center justify-between">
+                        <div class="mr-4">
+                            <label for="{{ $identificador }}" onclick="myfunction()"
+                                class="bg-red-800 text-white px-4 py-1 rounded text-sm cursor-pointer hover:bg-red-900">Cargar
+                                CV</label>
+                        </div>
+                        <div>
+                            <x-button class="">{{ __('Enviar') }}</x-button>
+                        </div>
+    
                     </div>
                     <div class="mt-4 text-orange-600 text-sm ">
                         @if ($archivo)
@@ -49,22 +56,25 @@
                         @endif
                     </div>
 
-
                     <div wire:loading wire:target="archivo" class="w-full mt-4 text-xs font-medium text-orange-600">
                         <strong>¡Cargando Archivo! </strong>
                         <span>Espere mientras se carga el archivo...</span>
                     </div>
+
                     @if ($archivo)
                         <div class="mt-4 block text-gray-800 font-bold text-xs" id="etiq">
                             <p id="fileName"></p>
                             <p>El Archivo fue cargado satisfactoriamente</p>
                         </div>
                     @endif
+                    
                     <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="archivo"
                         wire:model="archivo" class="text-[8px]" required onChange="onLoadFile(event.target.files)" />
                     <x-input-error for="archivo" />
 
                 </div>
+
+               
 
             </form>
         </div>

@@ -11,7 +11,7 @@ class IndexEmpleos extends Component
 
     public $identificador, $archivo;
 
-    public function mount() // Lo estoy usando para eliminar el nombre de la imagen que se selecciono anteriormente en el modal
+    public function mount() // Lo estoy usando para eliminar el nombre deL ARCHIVO seleccionado anteriormente en el modal
     {
         $this->identificador = rand();
     }

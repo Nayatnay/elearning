@@ -35,11 +35,11 @@
                                         {{ $inscripcion->curso->nombre }}
                                     </td>
 
-                                    <td class="pl-2 w-60 min-w-60 text-red-800 font-medium">
+                                    <td class="pl-2 w-28 min-w-28 text-red-800 font-medium text-right">
                                         USD${{number_format($inscripcion->curso->costo, 2, '.', '')}}
                                     </td>
 
-                                    <td class="pl-2 w-20 min-w-20">
+                                    <td class="pl-2 w-20 min-w-20 text-center">
                                         {{ $inscripcion->turno }}
                                     </td>
 

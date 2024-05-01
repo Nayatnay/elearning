@@ -1,9 +1,9 @@
 <div>
     <div class="w-full py-10 ">
         <div class="max-w-7xl mx-auto py-0 md:py-10 px-4 sm:px-6 lg:px-8">
-            <div class="flex flex-col items-start justify-center md:flex-row">
+            <div class="flex flex-col items-start justify-center lg:flex-row mb-10">
 
-                <div class="w-full md:w-[60%] text-4xl sm:text-5xl mr-4">
+                <div class="w-full lg:w-[60%] text-4xl sm:text-5xl mr-4">
 
                     <span class="font-bold mb-10">Curso: </span>
                     <span class="text-red-800">{{ $curso->nombre }}</span>
@@ -12,19 +12,21 @@
                         @if ($inscrip == null)
                             <div class="flex items-center">
                                 <div
-                                    class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-red-800 rounded-full">
+                                    class="flex items-center justify-center w-8 h-8 min-w-8 min-h-8 md:w-10 md:h-10 md:min-w-10 md:min-h-10  bg-red-800 rounded-full">
                                     <p class="text-lg md:text-2xl text-white font-bold">1</p>
                                 </div>
-                                <p class="ml-3 text-red-800 font-bold text-xs sm:text-base">Ingresa el
+
+                                <p class="ml-3 text-red-800 font-bold text-xs sm:text-lg md:text-2xl">Ingresa el
                                     turno de tu preferencia
                                 </p>
+
                             </div>
 
                             <div class="border-l border-red-800 ml-4 md:ml-5 pb-3"></div>
 
                             <div class="flex items-center">
                                 <div
-                                    class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                    class="flex items-center justify-center w-8 h-8 min-w-8 min-h-8 md:w-10 md:h-10 md:min-w-10 md:min-h-10  bg-gray-700 rounded-full">
                                     <p class="text-lg md:text-2xl text-white font-bold">2</p>
                                 </div>
                                 <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Te contactaremos para
@@ -35,7 +37,7 @@
 
                             <div class="flex items-center">
                                 <div
-                                    class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                    class="flex items-center justify-center w-8 h-8 min-w-8 min-h-8 md:w-10 md:h-10 md:min-w-10 md:min-h-10  bg-gray-700 rounded-full">
                                     <p class="text-lg md:text-2xl text-white font-bold">3</p>
                                 </div>
                                 <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">¡Estás listo! Comienza tu
@@ -45,7 +47,7 @@
                             @if ($inscrip->liberado == 0)
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                        class="flex items-center justify-center w-8 h-8 min-w-8 min-h-8 md:w-10 md:h-10 md:min-w-10 md:min-h-10  bg-gray-700 rounded-full">
                                         <p class="text-lg md:text-2xl text-white font-bold">1</p>
                                     </div>
                                     <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Ingresa
@@ -57,19 +59,22 @@
 
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-red-800 rounded-full">
+                                        class="flex items-center justify-center w-8 h-8 min-w-8 min-h-8 md:w-10 md:h-10 md:min-w-10 md:min-h-10  bg-red-800 rounded-full">
                                         <p class="text-lg md:text-2xl text-white font-bold">2</p>
                                     </div>
-                                    <p class="ml-3 text-red-800 font-bold text-xs sm:text-base">Te
+
+                                    <p class="ml-3 text-red-800 font-bold text-xs sm:text-lg md:text-2xl">Te
                                         contactaremos para
                                         formalizar la inscripción</p>
                                 </div>
+
+
 
                                 <div class="border-l border-red-800 ml-4 md:ml-5 pb-3"></div>
 
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                        class="flex items-center justify-center w-8 h-8 min-w-8 min-h-8 md:w-10 md:h-10 md:min-w-10 md:min-h-10  bg-gray-700 rounded-full">
                                         <p class="text-lg md:text-2xl text-white font-bold">3</p>
                                     </div>
                                     <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">¡Estás listo!
@@ -79,7 +84,7 @@
                             @else
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                        class="flex items-center justify-center w-8 h-8 min-w-8 min-h-8 md:w-10 md:h-10 md:min-w-10 md:min-h-10  bg-gray-700 rounded-full">
                                         <p class="text-lg md:text-2xl text-white font-bold">1</p>
                                     </div>
                                     <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Ingresa
@@ -91,7 +96,7 @@
 
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-gray-700 rounded-full">
+                                        class="flex items-center justify-center w-8 h-8 min-w-8 min-h-8 md:w-10 md:h-10 md:min-w-10 md:min-h-10  bg-gray-700 rounded-full">
                                         <p class="text-lg md:text-2xl text-white font-bold">2</p>
                                     </div>
                                     <p class="ml-3 text-xs font-medium sm:text-base sm:font-light">Te
@@ -103,19 +108,24 @@
 
                                 <div class="flex items-center">
                                     <div
-                                        class="flex items-center justify-center w-8 h-8 md:w-10 md:h-10 bg-red-800 rounded-full">
+                                        class="flex items-center justify-center w-8 h-8 min-w-8 min-h-8 md:w-10 md:h-10 md:min-w-10 md:min-h-10  bg-red-800 rounded-full">
                                         <p class="text-lg md:text-2xl text-white font-bold">3</p>
                                     </div>
-                                    <p class="ml-3 text-red-800 font-bold text-xs sm:text-base">¡Estás
-                                        listo!
-                                        Comienza tu aprendizaje</p>
+
+                                    <p class="ml-3 text-red-800 font-bold text-xs sm:text-lg md:text-2xl">¡Estás
+                                        listo! Comienza tu aprendizaje</p>
+                                    {{--<span class="ml-2 relative flex h-3 w-3">
+                                        <span
+                                            class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-700 opacity-75"></span>
+                                        <span class="relative inline-flex rounded-full h-3 w-3 bg-red-800"></span>
+                                    </span>--}}
                                 </div>
                             @endif
                         @endif
                     </div>
                 </div>
 
-                <div class="mt-12 md:mt-0 text-5xl w-full md:w-[35%]">
+                <div class="mt-12 lg:mt-0 text-5xl w-full lg:w-[35%]">
                     @if ($inscrip == null)
                         <div class="border rounded-lg shadow-lg bg-white">
 
@@ -146,7 +156,7 @@
                 </div>
             </div>
 
-            <div class="mt-20 mb-10 border border-gray-400 bg-gray-200 shadow-lg rounded-xl p-8 ">
+            <div class="mb-10 border border-gray-400 bg-gray-200 shadow-lg rounded-xl p-8 ">
                 <div class="flex flex-col items-center justify-center lg:flex-row ">
                     <div class="w-full lg:mr-4 text-center lg:text-left">
                         <p class="text-4xl">¡Da el primer paso!</p>

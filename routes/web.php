@@ -21,6 +21,7 @@ use App\Livewire\Admin\SelecRequisitos;
 use App\Livewire\Admin\ValidarInscripcion;
 use App\Livewire\Admin\VerInscritos;
 use App\Livewire\Carrito\IndexCarrito;
+use App\Livewire\Contacto\IndexContactanos;
 use App\Livewire\Cursos\ClasesCurso;
 use App\Livewire\Cursos\DetalleCurso;
 use App\Livewire\Cursos\IndexCursos;
@@ -80,3 +81,5 @@ route::get('selec_parrafos/{evento}', SelecParrafos::class)->name('selec_parrafo
 route::get('detallevento/{evento}', DetalleEvento::class)->name('detallevento');
 
 route::get('admin_slides', IndexAdminslide::class)->name('admin_slides');
+
+route::get('contacto', IndexContactanos::class)->name('contacto');

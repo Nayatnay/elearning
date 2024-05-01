@@ -1,15 +1,20 @@
 <div>
     <footer>
 
-        <div class="max-w-7xl mx-auto text-[10px] p-4">
-            
+        <div class="max-w-7xl mx-auto p-4 mb-20">
+
+            <div class="">
                 <a href="https://magefesa.com.ve/" target="_blank" class="hover:underline flex flex-col items-center">
-                   <img src="{{ asset('img/magefesa.png') }}" alt="" width="128px">
-                    <p class="mt-1 uppercase ">sitio oficial Patrocinador</p>
+                    <img src="{{ asset('img/magefesa.png') }}" alt="" width="128px">
+                    <p class="mt-1 uppercase text-[10px]">sitio oficial Patrocinador</p>
                 </a>
-           
+            </div>
+
         </div>
-        <div class="text-xs px-2 py-6 sm:px-6 lg:px-8 sm:py-10 text-center bg-white">
+
+
+
+        <div class="text-xs px-2 py-6 sm:px-6 lg:px-8 text-center bg-white">
 
             <div class="flex flex-wrap items-start max-w-7xl mx-auto p-2">
 
@@ -58,8 +63,23 @@
                         </a>
 
                     </div>
+
                 </div>
             </div>
+
+            <div class="flex items-center justify-center flex-wrap max-w-7xl mx-auto px-2 text-4xl">
+
+                <a href="{{ route('contacto') }}" class="flex flex-col items-center justify-center rounded border border-transparent
+                 hover:bg-gray-50 hover:border-gray-200 active:border-gray-300  p-4">
+                    <div
+                        class="flex items-center justify-center bg-red-800 text-white rounded-full w-16 h-16 text-center">
+                        <i class="fa-regular fa-envelope"></i>
+                    </div>
+                    <p class="uppercase text-sm text-red-700">Habla con nosotros</p>
+                </a>
+
+            </div>
+
         </div>
         <div class="text-center font-normal p-4 border-t text-xs bg-white">
             <a href="#" target="_blank" class="hover:underline mr-2">Condiciones de
@@ -67,7 +87,7 @@
             <a href="#" target="_blank" class="hover:underline mr-2">Políticas de
                 privacidad</a>
             <a href="#" target="_blank" class="hover:underline  ">Aviso legal </a>
-            <p class="mt-2 ">&copy; 2023 LeConcaseé - Todos los derechos reservados.</p>
+            <p class="mt-2 ">&copy; 2024 LeConcaseé - Todos los derechos reservados.</p>
         </div>
     </footer>
 </div>

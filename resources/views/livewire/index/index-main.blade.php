@@ -17,12 +17,12 @@
         @endphp
         <div class="flex absolute bottom-5 left-1/2 z-30 space-x-3 -translate-x-1/2">
             @foreach ($slides as $slide)
-                <button type="button" class="w-3 h-3 rounded-full" aria-current="false" aria-label="Slide {{$b}}"
-                    data-carousel-slide-to="{{$a}}"></button>
-                    @php
-                        $a++;
-                        $b++;
-                    @endphp
+                <button type="button" class="w-3 h-3 rounded-full" aria-current="false"
+                    aria-label="Slide {{ $b }}" data-carousel-slide-to="{{ $a }}"></button>
+                @php
+                    $a++;
+                    $b++;
+                @endphp
             @endforeach
 
         </div>
@@ -56,15 +56,7 @@
     </div>
 
 
-
-
-
-
-
-
-
-
-    {{--<!-- sliders originales -->
+    {{-- <!-- sliders originales -->
 
     <div id="default-carousel" class="relative" data-carousel="static">
         <!-- Carousel wrapper -->
@@ -121,7 +113,7 @@
                 <span class="hidden">Next</span>
             </span>
         </button>
-    </div>--}}
+    </div> --}}
 
     <div class="w-full py-10">
 
@@ -267,7 +259,40 @@
 
             @endif
         </div>
+
+        <div class="max-w-7xl mx-auto p-4 my-10">
+            @if ($info == 0)
+                <!--Formulario de Suscripcion -->
+                <div
+                    class="md:h-60 flex flex-col items-center justify-center border border-gray-400 rounded-2xl text-3xl md:text-4xl text-center px-4 py-10 bg-no-repeat bg-cover bg-center" 
+                    style="background-image:linear-gradient(rgba(237, 237, 237, 0.6), rgba(255, 244, 244, 0.6)), url(img/chef.jpg)">
+                    <p class="font-black">Suscríbete a nuestro <strong class="text-red-800">boletín</strong></p>
+                    <p class="text-base md:text-lg my-4 font-medium">¡Manténte al día! Recibe noticias sobre la
+                        disponibilidad de nuestros cursos, nuevos eventos y ofertas exclusivas.</p>
+
+                    <form action="" method="" wire:submit="arch"
+                        class="flex flex-col items-center justify-center md:flex-row">
+                        <x-input type="email" name="email" id="" wire:model.defer="email"
+                            class="rounded-lg w-60 m-2" placeholder="Ingresa tu e-mail" required />
+                        <input type="submit" value="Suscribir"
+                            class="m-2 cursor-pointer text-base border rounded-lg px-6 font-bold py-2 bg-red-800 text-white">
+
+                    </form>
+                    <x-input-error for="email" />
+                </div>
+            @else
+                <!--Suscriptor gracias -->
+                <div
+                class="md:h-60 flex flex-col items-center justify-center border border-gray-400 rounded-2xl text-3xl md:text-4xl text-center px-4 py-10 bg-no-repeat bg-cover bg-center" 
+                style="background-image:linear-gradient(rgba(237, 237, 237, 0.6), rgba(255, 244, 244, 0.6)), url(img/chef.jpg)">
+                    <p class="font-black"><strong class="text-red-800">¡Gracias </strong>por suscribirse!</p>
+                </div>
+            @endif
+        </div>
     </div>
+
+
+
     <!-- Pie de pagina -->
     <x-footer></x-footer>
 
