@@ -1,4 +1,4 @@
-@section('title', 'Detalles del Curso | LeConcaseé')
+@section('title', 'Detalles del Curso | Le Concassé')
 <div>
     <div class="text-sm sm:text-base font-semibold py-2 shadow">
 

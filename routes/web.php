@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EnvioCorreos;
 use App\Http\Controllers\IndexController;
 use App\Livewire\Admin\CrearAdmincursos;
 use App\Livewire\Admin\CrearAdminrequisitos;
@@ -83,3 +84,5 @@ route::get('detallevento/{evento}', DetalleEvento::class)->name('detallevento');
 route::get('admin_slides', IndexAdminslide::class)->name('admin_slides');
 
 route::get('contacto', IndexContactanos::class)->name('contacto');
+
+Route::post('contactanos', [IndexContactanos::class, 'contactousuario'])->name('contactanos');

@@ -67,15 +67,18 @@
                 </div>
             </div>
 
-            <div class="flex items-center justify-center flex-wrap max-w-7xl mx-auto px-2 text-4xl">
+            <div class="max-w-7xl mx-auto p-2 text-2xl">
 
-                <a href="{{ route('contacto') }}" class="flex flex-col items-center justify-center rounded border border-transparent
-                 hover:bg-gray-50 hover:border-gray-200 active:border-gray-300  p-4">
-                    <div
-                        class="flex items-center justify-center bg-red-800 text-white rounded-full w-16 h-16 text-center">
-                        <i class="fa-regular fa-envelope"></i>
+                <a href="{{ route('contacto') }}"
+                    class="inline-flex items-center justify-center hover:bg-transparent hover:text-red-900 rounded-full 
+                    border-2 border-red-900 bg-red-900 text-white px-6 py-2 transition">
+                    
+                    <i class="fa-solid fa-envelope"></i>
+
+                    <div class="text-left">
+                        <p class="uppercase text-xs ml-4 font-extralight leading-5">háblanos aquí</p>
+                        <p class="text-xl font-bold ml-4 leading-5">Contáctanos</p>
                     </div>
-                    <p class="uppercase text-sm text-red-700">Habla con nosotros</p>
                 </a>
 
             </div>
