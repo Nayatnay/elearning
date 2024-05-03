@@ -27,7 +27,7 @@
 
                 <div class="mt-4">
                     <x-label for="mensaje" value="{{ __('Mensaje') }}" />
-                    <textarea name="mensaje" id="editor" class="block mt-1 w-full rounded"></textarea>
+                    <textarea name="mensaje" id="editor" class="mt-1"></textarea>
                     <x-input-error for="mensaje" />
                 </div>
 
@@ -85,5 +85,7 @@
             });
     </script>
     <!-- ////////// -->
+
+    
 
 </div>

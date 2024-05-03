@@ -18,8 +18,7 @@
 </head>
 <body>
     <h1>¡Hola! </h1>
-    <p>Me llamo <strong>{{$nombre}}</strong></p>
-    <p>Mi correo <strong>{{$email}}</strong></p>
+    <p>Me llamo <strong>{{$nombre}}</strong> - Mi e ,-mail <strong>{{$email}}</strong></p>
     <br>
     <div>
         {!! $mensaje !!}
