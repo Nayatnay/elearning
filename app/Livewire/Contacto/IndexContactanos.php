@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 
 use Livewire\Component;
-
 class IndexContactanos extends Component
 {
     public $info;

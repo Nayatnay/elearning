@@ -60,6 +60,7 @@ route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurs
 route::get('clasesdelcurso/{curso}/{clase}/{inscrito}', ClasesCurso::class)->name('clasesdelcurso');
 route::get('miscursos', MisCursos::class)->name('miscursos');
 route::get('index_empleos', IndexEmpleos::class)->name('index_empleos');
+Route::post('solicitud_empleo', [IndexEmpleos::class, 'solicitud'])->name('solicitud_empleo');
 
 //Rutas de admninistracion
 route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');

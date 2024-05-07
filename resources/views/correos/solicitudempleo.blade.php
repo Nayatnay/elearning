@@ -18,13 +18,10 @@
 </head>
 <body>
     <h1>¡Hola! </h1>
-    <p>Me llamo <strong>{{$nombre}}</strong> - Mi e-mail <strong>{{$email}}</strong></p>
+    <p>Me llamo <strong>{{$nombre}}</strong></p>
+    <p>{{$email}} - {{$telf}} </p>
     <br>
-    <div>
-        {{-- el uso de los signos de admiracion y lasa llaves simples permite moistrar el mensaje
-        con el formato dado en el CKEDITOR --}}
-        {!! $mensaje !!}
-        
-    </div>
+    <p>Ver CV en adjunto - {{ $archivo }}</p>
+    
 </body>
 </html>

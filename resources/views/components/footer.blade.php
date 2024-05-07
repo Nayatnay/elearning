@@ -70,8 +70,8 @@
             <div class="max-w-7xl mx-auto p-2 text-2xl">
 
                 <a href="{{ route('contacto') }}"
-                    class="inline-flex items-center justify-center hover:bg-transparent hover:text-red-900 rounded-full 
-                    border-2 border-red-900 bg-red-900 text-white px-6 py-2 transition">
+                    class="inline-flex items-center justify-center hover:bg-transparent hover:text-red-800 rounded-full 
+                    border-2 border-red-800 bg-red-800 text-white px-6 py-2 transition">
                     
                     <i class="fa-solid fa-envelope"></i>
 
