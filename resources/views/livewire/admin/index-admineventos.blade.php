@@ -31,7 +31,7 @@
 
                             @foreach ($eventos as $evento)
                                 <tr class="h-16 hover:bg-gray-50">
-                                    <td class="w-10 max-w-[64px] pl-2">
+                                    <td class="w-6 max-w-[40px] p-2">
                                         <img src="{{ asset('/storage/eventos/' . $evento->imagen) }}" alt=""
                                             title="" class="rounded w-full">
                                     </td>
@@ -57,6 +57,13 @@
                                         <a href="{{ route('selec_parrafos', $evento) }}" title="Párrafos descriptivos"
                                             class="p-2 border border-transparent rounded-lg hover:border-gray-800">
                                             <i class="fa-solid fa-paragraph"></i>
+                                        </a>
+                                    </td>
+
+                                    <td class="w-10 text-center">
+                                        <a href="#" wire:click="notificacion({{$evento}})" title="Notificar a suscriptores"
+                                            class="p-2 border border-transparent rounded-lg hover:border-gray-800">
+                                            <i class="fa-solid fa-share-nodes"></i>
                                         </a>
                                     </td>
 

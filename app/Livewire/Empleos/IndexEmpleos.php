@@ -3,6 +3,7 @@
 namespace App\Livewire\Empleos;
 
 use App\Mail\SolicitudempleoMailable;
+use BaconQrCode\Renderer\Path\Path;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
@@ -22,15 +23,21 @@ class IndexEmpleos extends Component
 
     public function solicitud(Request $request)
     {
-        //$url = Storage::url($request->archivo);
-        //dd($request->archivo);
+        $request->validate([
+            'archivo' => "required|mimes:pdf|max:10000",
+        ]);
 
         $nombre = $request->nombre;
         $email = $request->email;
         $telf = $request->telf;
         $fechanac = $request->fechanac;
-        $archivo =$request->archivo;
+        $archivo = $request->archivo; 
+        $filename = $archivo->getClientOriginalName();//toma el nombre del archivo tal como esta en el disco
 
+        $archivo->storeAs('cv', $filename); //Recibe la ruta o carpeta donde se guarda, nombre del archivo y el disco donde se ecuentra
+        
+        $archivo = $filename;
+        
         $correo = new SolicitudempleoMailable($nombre, $email, $telf, $fechanac, $archivo);
         Mail::to('soporte@leconcasse.com')->send($correo);
 

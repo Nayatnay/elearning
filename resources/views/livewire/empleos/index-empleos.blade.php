@@ -2,12 +2,13 @@
 <div>
     <div class="max-w-7xl mx-auto py-10 px-4 lg:px-8">
         <div class="md:w-1/2 mx-auto">
-            <form method="POST" action="{{ route('solicitud_empleo') }}" enctype="multipart/form-data">
+            <form method="POST" action="{{ route('solicitud_empleo') }}" onsubmit="ani()" enctype="multipart/form-data">
                 @csrf
 
                 <div class="mt-4">
                     <p class="font-bold text-4xl">Formulario de solicitud de empleo</p>
-                    <p class="font-light">Rellena el formulario, carga tu CV en formato PDF y envía</p>
+                    <p class="font-medium text-gray-700 text-base">Rellena el formulario, carga tu CV en formato PDF y
+                        envía</p>
                 </div>
 
                 <div class="mt-8">
@@ -39,48 +40,53 @@
 
                 <div class="mt-8 ">
 
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center ">
                         <div class="mr-4">
                             <label for="{{ $identificador }}" onclick="myfunction()"
-                                class="bg-red-800 text-white px-4 py-1 rounded text-sm cursor-pointer hover:bg-red-700">Cargar
-                                CV</label>
+                                class="flex items-center bg-red-800 text-white px-3 py-1 rounded-md text-sm
+                                 cursor-pointer hover:bg-red-700 font-medium uppercase">cargar
+                                <i class="fa-regular fa-file-pdf ml-2 text-base"></i>
+                            </label>
                         </div>
                         <div>
-                            <x-button class="">{{ __('Enviar') }}</x-button>
+                            <x-button class="" id="myButton">{{ __('Enviar solicitud') }}</x-button>
                         </div>
 
-                    </div>
-                    <div class="mt-4 text-orange-600 text-sm ">
-                        @if ($archivo)
-                            <p id="fileName"></p>
-                        @endif
                     </div>
 
                     @if (session('info'))
-                        <p class="mensaje text-sm font-bold text-orange-600">
+                        <p class="mensaje mt-4 text-sm font-bold text-orange-600">
                             Su información fue enviada satisfactoriamente
                         </p>
                     @endif
 
-                    <div wire:loading wire:target="archivo" class="w-full mt-4 text-xs font-medium text-orange-600">
-                        <strong>¡Cargando Archivo! </strong>
-                        <span>Espere mientras se carga el archivo...</span>
+                    <div wire:loading wire:target="archivo" class="w-full mt-4 text-sm font-medium text-orange-600">
+                        <p><strong>¡Cargando Archivo! </strong>Espere mientras se carga el archivo...</p>
                     </div>
 
                     @if ($archivo)
-                        <div class="mt-4 block text-gray-800 font-bold text-xs" id="etiq">
-                            <p id="fileName"></p>
-                            <p>El Archivo fue cargado satisfactoriamente</p>
-                        </div>
+                        @if ($archivo->extension() == 'pdf')
+                            <div class="mt-4 block text-gray-800 font-bold text-sm" id="etiq">
+                                <p>El Archivo fue cargado satisfactoriamente</p>
+                            </div>
+                        @else
+                            <div class="mt-4 block text-red-700 font-bold text-sm" id="etiq">
+                                <p> <i class="fa-regular fa-file-pdf mx-2 text-lg"></i>No detectado</p>
+                            </div>
+                        @endif
+
                     @endif
 
+                    {{-- <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="archivo"
+                        wire:model="archivo" class="text-[8px]" required onChange="onLoadFile(event.target.files)" 
+                        accept="application/pdf"/>
+                    <x-input-error for="archivo" /> --}}
+
                     <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="archivo"
-                        wire:model="archivo" class="text-[8px]" required onChange="onLoadFile(event.target.files)" />
+                        wire:model="archivo" class="text-[8px]" required accept="application/pdf" />
                     <x-input-error for="archivo" />
 
                 </div>
-
-
 
             </form>
         </div>
@@ -89,10 +95,9 @@
     <!-- Pie de pagina -->
     <x-footer></x-footer>
 
-    <script>
+    {{-- <script>
         function onLoadFile(files) {
             document.getElementById('fileName').innerHTML = files[0].name
-
         }
     </script>
 
@@ -101,7 +106,7 @@
             document.getElementById("etiq").style.display = "none";
             document.getElementById('fileName') = document.getElementById('. $identificador .').files[0].name;
         }
-    </script>
+    </script> --}}
 
     <!-- MOSTRAR MENSAJE POR 3 SEGUNDOS -->
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
@@ -112,6 +117,16 @@
                 $(".mensaje").fadeOut(1500);
             }, 3000);
         });
+    </script>
+
+    <!-- OCULTAR BOTON SUBMIT Y MOSTRAR MENSAJE DENTRO DEL BOTON -->
+    <script>
+        function ani() {
+            const myButton = document.getElementById('myButton');
+            myButton.disabled = true;
+            myButton.style.opacity = 0.8;
+            myButton.textContent = 'Espere...';
+        }
     </script>
 
 

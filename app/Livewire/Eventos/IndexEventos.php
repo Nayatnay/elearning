@@ -46,7 +46,7 @@ class IndexEventos extends Component
     {
         $eventos = Evento::where('nombre', 'LIKE', '%' . $this->buscar . '%')
             ->orderby($this->sort, $this->direc)->paginate(5);
-    
+
         return view('livewire.eventos.index-eventos', compact('eventos'));
     }
 }

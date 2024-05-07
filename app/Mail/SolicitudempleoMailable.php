@@ -53,6 +53,6 @@ class SolicitudempleoMailable extends Mailable
      */
     public function attachments(): array
     {
-        return [Attachment::fromPath( $this->archivo),];
+        return [Attachment::fromPath('..\storage\app\cv/' . $this->archivo),];
     }
 }

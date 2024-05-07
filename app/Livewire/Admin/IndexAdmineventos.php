@@ -84,6 +84,11 @@ class IndexAdmineventos extends Component
         $this->dispatch('index-admineventos');
     }
 
+    public function notificacion($evento)
+    {
+        dd($evento);
+    }
+
     public function render()
     {
         $eventos = Evento::where('nombre', 'LIKE', '%' . $this->buscar . '%')

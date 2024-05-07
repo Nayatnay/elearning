@@ -122,7 +122,7 @@
             <p class="text-center text-2xl uppercase mb-5">Contenido</p>
 
             <div
-                class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 px-4 py-8 text-xl text-gray-700 font-medium">
+                class="grid gap-x-4 gap-y-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 px-4 py-8 text-xl text-gray-700 font-medium">
 
                 <div class="rounded-md border border-gray-300 bg-gray-100">
 
@@ -149,6 +149,15 @@
                             class="w-full rounded-tl-md rounded-tr-md">
                         <p class="p-4">
                             Eventos y Noticias
+                        </p>
+                    </a>
+                </div>
+                <div class="rounded-md border border-gray-300 bg-gray-100">
+                    <a href="{{ route('index_empleos') }}">
+                        <img src="{{ asset('/img/empleos.jpg') }}" alt="" title=""
+                            class="w-full rounded-tl-md rounded-tr-md">
+                        <p class="p-4">
+                            Empleos
                         </p>
                     </a>
                 </div>

@@ -28,7 +28,7 @@
             @if ($eventos->count())
 
                 <div
-                    class="text-black grid gap-x-4 gap-y-4 md:gap-y-8 grid-cols-1 sm:grid-cols-2 
+                    class="text-black grid gap-4 md:gap-8 grid-cols-1 sm:grid-cols-2 
                     lg:grid-cols-3 xl:grid-cols-5 px-4 py-8 text-sm">
 
                     @foreach ($eventos as $evento)
@@ -52,6 +52,7 @@
                                         <i class="fa-solid fa-star"></i>
                                     </div>
                                 </div>
+                                
                             </a>
                         </div>
                     @endforeach
