@@ -161,15 +161,7 @@
                         </p>
                     </a>
                 </div>
-                {{-- <div class="rounded-md border border-gray-300 bg-gray-100">
-                    <a href="{{ route('inscripciones') }}">
-                        <img src="{{ asset('/img/inscripciones.jpg') }}" alt="" title=""
-                            class="w-full rounded-tl-md rounded-tr-md">
-                        <p class="p-4">
-                            Inscríbete
-                        </p>
-                    </a>
-                </div> --}}
+                
             </div>
         </div>
 
@@ -274,7 +266,7 @@
                 <!--Formulario de Suscripcion -->
                 <div
                     class="md:h-60 flex flex-col items-center justify-center border border-gray-400 rounded-2xl text-3xl md:text-4xl text-center px-4 py-10 bg-no-repeat bg-cover bg-center" 
-                    style="background-image:linear-gradient(rgba(237, 237, 237, 0.1), rgba(255, 244, 244, 0.1)), url(img/chef.jpg)">
+                    style="background-image:linear-gradient(rgba(237, 237, 237, 0.4), rgba(255, 244, 244, 0.4)), url(img/chef.jpg)">
                     <p class="font-black">Suscríbete a nuestro <strong class="text-red-800">boletín</strong></p>
                     <p class="text-base md:text-lg my-4 font-medium">¡Manténte al día! Recibe noticias sobre la
                         disponibilidad de nuestros cursos, nuevos eventos y ofertas exclusivas.</p>
@@ -293,7 +285,7 @@
                 <!--Suscriptor gracias -->
                 <div
                 class="md:h-60 flex flex-col items-center justify-center border border-gray-400 rounded-2xl text-3xl md:text-4xl text-center px-4 py-10 bg-no-repeat bg-cover bg-center" 
-                style="background-image:linear-gradient(rgba(237, 237, 237, 0.1, rgba(255, 244, 244, 0.1), url(img/chef.jpg)">
+                style="background-image:linear-gradient(rgba(237, 237, 237, 0.4), rgba(255, 244, 244, 0.4)), url(img/chef.jpg)">
                     <p class="font-black"><strong class="text-red-800">¡Gracias </strong>por suscribirse!</p>
                 </div>
             @endif

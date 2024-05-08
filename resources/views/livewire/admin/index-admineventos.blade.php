@@ -60,7 +60,7 @@
                                         </a>
                                     </td>
 
-                                    <td class="w-10 text-center">
+                                    <td class="w-10 text-center text-sky-600">
                                         <a href="#" wire:click="notificacion({{$evento}})" title="Notificar a suscriptores"
                                             class="p-2 border border-transparent rounded-lg hover:border-gray-800">
                                             <i class="fa-solid fa-share-nodes"></i>
