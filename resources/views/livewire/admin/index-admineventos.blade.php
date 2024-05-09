@@ -8,8 +8,16 @@
             @livewire('admin.crear-admineventos')
         </div>
     </div>
+    
+    @if (session('info'))
+        <div class="h-14 p-4 text-center font-bold text-sm">
+            <p class="mensaje">Enviando información a suscriptores</p>
+        </div>
+    @else
+        <div class="h-14 p-4 text-center font-bold text-sm"></div>
+    @endif
 
-    <div class="mt-8 p-4 max-w-screen-xl mx-auto">
+    <div class="mt-2 p-4 max-w-screen-xl mx-auto">
 
         <!-- Buscador -->
 
@@ -17,35 +25,35 @@
             <x-input type="text" wire:model.live="buscar" class="w-full" placeholder="Buscar en la lista" />
         </div>
 
-
         <!-- Tabla -->
 
         <div class="mt-10">
             @if ($eventos->count())
 
-                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-sm text-gray-600">
+                <div
+                    class="w-full p-2 min-h-0 overflow-auto rounded-xl border border-gray-800 bg-white text-sm text-gray-600">
 
-                    <table class="table-fixed  w-full rounded font-light text-left h-auto border-collapse">
+                    <table class="table-fixed  w-full rounded-xl font-light text-left h-auto border-collapse">
 
                         <tbody class="text-left">
 
                             @foreach ($eventos as $evento)
-                                <tr class="h-16 hover:bg-gray-50">
-                                    <td class="w-6 max-w-[40px] p-2">
+                                <tr class="h-16 hover:bg-gray-50 border-b border-gray-300">
+                                    <td class="w-14 min-w-14 md:w-6 md:min-w-6 p-2">
                                         <img src="{{ asset('/storage/eventos/' . $evento->imagen) }}" alt=""
                                             title="" class="rounded w-full">
                                     </td>
 
-                                    <td class="pl-2 w-48 min-w-48 font-bold uppercase">
-                                        {{ $evento->nombre }}
-                                    </td>
-
                                     @if ($evento->registrar == 1)
-                                        <td class="pl-2 w-48 min-w-48 font-bold uppercase">
-                                            Registro activo
+                                        <td class="pl-2 w-80 min-w-80" title="Evento">
+                                            {{ $evento->nombre }} <i
+                                                class="fa-solid fa-calendar-day ml-2 text-sky-600"></i>
                                         </td>
                                     @else
-                                        <td class="pl-2 w-48 min-w-48 font-bold uppercase"></td>
+                                        <td class="pl-2 w-80 min-w-80" title="Noticia">
+                                            {{ $evento->nombre }} <i
+                                                class="fa-solid fa-envelope-open-text ml-2 text-sky-600"></i>
+                                        </td>
                                     @endif
 
 
@@ -141,8 +149,8 @@
 
                     <div class="mt-4 min-h-32">
                         @if ($imagenva)
-                            <img src="{{ $imagenva->temporaryUrl() }}" class="w-full p-2 border border-zinc-500 rounded"
-                                width="240px">
+                            <img src="{{ $imagenva->temporaryUrl() }}"
+                                class="w-full p-2 border border-zinc-500 rounded" width="240px">
                         @else
                             <img src="{{ asset('../storage/eventos/' . $imagen) }}" alt="" title=""
                                 class="w-full p-2 border border-zinc-500 rounded" width="240px">
@@ -171,7 +179,7 @@
 
                     <div class="mt-8 flex items-center">
                         <x-input type="checkbox" name="registrar" id="registrar" wire:model="registrar" />
-                        <x-label for="registrar" value="{{ __('Con registro activo') }}" class="ml-2" />
+                        <x-label for="registrar" value="{{ __('Evento con registro activo') }}" class="ml-2" />
                         <x-input-error for="registrar" />
                     </div>
 
@@ -193,5 +201,16 @@
         </x-slot>
 
     </x-dialog-modal>
+
+    <!-- MOSTRAR MENSAJE POR 3 SEGUNDOS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            setTimeout(function() {
+                $(".mensaje").fadeOut(1500);
+            }, 3000);
+        });
+    </script>
 
 </div>

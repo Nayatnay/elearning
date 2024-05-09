@@ -16,22 +16,22 @@
         <div class="mt-10">
             @if ($inscripciones->count())
 
-                <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-sm text-gray-600">
+                <div class="w-full min-h-0 overflow-auto rounded-xl bg-white border p-2 border-gray-400 text-sm text-gray-600">
 
                     <table class="table-fixed  w-full rounded font-light text-left h-auto border-collapse">
 
                         <tbody class="text-left">
 
                             @foreach ($inscripciones as $inscripcion)
-                                <tr class="hover:bg-gray-50 active:bg-gray-300 border-b border-black h-16">
+                                <tr class="hover:bg-red-50 border-b border-gray-300 h-16">
 
-                                    <td class="pl-2 w-80 min-w-80 font-bold uppercase">
+                                    <td class="pl-2 w-64 min-w-64 font-bold uppercase">
                                         <p>{{ $inscripcion->user->name }}</p> 
                                         <p class="text-red-800 lowercase">{{ $inscripcion->user->email }}</p>
                                         <p class="">{{ $inscripcion->user->telf }}</p>
                                     </td>
 
-                                    <td class="pl-2 w-60 min-w-60 text-lg">
+                                    <td class="pl-2 w-60 min-w-60">
                                         {{ $inscripcion->curso->nombre }}
                                     </td>
 

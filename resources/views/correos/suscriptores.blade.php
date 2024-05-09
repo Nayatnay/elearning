@@ -11,65 +11,156 @@
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             font-size: 14px;
-            padding: 20px;
+            padding: 20px 60px;
             text-align: center;
         }
 
-        .blue {
-            color: blue
+        .nombre {
+            color: rgb(187, 187, 187);
+        }
+
+        .cuerpo {
+            background-color: rgb(137, 1, 1);
+            color: white;
+            padding: 40px;
+        }
+
+        .info {
+            background-color: white;
+            border-radius: 8px;
+            display: inline-block;
+            padding: 6px 20px;
+            text-decoration: none;
+            color: black
+        }
+
+        .del {
+            text-decoration: none;
+            color: white;
+        }
+
+        .tope {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgb(40, 40, 40);
+            padding: 20px 40px;
+        }
+
+        .tope2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background-color: rgb(40, 40, 40);
+            padding: 20px 40px;
+            color: white;
+            line-height: 1rem;
+
+        }
+
+        .lecon {
+            text-align: left;
         }
 
         .imagen {
-            width: 80px;
+            display: block;
         }
 
-        .nombre {
-            font-size: 14px;
-            color: cyan;
+        .imagen2 {
+            display: none;
         }
 
-        .boton {
-            padding: 6px;
-            background-color: rgb(79, 79, 79);
-            color: white;
-            border-radius: 50%;
+        @media screen and (max-width: 640px) {
+
+            body {
+                padding: 10px;
+            }
+
+            .tope {
+                padding: 10px;
+            }
+
+            .tope2 {
+                padding: 10px;
+            }
+
+            h2 {
+                font-size: 16px;
+            }
+
+            h1{
+                font-size: 18px;
+            }
+            .imagen {
+                display: none;
+            }
+
+            .imagen2 {
+                display: block;
+                width: 100%;
+            }
         }
     </style>
 
 </head>
 
 <body>
-    <div class="imagen">
-        <img src="{{ asset('/storage/eventos/' . $imagen) }}" alt="" title="" class="rounded w-full">
+
+    <div class="tope">
+        <img src="{{ $message->embed(public_path() . '/storage/eventos/' . $imagen) }}" alt="" title=""
+            width="64px" class="imagen">
+        <h2 class="nombre">{{ $nombre }}</h2>
     </div>
 
-    <h3 class="nombre">{{ ucwords($nombre) }}</h3>
-    
-    <h1>Te presentamos lo nuevo</h1>
-    
+    <div class="cuerpo">
+
+        <img src="{{ $message->embed(public_path() . '/storage/eventos/' . $imagen) }}" alt="" title=""
+        width="64px" class="imagen2">
+
+<br>
+        <h1>Te presentamos lo nuevo</h1>
+
+        <br>
+
+        <p>Desde ya podrás tener oportunidad de participar en nuestros eventos y mantenerte al día con las noticias de
+            tu Escuela de Cocina Le Concassé.</p>
+        <br>
+
+        <p>Hazlo todo ¡Fácil, rápido y seguro!</p>
+
+
+        <br>
+
+        <a href="#" class="info">Entérate ya</a>
+
+        <br>
+        <br>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, voluptas officia. Incidunt facilis
+            blanditiis
+            doloribus numquam labore? Tempore consectetur corrupti impedit perspiciatis harum suscipit aspernatur
+            molestias doloribus ab, quaerat aliquid.
+        </p>
+
+        <br>
+        <br>
+    </div>
+
+    <div class="tope2">
+        <div class="lecon">
+            <h2>LeConcassé</h2>
+        </div>
+        <a href="#" class="del">Eliminar suscripción</a>
+    </div>
+
+
+
     <br>
-    
-    <p>Desde ya podrás tener oportunidad de participar en nuestros eventos y mantenerte al día con las noticias de
-        tu Escuela de Cocina Le Concassé.</p>
-    <br>
-    
-    <p>Hazlo todo</p>
-    <p>¡Fácil, rápido y seguro!</p>
-    
     <br>
 
-    <a href="#" class="boton">Entérate ya</a>
 
-    <br>
 
-    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, voluptas officia. Incidunt facilis blanditiis
-        doloribus numquam labore? Tempore consectetur corrupti impedit perspiciatis harum suscipit aspernatur
-        molestias doloribus ab, quaerat aliquid.
-    </p>
 
-    <br>
 
-    <a href="#">Eliminar suscripción</a>
 
 
 

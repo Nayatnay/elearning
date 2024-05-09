@@ -49,34 +49,34 @@ Route::get('recetas', IndexRecetas::class)->name('recetas');
 Route::get('eventos', IndexEventos::class)->name('eventos');
 Route::get('inscripciones/{curso}', IndexInscripciones::class)->name('inscripciones');
 
-route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurso');
-route::get('clasesdelcurso/{curso}/{clase}/{inscrito}', ClasesCurso::class)->name('clasesdelcurso');
-route::get('miscursos', MisCursos::class)->name('miscursos');
-route::get('index_empleos', IndexEmpleos::class)->name('index_empleos');
+Route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurso');
+Route::get('clasesdelcurso/{curso}/{clase}/{inscrito}', ClasesCurso::class)->name('clasesdelcurso');
+Route::get('miscursos', MisCursos::class)->name('miscursos');
+Route::get('index_empleos', IndexEmpleos::class)->name('index_empleos');
 Route::post('solicitud_empleo', [IndexEmpleos::class, 'solicitud'])->name('solicitud_empleo');
 
 //Rutas de admninistracion
-route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');
-route::get('selec_requisitos/{curso}', SelecRequisitos::class)->name('selec_requisitos');
-route::get('selec_alcances/{curso}', SelecAlcances::class)->name('selec_alcances');
-route::get('selec_clases/{curso}', SelecClases::class)->name('selec_clases');
-route::get('inscritos/{curso}', VerInscritos::class)->name('inscritos');
-route::get('admin_validar', ValidarInscripcion::class)->name('admin_validar');
+Route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');
+Route::get('selec_requisitos/{curso}', SelecRequisitos::class)->name('selec_requisitos');
+Route::get('selec_alcances/{curso}', SelecAlcances::class)->name('selec_alcances');
+Route::get('selec_clases/{curso}', SelecClases::class)->name('selec_clases');
+Route::get('inscritos/{curso}', VerInscritos::class)->name('inscritos');
+Route::get('admin_validar', ValidarInscripcion::class)->name('admin_validar');
 
-route::get('admin_recetas', IndexAdminrecetas::class)->name('admin_recetas');
-route::get('selec_ingredientes/{receta}', SelecIngredientes::class)->name('selec_ingredientes');
-route::get('selec_indicaciones/{receta}', SelecIndicaciones::class)->name('selec_indicaciones');
-route::get('detallereceta/{receta}', RecetasDetalleReceta::class)->name('detallereceta');
+Route::get('admin_recetas', IndexAdminrecetas::class)->name('admin_recetas');
+Route::get('selec_ingredientes/{receta}', SelecIngredientes::class)->name('selec_ingredientes');
+Route::get('selec_indicaciones/{receta}', SelecIndicaciones::class)->name('selec_indicaciones');
+Route::get('detallereceta/{receta}', RecetasDetalleReceta::class)->name('detallereceta');
 
-route::get('admin_eventos', IndexAdmineventos::class)->name('admin_eventos');
-route::get('selec_parrafos/{evento}', SelecParrafos::class)->name('selec_parrafos');
-route::get('detallevento/{evento}', DetalleEvento::class)->name('detallevento');
+Route::get('admin_eventos', IndexAdmineventos::class)->name('admin_eventos');
+Route::get('selec_parrafos/{evento}', SelecParrafos::class)->name('selec_parrafos');
+Route::get('detallevento/{evento}', DetalleEvento::class)->name('detallevento');
 
-route::get('admin_slides', IndexAdminslide::class)->name('admin_slides');
+Route::get('admin_slides', IndexAdminslide::class)->name('admin_slides');
 
-route::get('admin_usuarios', IndexAdminusuarios::class)->name('admin_usuarios');
-route::get('ver_matricula/{usuario}', IndexAdminmatricula::class)->name('ver_matricula');
+Route::get('admin_usuarios', IndexAdminusuarios::class)->name('admin_usuarios');
+Route::get('ver_matricula/{usuario}', IndexAdminmatricula::class)->name('ver_matricula');
 
-route::get('contacto', IndexContactanos::class)->name('contacto');
+Route::get('contacto', IndexContactanos::class)->name('contacto');
 
 Route::post('contactanos', [IndexContactanos::class, 'contactousuario'])->name('contactanos');
