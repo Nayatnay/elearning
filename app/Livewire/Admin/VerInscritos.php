@@ -62,6 +62,10 @@ class VerInscritos extends Component
     {
         $curso = $this->curso;
 
+        $totinscritos = count(Inscripcion::where('id_curso', '=', $curso->id)
+        ->where('liberado', '=', 1)
+        ->where('updated_at', 'LIKE', '%' . $this->fecha . '%')->get());
+
         $inscritosm = count(Inscripcion::where('id_curso', '=', $curso->id)
             ->where('turno', '=', 'Mañana')->where('liberado', '=', 1)
             ->Where(function ($query) {
@@ -99,6 +103,6 @@ class VerInscritos extends Component
                 $query->where('updated_at', 'LIKE', '%' . $this->fecha . '%');
             })->orderBy($this->sort, $this->direc)->paginate(10, ['*'], 'online');
 
-        return view('livewire.admin.ver-inscritos', compact('curso', 'inscritosm', 'inscritost', 'inscritoso', 'manana', 'tarde', 'online'));
+        return view('livewire.admin.ver-inscritos', compact('curso', 'inscritosm', 'inscritost', 'inscritoso', 'manana', 'tarde', 'online', 'totinscritos'));
     }
 }

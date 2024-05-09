@@ -15,7 +15,7 @@ class IndexAdmineventos extends Component
     public $buscar, $evento;
     public $open_delete = false;
     public $open_edit = false;
-    public $identificador, $imagen, $nombre;
+    public $identificador, $imagen, $nombre, $registrar;
     public $imagenva;
     
     protected function rules()
@@ -23,6 +23,7 @@ class IndexAdmineventos extends Component
         return [
             'nombre' => 'required',
             'imagen' => 'required',
+            'registrar' => 'required',
         ];
     }
 
@@ -40,7 +41,7 @@ class IndexAdmineventos extends Component
 
     public function cancelar()
     {
-        $this->reset(['open_edit', 'nombre', 'imagen']);
+        $this->reset(['open_edit', 'nombre', 'imagen', 'registrar']);
         $this->identificador = rand();
     }
 
@@ -62,11 +63,20 @@ class IndexAdmineventos extends Component
         $this->evento = $evento;
         $this->nombre = $evento->nombre;
         $this->imagen = $evento->imagen;
+        if ($evento->registrar == 0)  
+        {
+            $this->registrar = null;          
+        } else{
+            $this->registrar = true;
+        } 
+        
         $this->open_edit = true;
     }
 
     public function update()
     {
+        //dd($this->registrar);
+
         if ($this->imagenva <> null) {
             $this->imagen = $this->imagenva;
             $fileName = time() . '.' . $this->imagen->extension();
@@ -74,12 +84,19 @@ class IndexAdmineventos extends Component
             $this->imagen = $fileName;
         }
 
+        if ($this->registrar == true)  
+        {
+            $this->registrar = 1;
+        } else{
+            $this->registrar = 0;
+        } 
+
         $validatedData = $this->validate();
         $this->evento->update($validatedData);
 
         $this->imagenva = null;
 
-        $this->reset(['open_edit', 'nombre', 'imagen']);  //cierra el modal y limpia los campos del formulario
+        $this->reset(['open_edit', 'nombre', 'imagen', 'registrar']);  //cierra el modal y limpia los campos del formulario
         $this->identificador = rand();
         $this->dispatch('index-admineventos');
     }

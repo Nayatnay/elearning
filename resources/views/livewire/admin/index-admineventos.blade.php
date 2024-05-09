@@ -3,7 +3,7 @@
     <div class="bg-gray-100 shadow sticky top-24 z-[100]">
         <div class="flex items-center justify-between px-4 md:px-8 py-3 max-w-screen-xl mx-auto">
             <h2 class="font-light">
-                {{ __('Administrar eventos') }}
+                {{ __('Administrar eventos y noticias') }}
             </h2>
             @livewire('admin.crear-admineventos')
         </div>
@@ -40,6 +40,15 @@
                                         {{ $evento->nombre }}
                                     </td>
 
+                                    @if ($evento->registrar == 1)
+                                        <td class="pl-2 w-48 min-w-48 font-bold uppercase">
+                                            Registro activo
+                                        </td>
+                                    @else
+                                        <td class="pl-2 w-48 min-w-48 font-bold uppercase"></td>
+                                    @endif
+
+
                                     <td class="w-10 text-center">
                                         <a href="#" title="Eliminar" wire:click="delete({{ $evento }})"
                                             class="p-2 border border-transparent rounded-lg hover:border-gray-800">
@@ -61,7 +70,8 @@
                                     </td>
 
                                     <td class="w-10 text-center text-sky-600">
-                                        <a href="#" wire:click="notificacion({{$evento}})" title="Notificar a suscriptores"
+                                        <a href="#" wire:click="notificacion({{ $evento }})"
+                                            title="Notificar a suscriptores"
                                             class="p-2 border border-transparent rounded-lg hover:border-gray-800">
                                             <i class="fa-solid fa-share-nodes"></i>
                                         </a>
@@ -131,8 +141,8 @@
 
                     <div class="mt-4 min-h-32">
                         @if ($imagenva)
-                            <img src="{{ $imagenva->temporaryUrl() }}"
-                                class="w-full p-2 border border-zinc-500 rounded" width="240px">
+                            <img src="{{ $imagenva->temporaryUrl() }}" class="w-full p-2 border border-zinc-500 rounded"
+                                width="240px">
                         @else
                             <img src="{{ asset('../storage/eventos/' . $imagen) }}" alt="" title=""
                                 class="w-full p-2 border border-zinc-500 rounded" width="240px">
@@ -159,8 +169,14 @@
                         <x-input-error for="nombre" />
                     </div>
 
+                    <div class="mt-8 flex items-center">
+                        <x-input type="checkbox" name="registrar" id="registrar" wire:model="registrar" />
+                        <x-label for="registrar" value="{{ __('Con registro activo') }}" class="ml-2" />
+                        <x-input-error for="registrar" />
+                    </div>
+
                 </div>
-                
+
             </div>
         </x-slot>
 

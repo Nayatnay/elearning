@@ -12,7 +12,7 @@ class CrearAdmineventos extends Component
 {
     use WithFileUploads, WithPagination;
 
-    public $identificador, $nombre, $imagen;
+    public $identificador, $nombre, $imagen, $registrar;
     public $open = false;
 
     protected $listeners = ['render'];
@@ -29,14 +29,20 @@ class CrearAdmineventos extends Component
 
     public function cancelar()
     {
-        $this->reset(['open', 'nombre', 'imagen']);
+        $this->reset(['open', 'nombre', 'imagen', 'registrar']);
         $this->identificador = rand();
     }
 
     public function save()
     {
-    
         $this->validate();       
+        
+        if ($this->registrar == true)  
+        {
+            $this->registrar = 1;
+        } else{
+            $this->registrar = 0;
+        }  
 
         $fileName = time() . '.' . $this->imagen->extension();
         $this->imagen->storeAs('public/eventos', $fileName);
@@ -44,9 +50,10 @@ class CrearAdmineventos extends Component
         Evento::create([
             'nombre' => $this->nombre,
             'imagen' => $fileName,
+            'registrar' => $this->registrar,
         ]);
 
-        $this->reset(['open', 'nombre', 'imagen']);
+        $this->reset(['open', 'nombre', 'imagen', 'registrar']);
         $this->identificador = rand(); // reemplaza el valor del identificador. Reseteará el nombre de la imagen seleccionada anteriormente
         return redirect()->route('admin_eventos');
     }

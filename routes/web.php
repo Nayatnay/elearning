@@ -2,9 +2,11 @@
 
 use App\Livewire\Admin\IndexAdmincursos;
 use App\Livewire\Admin\IndexAdmineventos;
+use App\Livewire\Admin\IndexAdminmatricula;
 use App\Livewire\Admin\IndexAdminrecetas;
 
 use App\Livewire\Admin\IndexAdminslide;
+use App\Livewire\Admin\IndexAdminusuarios;
 use App\Livewire\Admin\SelecAlcances;
 use App\Livewire\Admin\SelecClases;
 use App\Livewire\Admin\SelecIndicaciones;
@@ -71,6 +73,9 @@ route::get('selec_parrafos/{evento}', SelecParrafos::class)->name('selec_parrafo
 route::get('detallevento/{evento}', DetalleEvento::class)->name('detallevento');
 
 route::get('admin_slides', IndexAdminslide::class)->name('admin_slides');
+
+route::get('admin_usuarios', IndexAdminusuarios::class)->name('admin_usuarios');
+route::get('ver_matricula/{usuario}', IndexAdminmatricula::class)->name('ver_matricula');
 
 route::get('contacto', IndexContactanos::class)->name('contacto');
 

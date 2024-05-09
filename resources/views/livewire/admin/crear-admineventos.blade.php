@@ -1,14 +1,13 @@
 <div>
     <div class="cursor-point font-light ">
-        <p wire:click="$set('open', true)"
-            class="border-b-2 border-transparent hover:border-red-700 cursor-pointer">Crear Evento</p>
+        <p wire:click="$set('open', true)" class="border-b-2 border-transparent hover:border-red-700 cursor-pointer">Crear</p>
     </div>
 
     <!--Modal crear -->
     <x-dialog-modal wire:model="open">
 
         <x-slot name="title">
-            <p class="font-bold text-left pb-4 border-b text-zinc-800">Crear Nueva Evento</p>
+            <p class="font-bold text-left pb-4 border-b text-zinc-800">Crear Nueva Evento-Noticia</p>
         </x-slot>
 
         <x-slot name="content" class="">
@@ -40,13 +39,18 @@
                 </div>
 
                 <div class="w-full border p-4 bg-white rounded">
-                    
+
                     <div class="mb-4">
                         <x-label for="nombre" value="{{ __('Nombre') }}" />
-                        <x-input id="nombre" class="block mt-1 w-full" type="text" name="nombre" wire:model.defer="nombre"
-                        required
-                            autofocus />
+                        <x-input id="nombre" class="block mt-1 w-full" type="text" name="nombre"
+                            wire:model.defer="nombre" required autofocus />
                         <x-input-error for="nombre" />
+                    </div>
+
+                    <div class="mt-8 flex items-center">
+                        <x-input type="checkbox" name="registrar" id="registrar" wire:model.defer="registrar" />
+                        <x-label for="registrar" value="{{ __('Con registro activo') }}" class="ml-2"/>
+                        <x-input-error for="registrar" />
                     </div>
 
                 </div>

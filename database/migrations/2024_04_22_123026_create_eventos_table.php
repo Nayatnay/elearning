@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->string('imagen', 2048);
+            $table->integer('registrar');
             $table->timestamps();
         });
     }

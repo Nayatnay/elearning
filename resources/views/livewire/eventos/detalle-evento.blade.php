@@ -22,11 +22,18 @@
             <div class="min-w-[100px] md:min-w-[512px]">
                 <img src="{{ asset('/storage/eventos/' . $evento->imagen) }}" alt="" title=""
                     width="" class="rounded w-full">
+
+                @if ($evento->registrar == 1)
+                    <div class="mt-4 text-right text-xl">
+                        <a href="#" class="uppercase bg-red-800 text-white px-6 py-2 rounded-full">Regístrate</a>
+                    </div>
+                @endif
+
             </div>
 
             <div class="w-full md:px-6">
                 <p class="hidden md:block text-xl lg:text-2xl text-orange-700 uppercase">{{ $evento->nombre }}</p>
-                
+
                 @if ($parrafos->count())
                     <div class="mt-10 md:mt-4 text-sm md:text-base">
                         @foreach ($parrafos as $parrafo)
@@ -37,9 +44,10 @@
 
             </div>
 
+
         </div>
 
-        
+
     </div>
     <!-- Pie de pagina -->
     <x-footer></x-footer>

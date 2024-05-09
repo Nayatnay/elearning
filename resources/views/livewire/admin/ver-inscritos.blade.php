@@ -22,7 +22,7 @@
         <div class="flex items-center justify-between mt-4">
             
             <div class="text-2xl">
-                Inscritos {{date('m-Y', strtotime($fecha))}}
+                <p><strong class="text-red-700">{{$totinscritos}} Inscritos</strong>  {{date('m-Y', strtotime($fecha))}}</p>
             </div>
 
             <div>

@@ -89,20 +89,24 @@
                                         {{ __('Mis cursos') }}
                                     </x-dropdown-link>
 
+                                    <div class="block bg-red-800 w-full px-4 py-2 text-start text-sm leading-5 text-white border-b">
+                                        Administración
+                                    </div>
+
                                     <x-dropdown-link href="{{ route('admin_cursos') }}">
-                                        {{ __('Administrar Cursos') }}
+                                        {{ __('Cursos') }}
                                     </x-dropdown-link>
 
                                     <x-dropdown-link href="{{ route('admin_recetas') }}">
-                                        {{ __('Administrar Recetas') }}
+                                        {{ __('Recetas') }}
                                     </x-dropdown-link>
 
                                     <x-dropdown-link href="{{ route('admin_eventos') }}">
-                                        {{ __('Administrar Eventos') }}
+                                        {{ __('Eventos y noticias') }}
                                     </x-dropdown-link>
 
                                     <x-dropdown-link href="{{ route('admin_slides') }}">
-                                        {{ __('Administrar Diapositivas') }}
+                                        {{ __('Diapositivas') }}
                                     </x-dropdown-link>
 
                                     {{-- <x-dropdown-link href="{{ route('admin_requisitos') }}">
@@ -119,6 +123,10 @@
 
                                     <x-dropdown-link href="{{ route('admin_validar') }}">
                                         {{ __('Validaciones') }}
+                                    </x-dropdown-link>
+
+                                    <x-dropdown-link href="{{ route('admin_usuarios')}}">
+                                        {{ __('Usuarios') }}
                                     </x-dropdown-link>
 
                                     <div class="border-t border-gray-200"></div>
@@ -192,21 +200,24 @@
                         href="{{ route('miscursos') }}" data-turbo="false">
                         Mis cursos
                     </a>
+                    <div class="block bg-red-800 w-full px-4 py-2 text-start text-sm leading-5 text-white border-b">
+                        Administración
+                    </div>
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_cursos') }}" data-turbo="false">
-                        Administrar Cursos
+                        Cursos
                     </a>
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_recetas') }}" data-turbo="false">
-                        Administrar Recetas
+                        Recetas
                     </a>
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_eventos') }}" data-turbo="false">
-                        Administrar Eventos
+                        Eventos y noticias
                     </a>
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                     href="{{ route('admin_slides') }}" data-turbo="false">
-                    Administrar Diapositivas
+                    Diapositivas
                 </a>
 
                     {{-- <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
@@ -224,6 +235,10 @@
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_validar') }}" data-turbo="false">
                         Validaciones
+                    </a>
+                    <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
+                        href="{{ route('admin_usuarios') }}" data-turbo="false">
+                        usuarios
                     </a>
                     <form method="POST" action="{{ route('logout') }}" x-data>
                         @csrf

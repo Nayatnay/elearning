@@ -83,7 +83,7 @@
     <x-confirmation-modal wire:model="open">
 
         <x-slot name="title">
-            Esta acción no podrá ser reversada
+            Con esta acción indica que ha recibido el pago total del curso seleccionado.
         </x-slot>
 
         <x-slot name="content">
@@ -106,7 +106,7 @@
     <x-confirmation-modal wire:model="open_cancel">
 
         <x-slot name="title">
-            Esta acción no podrá ser reversada
+            Con esta acción indica que NO ha recibido el pago correspondiente del curso seleccionado. El curso continuará bloqueado para el usuario.
         </x-slot>
 
         <x-slot name="content">

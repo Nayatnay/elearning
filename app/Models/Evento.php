@@ -13,6 +13,7 @@ class Evento extends Model
     protected $fillable = [
         'nombre',
         'imagen',
+        'registrar'
     ];
 
     //Relacion uno a muchos
