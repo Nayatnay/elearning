@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Mail\SuscripcionesMailable;
 use App\Models\Evento;
+use App\Models\Suscripcion;
 use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithPagination;
@@ -17,7 +18,7 @@ class IndexAdmineventos extends Component
     public $buscar, $evento;
     public $open_delete = false;
     public $open_edit = false;
-    public $identificador, $imagen, $nombre, $registrar;
+    public $identificador, $imagen, $nombre, $email, $registrar;
     public $imagenva;
 
     protected function rules()
@@ -107,9 +108,21 @@ class IndexAdmineventos extends Component
 
         $nombre = $this->evento->nombre;
         $imagen = $this->evento->imagen;
-        //dd($nombre);
-        $correo = new SuscripcionesMailable($imagen, $nombre);
-        Mail::to('soporte@leconcasse.com')->send($correo);
+        /*
+        $suscriptores = Suscripcion::all();
+        if ($suscriptores <> null) {
+            //dd($suscriptores);
+            foreach ($suscriptores as $suscrip) {
+                $correo = new SuscripcionesMailable($imagen, $nombre);
+                Mail::to($suscrip->email)->send($correo);
+            }
+            return redirect()->route('admin_eventos')->with('info', 'ok');
+        }
+        */
+        $email = "nayatnay@gmail.com";
+
+        $correo = new SuscripcionesMailable($imagen, $nombre, $email);
+        Mail::to('lecon@leconcasee.com')->send($correo);
 
         return redirect()->route('admin_eventos')->with('info', 'ok');
     }

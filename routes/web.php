@@ -28,6 +28,7 @@ use App\Livewire\Eventos\IndexEventos;
 use App\Livewire\Inscripciones\IndexInscripciones;
 use App\Livewire\Recetas\DetalleReceta as RecetasDetalleReceta;
 use App\Livewire\Recetas\IndexRecetas;
+use App\Livewire\Suscripcion\PreferenciaSuscripcion;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -54,6 +55,8 @@ Route::get('clasesdelcurso/{curso}/{clase}/{inscrito}', ClasesCurso::class)->nam
 Route::get('miscursos', MisCursos::class)->name('miscursos');
 Route::get('index_empleos', IndexEmpleos::class)->name('index_empleos');
 Route::post('solicitud_empleo', [IndexEmpleos::class, 'solicitud'])->name('solicitud_empleo');
+
+Route::get('preferencia/{email}', PreferenciaSuscripcion::class)->name('preferencia');
 
 //Rutas de admninistracion
 Route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');

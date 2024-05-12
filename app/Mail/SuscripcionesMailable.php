@@ -12,14 +12,15 @@ use Illuminate\Queue\SerializesModels;
 class SuscripcionesMailable extends Mailable
 {
     use Queueable, SerializesModels;
-    public $imagen, $nombre;
+    public $imagen, $nombre, $email;
     /**
      * Create a new message instance.
      */
-    public function __construct($imagen, $nombre)
+    public function __construct($imagen, $nombre, $email)
     {
         $this->imagen = $imagen;
         $this->nombre = $nombre;
+        $this->email = $email;
     }
 
     /**
@@ -28,7 +29,7 @@ class SuscripcionesMailable extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Suscripciones Mailable',
+            subject: 'Suscripciones',
         );
     }
 

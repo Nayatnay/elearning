@@ -64,10 +64,12 @@
 
         .imagen {
             display: block;
+            border-radius: 6px;
         }
 
         .imagen2 {
             display: none;
+            border-radius: 6px;
         }
 
         @media screen and (max-width: 640px) {
@@ -88,9 +90,10 @@
                 font-size: 16px;
             }
 
-            h1{
+            h1 {
                 font-size: 18px;
             }
+
             .imagen {
                 display: none;
             }
@@ -114,10 +117,12 @@
 
     <div class="cuerpo">
 
-        <img src="{{ $message->embed(public_path() . '/storage/eventos/' . $imagen) }}" alt="" title=""
-        width="64px" class="imagen2">
+        <p>Estimado Suscriptor</p>
 
-<br>
+        <img src="{{ $message->embed(public_path() . '/storage/eventos/' . $imagen) }}" alt="" title=""
+            width="64px" class="imagen2">
+
+
         <h1>Te presentamos lo nuevo</h1>
 
         <br>
@@ -131,7 +136,7 @@
 
         <br>
 
-        <a href="#" class="info">Entérate ya</a>
+        <a href="{{ route('eventos') }}" class="info">Entérate ya</a>
 
         <br>
         <br>
@@ -149,20 +154,11 @@
         <div class="lecon">
             <h2>LeConcassé</h2>
         </div>
-        <a href="#" class="del">Eliminar suscripción</a>
+        <a href="{{ route('preferencia', $email) }}" class="del">Eliminar suscripción</a>
     </div>
 
-
-
     <br>
     <br>
-
-
-
-
-
-
-
 
 </body>
 
