@@ -180,7 +180,7 @@
 
                     <a href="{{ route('register') }}">
                         <div
-                            class="md:inline-block my-8 px-12 py-2 border-2 border-lime-400 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800  text-center rounded-full ">
+                            class="md:inline-block my-8 px-12 py-2 border-2 border-gray-300 bg-gradient-to-r from-lime-500 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800  text-center rounded-full ">
                             <p class="font-bold text-2xl ">Regístrate aquí</p>
 
                         </div>

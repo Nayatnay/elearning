@@ -21,10 +21,8 @@ class PreferenciaSuscripcion extends Component
         if ($suscripcion <> null) {
             $suscripcion->delete();
         }
-        return redirect()->route('dashboard');
+        return redirect()->route('debaja');
     }
-
-
 
     public function render()
     {

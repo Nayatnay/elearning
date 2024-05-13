@@ -58,6 +58,10 @@ Route::post('solicitud_empleo', [IndexEmpleos::class, 'solicitud'])->name('solic
 
 Route::get('preferencia/{email}', PreferenciaSuscripcion::class)->name('preferencia');
 
+Route::get('debaja', function () {
+    return view('debaja');
+})->name('debaja');
+
 //Rutas de admninistracion
 Route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');
 Route::get('selec_requisitos/{curso}', SelecRequisitos::class)->name('selec_requisitos');
@@ -83,3 +87,4 @@ Route::get('ver_matricula/{usuario}', IndexAdminmatricula::class)->name('ver_mat
 Route::get('contacto', IndexContactanos::class)->name('contacto');
 
 Route::post('contactanos', [IndexContactanos::class, 'contactousuario'])->name('contactanos');
+
