@@ -118,7 +118,7 @@
     <div class="cuerpo">
 
         <p>Estimado Suscriptor</p>
-
+        
         <img src="{{ $message->embed(public_path() . '/storage/eventos/' . $imagen) }}" alt="" title=""
             width="64px" class="imagen2">
 
@@ -154,7 +154,7 @@
         <div class="lecon">
             <h2>LeConcassé</h2>
         </div>
-        <a href="{{ route('preferencia', $email) }}" class="del">Eliminar suscripción</a>
+        <a href="{{ route('preferencia', $email) }}" class="del">Eliminar suscripción </a>
     </div>
 
     <br>

@@ -9,9 +9,11 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class SuscripcionesMailable extends Mailable
+class SuscripcionesMailable extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
+    public $tries = 3;
+    public $backoff = 3;
     public $imagen, $nombre, $email;
     /**
      * Create a new message instance.
@@ -21,6 +23,7 @@ class SuscripcionesMailable extends Mailable
         $this->imagen = $imagen;
         $this->nombre = $nombre;
         $this->email = $email;
+        $this->afterCommit();
     }
 
     /**

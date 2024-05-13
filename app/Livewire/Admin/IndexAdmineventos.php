@@ -108,23 +108,17 @@ class IndexAdmineventos extends Component
 
         $nombre = $this->evento->nombre;
         $imagen = $this->evento->imagen;
-        /*
+        
         $suscriptores = Suscripcion::all();
         if ($suscriptores <> null) {
-            //dd($suscriptores);
             foreach ($suscriptores as $suscrip) {
-                $correo = new SuscripcionesMailable($imagen, $nombre);
-                Mail::to($suscrip->email)->send($correo);
+                $email = $suscrip->email;
+                $correo = new SuscripcionesMailable($imagen, $nombre, $email);
+                Mail::to($email)->send($correo);
             }
             return redirect()->route('admin_eventos')->with('info', 'ok');
         }
-        */
-        $email = "nayatnay@gmail.com";
-
-        $correo = new SuscripcionesMailable($imagen, $nombre, $email);
-        Mail::to('lecon@leconcasee.com')->send($correo);
-
-        return redirect()->route('admin_eventos')->with('info', 'ok');
+        
     }
 
     public function render()
