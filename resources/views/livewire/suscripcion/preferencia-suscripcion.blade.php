@@ -20,7 +20,7 @@
                 <a href="#" wire:click="anular" class="px-6 py-2 rounded-full border-2 bg-red-800 hover:bg-red-700 text-white">No quiero recibir ningún tipo de email promocional</a>
             </div>
             <div class="mt-5 mb-20 text-sm px-6">
-                <p>Importante: Despues de anular su suscripción deberá suscribirse nuevamente a nuestro boletín para recibir nuestros emails. </p>
+                <p>Importante: En caso de anular su suscripción actual, debe realizar una nueva para recibir nuevamente nuestros emails. </p>
             </div>
         </div>
 

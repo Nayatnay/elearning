@@ -14,7 +14,9 @@ class SuscripcionesMailable extends Mailable implements ShouldQueue
     use Queueable, SerializesModels;
     public $tries = 3;
     public $backoff = 3;
+    
     public $imagen, $nombre, $email;
+    
     /**
      * Create a new message instance.
      */
@@ -23,7 +25,6 @@ class SuscripcionesMailable extends Mailable implements ShouldQueue
         $this->imagen = $imagen;
         $this->nombre = $nombre;
         $this->email = $email;
-        $this->afterCommit();
     }
 
     /**

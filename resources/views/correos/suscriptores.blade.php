@@ -102,6 +102,10 @@
                 display: block;
                 width: 100%;
             }
+
+            .del{
+                font-size: 12px;
+            }
         }
     </style>
 

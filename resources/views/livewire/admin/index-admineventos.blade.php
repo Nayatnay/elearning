@@ -8,14 +8,12 @@
             @livewire('admin.crear-admineventos')
         </div>
     </div>
-    
-    @if (session('info'))
-        <div class="h-14 p-4 text-center font-bold text-sm">
-            <p class="mensaje">Enviando información a suscriptores</p>
-        </div>
-    @else
-        <div class="h-14 p-4 text-center font-bold text-sm"></div>
-    @endif
+
+
+    <div class="h-14 p-4 text-center font-bold text-base" >
+        <p class="hidden mensaje text-red-700 font-bold" id="msg">
+            Enviando información a los suscriptores <i class="fa-regular fa-paper-plane ml-2"></i></p>
+    </div>
 
     <div class="mt-2 p-4 max-w-screen-xl mx-auto">
 
@@ -79,7 +77,7 @@
 
                                     <td class="w-10 text-center text-sky-600">
                                         <a href="#" wire:click="notificacion({{ $evento }})"
-                                            title="Notificar a suscriptores"
+                                            onclick="mostrar()" title="Notificar a suscriptores"
                                             class="p-2 border border-transparent rounded-lg hover:border-gray-800">
                                             <i class="fa-solid fa-share-nodes"></i>
                                         </a>
@@ -202,7 +200,14 @@
 
     </x-dialog-modal>
 
-    <!-- MOSTRAR MENSAJE POR 3 SEGUNDOS -->
+
+    <script>
+        function mostrar() {
+            document.getElementById("msg").style.display = "block";
+        }
+    </script>
+
+    <!-- MOSTRAR MENSAJE POR 3 SEGUNDOS 
     <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
 
     <script type="text/javascript">
@@ -212,5 +217,5 @@
             }, 3000);
         });
     </script>
-
+-->
 </div>
