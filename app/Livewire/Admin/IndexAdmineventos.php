@@ -108,20 +108,16 @@ class IndexAdmineventos extends Component
 
         $nombre = $this->evento->nombre;
         $imagen = $this->evento->imagen;
-        
+
         $suscriptores = Suscripcion::all();
-        
+        //dd($suscriptores);
         if ($suscriptores <> null) {
             foreach ($suscriptores as $suscrip) {
-                //dd($suscrip->email);
                 $email = $suscrip->email;
                 $correo = new SuscripcionesMailable($imagen, $nombre, $email);
-                Mail::to($email)->send($correo);      
-                break;         
+                Mail::to($email)->send($correo);
             }
-            
         }
-        
     }
 
     public function render()

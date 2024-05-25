@@ -84,10 +84,10 @@
 
                     <input id="{{ $identificador }}" type="file" style="visibility:hidden" name="archivo"
                         wire:model="archivo" class="text-[8px]" required accept="application/pdf" />
-                    <x-input-error for="archivo" />
+                    
 
                 </div>
-
+                <x-input-error for="archivo" />
             </form>
         </div>
     </div>

@@ -1,7 +1,7 @@
 <div>
     <footer>
 
-        <div class="max-w-7xl mx-auto p-4 mb-20">
+        <div class="max-w-7xl mx-auto p-4 mb-10">
 
             <div class="">
                 <a href="https://magefesa.com.ve/" target="_blank" class="hover:underline flex flex-col items-center">

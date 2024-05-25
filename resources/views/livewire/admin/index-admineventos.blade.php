@@ -207,15 +207,4 @@
         }
     </script>
 
-    <!-- MOSTRAR MENSAJE POR 3 SEGUNDOS 
-    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
-
-    <script type="text/javascript">
-        $(document).ready(function() {
-            setTimeout(function() {
-                $(".mensaje").fadeOut(1500);
-            }, 3000);
-        });
-    </script>
--->
 </div>

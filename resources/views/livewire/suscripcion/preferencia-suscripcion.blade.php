@@ -16,10 +16,10 @@
                 </div>
             </div>
 
-            <div class="mt-20 text-base px-6">
-                <a href="#" wire:click="anular" class="px-6 py-2 rounded-full border-2 bg-red-800 hover:bg-red-700 text-white">No quiero recibir ningún tipo de email promocional</a>
+            <div class="mt-10 md:mt-20 text-sm md:text-base md:px-6">
+                <a href="#" wire:click="anular" class="px-6 py-2 rounded-full border-2 bg-red-800 hover:bg-red-700 text-white">No quiero recibir email promocional</a>
             </div>
-            <div class="mt-5 mb-20 text-sm px-6">
+            <div class="mt-5 mb-20 text-sm md:px-6">
                 <p>Importante: En caso de anular su suscripción actual, debe realizar una nueva para recibir nuevamente nuestros emails. </p>
             </div>
         </div>

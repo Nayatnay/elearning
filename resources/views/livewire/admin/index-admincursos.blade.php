@@ -17,10 +17,22 @@
             <x-input type="text" wire:model.live="buscar" class="w-full" placeholder="Buscar en la lista" />
         </div>
 
+        <div class="h-6 text-right">
+            @if ($tostada == 1)
+                <p class="bg-red-700 text-white px-4 py-1 rounded-full inline-block text-xs">Faltan requisitos</p>
+            @endif
+            @if ($tostada == 2)
+                <p class="bg-red-700 text-white px-4 py-1 rounded-full inline-block text-xs">Faltan alcances</p>
+            @endif
+            @if ($tostada == 3)
+                <p class="bg-red-700 text-white px-4 py-1 rounded-full inline-block text-xs">Faltan clases</p>
+            @endif
+        </div>
+
 
         <!-- Tabla -->
 
-        <div class="mt-10">
+        <div class="mt-8">
             @if ($cursos->count())
 
                 <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-sm text-gray-600">
@@ -30,7 +42,6 @@
                         <tbody class="text-left">
 
                             @foreach ($cursos as $curso)
-                            
                                 <tr class="h-16 hover:bg-gray-50">
 
                                     <td class="w-[64px] pl-2 cursor-pointer">
@@ -93,14 +104,14 @@
 
                                     @if ($curso->publicado == 0)
                                         <td class="w-14 text-center text-xs">
-                                            <a href="#" wire:click="postear({{$curso}})" title="Postear"
+                                            <a href="#" wire:click="postear({{ $curso }})" title="Postear"
                                                 class="p-2 border border-transparent rounded-lg hover:border-gray-800">
                                                 Postear
                                             </a>
                                         </td>
                                     @else
                                         <td class="w-14 text-center text-xs text-red-600">
-                                            <a href="#" wire:click="pausar({{$curso}})" title="Pausar"
+                                            <a href="#" wire:click="pausar({{ $curso }})" title="Pausar"
                                                 class="p-2 border border-transparent rounded-lg hover:border-red-500">
                                                 Pausar
                                             </a>

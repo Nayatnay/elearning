@@ -41,7 +41,7 @@ class IndexEmpleos extends Component
         $correo = new SolicitudempleoMailable($nombre, $email, $telf, $fechanac, $archivo);
         Mail::to('soporte@leconcasse.com')->send($correo);
 
-        return redirect()->route('index_empleos')->with('info', 'ok');
+        return redirect()->route('empleos')->with('info', 'ok');
     }
 
     public function render()

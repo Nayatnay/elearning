@@ -4,6 +4,7 @@ namespace App\Livewire\Admin;
 
 use App\Models\Alcance;
 use App\Models\Alcurso;
+use App\Models\Clacurso;
 use App\Models\Curso;
 use App\Models\Reqcurso;
 use App\Models\Requisito;
@@ -18,6 +19,7 @@ class IndexAdmincursos extends Component
     use WithFileUploads;
 
     public $buscar, $curso;
+    public $tostada;
     public $open_delete = false;
     public $open_edit = false;
     public $identificador, $imagen, $nombre, $descripcion, $costo;
@@ -34,11 +36,11 @@ class IndexAdmincursos extends Component
         ];
     }
 
-    public function mount(Curso $curso) 
+    public function mount(Curso $curso)
     {
         $this->curso = $curso;
         $this->identificador = rand(); // Lo estoy usando para eliminar el nombre de la imagen que se selecciono anteriormente en el modal
-        
+
     }
 
     public function updatingBuscar()
@@ -96,8 +98,24 @@ class IndexAdmincursos extends Component
 
     public function postear(Curso $curso)
     {
-        $curso->publicado = 1;
-        $curso->update();
+        $requisitos = Reqcurso::where('id_curso', '=', $curso->id)->first();
+        $alcances = Alcurso::where('id_curso', '=', $curso->id)->first();
+        $clases = Clacurso::where('id_curso', '=', $curso->id)->first();
+
+        $this->tostada = null;
+
+        if ($requisitos == null) {
+            $this->tostada = 1;
+        }elseif ($alcances == null) {
+            $this->tostada = 2;
+        }elseif ($clases == null) {
+            $this->tostada = 3;
+        }
+        
+        if ($requisitos <> null && $alcances <> null && $clases <> null) {
+            $curso->publicado = 1;
+            $curso->update();
+        }
     }
 
     public function pausar(Curso $curso)

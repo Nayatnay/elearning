@@ -41,7 +41,7 @@ Route::middleware([
     'verified',
 ])->group(function () {
     Route::get('/dashboard', function () {
-        return view('index');
+        return view('index')->with('sesi');
     })->name('dashboard');
 });
 
@@ -53,7 +53,7 @@ Route::get('inscripciones/{curso}', IndexInscripciones::class)->name('inscripcio
 Route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurso');
 Route::get('clasesdelcurso/{curso}/{clase}/{inscrito}', ClasesCurso::class)->name('clasesdelcurso');
 Route::get('miscursos', MisCursos::class)->name('miscursos');
-Route::get('index_empleos', IndexEmpleos::class)->name('index_empleos');
+Route::get('empleos', IndexEmpleos::class)->name('empleos');
 Route::post('solicitud_empleo', [IndexEmpleos::class, 'solicitud'])->name('solicitud_empleo');
 
 Route::get('preferencia/{email}', PreferenciaSuscripcion::class)->name('preferencia');

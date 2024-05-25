@@ -1,4 +1,5 @@
 <div>
+    
     <div id="default-carousel" class="relative" data-carousel="static">
         <!-- Carousel wrapper -->
         <div class=" overflow-hidden relative h-48 sm:h-64 xl:h-[430px]">
@@ -153,7 +154,7 @@
                     </a>
                 </div>
                 <div class="rounded-md border border-gray-300 bg-gray-100">
-                    <a href="{{ route('index_empleos') }}">
+                    <a href="{{ route('empleos') }}">
                         <img src="{{ asset('/img/empleos.jpg') }}" alt="" title=""
                             class="w-full rounded-tl-md rounded-tr-md">
                         <p class="p-4">
@@ -161,7 +162,7 @@
                         </p>
                     </a>
                 </div>
-                
+
             </div>
         </div>
 
@@ -180,7 +181,7 @@
 
                     <a href="{{ route('register') }}">
                         <div
-                            class="md:inline-block my-8 px-12 py-2 border-2 border-gray-300 bg-gradient-to-r from-lime-500 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800  text-center rounded-full ">
+                            class="md:inline-block my-8 px-12 py-2 border-2 border-gray-300 bg-gradient-to-r from-lime-800 via-lime-700 to-lime-800 text-white fontextra-light hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800  text-center rounded-full ">
                             <p class="font-bold text-2xl ">Regístrate aquí</p>
 
                         </div>
@@ -264,15 +265,19 @@
         <div class="max-w-7xl mx-auto p-4 my-10">
             @if ($info == 0)
                 <!--Formulario de Suscripcion -->
-                <div
+
+                {{-- <div
                     class="md:h-60 flex flex-col items-center justify-center border border-gray-400 rounded-2xl text-3xl md:text-4xl text-center px-4 py-10 bg-no-repeat bg-cover bg-center" 
-                    style="background-image:linear-gradient(rgba(237, 237, 237, 0.4), rgba(255, 244, 244, 0.4)), url(img/chef.jpg)">
+                    style="background-image:linear-gradient(rgba(237, 237, 237, 0.1), rgba(255, 244, 244, 0.4)), url(img/chef.jpg)">
+                --}}
+                <div
+                    class="my-10 md:h-60 flex flex-col items-center justify-center border-4 border-gray-200 rounded-2xl text-3xl md:text-4xl text-center px-4 py-10 bg-gray-400 text-white shadow shadow-gray-700">
                     <p class="font-black">Suscríbete a nuestro <strong class="text-red-800">boletín</strong></p>
-                    <p class="text-base md:text-lg my-4 font-medium">¡Manténte al día! Recibe noticias sobre la
+                    <p class="text-base md:text-lg my-4 font-normal">¡Manténte al día! Recibe noticias sobre la
                         disponibilidad de nuestros cursos, nuevos eventos y ofertas exclusivas.</p>
 
-                    <form action="" method="" wire:submit="arch"
-                        class="flex flex-col items-center justify-center md:flex-row">
+                    <form action="" method="" wire:submit="arch "
+                        class="flex flex-col items-center justify-center md:flex-row text-gray-800">
                         <x-input type="email" name="email" id="" wire:model.defer="email"
                             class="rounded-lg w-60 m-2" placeholder="Ingresa tu e-mail" required />
                         <input type="submit" value="Suscribir"
@@ -284,8 +289,7 @@
             @else
                 <!--Suscriptor gracias -->
                 <div
-                class="md:h-60 flex flex-col items-center justify-center border border-gray-400 rounded-2xl text-3xl md:text-4xl text-center px-4 py-10 bg-no-repeat bg-cover bg-center" 
-                style="background-image:linear-gradient(rgba(237, 237, 237, 0.4), rgba(255, 244, 244, 0.4)), url(img/chef.jpg)">
+                    class="my-10 md:h-60 flex flex-col items-center justify-center border-4 border-gray-200 rounded-2xl text-3xl md:text-4xl text-center px-4 py-10 bg-gray-400 text-white shadow shadow-gray-700">
                     <p class="font-black"><strong class="text-red-800">¡Gracias </strong>por suscribirse!</p>
                 </div>
             @endif
@@ -297,5 +301,4 @@
     <!-- Pie de pagina -->
     <x-footer></x-footer>
 
-    <script src="../path/to/flowbite/dist/flowbite.min.js"></script>
 </div>

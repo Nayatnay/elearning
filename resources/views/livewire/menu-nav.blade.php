@@ -21,10 +21,9 @@
 
         [
             'name' => 'Empleos',
-            'route' => route('index_empleos'),
-            'active' => request()->routeIs('index_empleos'),
+            'route' => route('empleos'),
+            'active' => request()->routeIs('empleos'),
         ],
-        
     ];
 @endphp
 <nav x-data="{ open: false }" class="bg-white border-b border-gray-100  shadow sticky top-0 z-[200]">
@@ -60,17 +59,26 @@
                 </button> --}}
                 @if (Route::has('login'))
                     @auth
+                    @php
+                        $explode = explode(' ', Auth::user()->name);
+                        $nombre = $explode[0];
+                    @endphp
                         <!-- Settings Dropdown -->
                         <div class="ms-3 relative">
                             <x-dropdown align="right" width="48">
                                 <x-slot name="trigger">
+                                    <div class="text-center">
+                                        <span class="inline-flex rounded-md my-1">
+                                            <button type="button"
+                                                class="w-8 h-8 text-xl bg-red-700 text-white rounded-full  hover:text-gray-200 focus:outline-none focus:bg-gray-300 active:bg-gray-300 focus:text-red-700 active:text-red-700 transition ease-in-out duration-150">
+                                                <i class="fa-solid fa-user"></i>
+                                            </button>
+                                        </span>
+                                        <p class="text-xs font-extralight">Hola {{ $nombre}}</p>
+                                        
+                                    </div>
 
-                                    <span class="inline-flex rounded-md">
-                                        <button type="button"
-                                            class="w-8 h-8 text-xl bg-red-700 text-white rounded-full  hover:text-gray-200 focus:outline-none focus:bg-gray-300 active:bg-gray-300 focus:text-red-700 active:text-red-700 transition ease-in-out duration-150">
-                                            <i class="fa-solid fa-user"></i>
-                                        </button>
-                                    </span>
+
 
                                 </x-slot>
 
@@ -78,7 +86,7 @@
                                     <!-- Account Management -->
 
                                     <div class="block px-4 py-2 text-sm text-red-700 border-b">
-                                        <p>Hola {{ Auth::user()->name }}
+                                        <p>{{ Auth::user()->name }}
                                     </div>
 
                                     <x-dropdown-link href="{{ route('profile.show') }}">
@@ -89,7 +97,8 @@
                                         {{ __('Mis cursos') }}
                                     </x-dropdown-link>
 
-                                    <div class="block bg-red-800 w-full px-4 py-2 text-start text-sm leading-5 text-white border-b">
+                                    <div
+                                        class="block bg-red-800 w-full px-4 py-2 text-start text-sm leading-5 text-white border-b">
                                         Administración
                                     </div>
 
@@ -125,7 +134,7 @@
                                         {{ __('Validaciones') }}
                                     </x-dropdown-link>
 
-                                    <x-dropdown-link href="{{ route('admin_usuarios')}}">
+                                    <x-dropdown-link href="{{ route('admin_usuarios') }}">
                                         {{ __('Usuarios') }}
                                     </x-dropdown-link>
 
@@ -141,6 +150,7 @@
                                     </form>
                                 </x-slot>
                             </x-dropdown>
+
                         </div>
                     @else
                         <!-- Session -->
@@ -216,9 +226,9 @@
                         Eventos y noticias
                     </a>
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
-                    href="{{ route('admin_slides') }}" data-turbo="false">
-                    Diapositivas
-                </a>
+                        href="{{ route('admin_slides') }}" data-turbo="false">
+                        Diapositivas
+                    </a>
 
                     {{-- <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('admin_requisitos') }}" data-turbo="false">

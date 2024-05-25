@@ -56,4 +56,5 @@ class SuscripcionesMailable extends Mailable implements ShouldQueue
     {
         return [];
     }
+
 }
