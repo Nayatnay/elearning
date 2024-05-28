@@ -75,6 +75,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Inscripcion', 'id_user');
     }
 
+    public function eventouser()
+    {
+        return $this->hasMany('App\Models\Eventouser', 'id_user');
+    }
+
     public function name(): Attribute
     {
         return new Attribute(

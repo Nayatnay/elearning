@@ -1,9 +1,9 @@
 <div>
     <footer>
 
-        <div class="max-w-7xl mx-auto p-4 mb-10">
+        <div class="max-w-7xl mx-auto p-4 mb-10 flex items-center justify-center">
 
-            <div class="">
+            <div class="inline-block">
                 <a href="https://magefesa.com.ve/" target="_blank" class="hover:underline flex flex-col items-center">
                     <img src="{{ asset('img/magefesa.png') }}" alt="" width="128px">
                     <p class="mt-1 uppercase text-[10px]">sitio oficial Patrocinador</p>

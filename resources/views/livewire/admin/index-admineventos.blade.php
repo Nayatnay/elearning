@@ -10,7 +10,7 @@
     </div>
 
 
-    <div class="h-14 p-4 text-center font-bold text-base" >
+    <div class="h-14 p-4 text-center font-bold text-base">
         <p class="hidden mensaje text-red-700 font-bold" id="msg">
             Enviando información a los suscriptores <i class="fa-regular fa-paper-plane ml-2"></i></p>
     </div>
@@ -68,12 +68,34 @@
                                             <i class="fa-solid fa-pen"></i> </a>
                                     </td>
 
-                                    <td class="w-10 text-center">
-                                        <a href="{{ route('selec_parrafos', $evento) }}" title="Párrafos descriptivos"
-                                            class="p-2 border border-transparent rounded-lg hover:border-gray-800">
-                                            <i class="fa-solid fa-paragraph"></i>
-                                        </a>
-                                    </td>
+                                    @if ($evento->registrar == 1)
+                                        <td class="w-10 text-center">
+                                            <a href="{{ route('selec_parrafos', $evento) }}"
+                                                title="Descripción del evento"
+                                                class="p-2 border border-transparent rounded-lg hover:border-gray-800">
+                                                <i class="fa-solid fa-rectangle-list"></i>
+                                            </a>
+                                        </td>
+                                    @else
+                                        <td class="w-10 text-center">
+                                            <a href="{{ route('selec_parrafos', $evento) }}"
+                                                title="Descripción del artículo o noticia"
+                                                class="p-2 border border-transparent rounded-lg hover:border-gray-800">
+                                                <i class="fa-solid fa-rectangle-list"></i>
+                                            </a>
+                                        </td>
+                                    @endif
+
+                                    @if ($evento->registrar == 1)
+                                        <td class="w-10 text-center">
+                                            <a href="{{ route('registrosev', $evento) }}" title="Inscritos"
+                                                class="p-2 border border-transparent rounded-lg hover:border-gray-800">
+                                                <i class="fa-solid fa-user-graduate"></i>
+                                            </a>
+                                        </td>
+                                    @else
+                                        <td class="w-10 text-center"></td>
+                                    @endif
 
                                     <td class="w-10 text-center text-sky-600">
                                         <a href="#" wire:click="notificacion({{ $evento }})"
@@ -177,7 +199,7 @@
 
                     <div class="mt-8 flex items-center">
                         <x-input type="checkbox" name="registrar" id="registrar" wire:model="registrar" />
-                        <x-label for="registrar" value="{{ __('Evento con registro activo') }}" class="ml-2" />
+                        <x-label for="registrar" value="{{ __('Requiere registro') }}" class="ml-2" />
                         <x-input-error for="registrar" />
                     </div>
 

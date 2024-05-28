@@ -94,7 +94,7 @@
                                     </x-dropdown-link>
 
                                     <x-dropdown-link href="{{ route('miscursos') }}">
-                                        {{ __('Mis cursos') }}
+                                        {{ __('Mis cursos y eventos') }}
                                     </x-dropdown-link>
 
                                     <div
@@ -208,7 +208,7 @@
                     </a>
                     <a class="block ps-3 pe-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-red-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-red-300 transition"
                         href="{{ route('miscursos') }}" data-turbo="false">
-                        Mis cursos
+                        Mis cursos y eventos
                     </a>
                     <div class="block bg-red-800 w-full px-4 py-2 text-start text-sm leading-5 text-white border-b">
                         Administración

@@ -6,71 +6,35 @@
             <div class="flex items-center">
                 <img src="{{ asset('/storage/eventos/' . $evento->imagen) }}" alt="" title="" width="56px"
                     class="hidden md:block rounded w-[60px]">
-                <p class="text-sm font-medium ml-4">{{ $evento->nombre }}</p>
+                <p class="text-sm font-medium ml-4 uppercase">{{ $evento->nombre }}</p>
             </div>
 
-            @livewire('admin.crear-adminparrafos', ['evento' => $evento->id])
+            {{-- @livewire('admin.crear-adminparrafos', ['evento' => $evento->id]) --}}
 
         </div>
 
     </div>
 
-    <div class="mt-4 p-4 max-w-screen-xl mx-auto">
+    <div class="mt-4 pt-4 px-4 pb-20 max-w-screen-xl mx-auto">
+
+        <x-retro></x-retro>
 
         <div>
-            <a href="{{ route('admin_eventos') }}"
-                class="px-2 py-1 text-red-700 border border-transparent rounded-lg hover:text-lime-700 hover:border-lime-700">
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
-        </div>
+            <form action="" wire:submit="actuinfo">
 
-        <div>
-            <!-- Tabla parrafos -->
+                <div class="mt-8 text-sm px-4 py-1 max-w-screen-xl mx-auto flex items-center justify-between">
+                    <p class="font-bold uppercase">Descripción del Evento, Artículo o noticia</p>
+                    <x-button id="myButton" title="Guardar" class="mx-1">
+                        <i class="text-lg fa-regular fa-floppy-disk"></i>
+                    </x-button>
+                </div>
 
-            <div class="mt-8 text-sm px-4 md:px-8 py-1 max-w-screen-xl mx-auto border-b border-gray-600">
-                <p class="font-bold uppercase">Párrafos descriptivos</p>
+                <div class="">
+                    <textarea name="info" id="editor"
+                        class="focus:border-gray-300 focus:ring-0 mt-1 w-full h-screen resize-none p-4 rounded-lg" wire:model="info"></textarea>
+                </div>
 
-            </div>
-
-            <div class="my-4">
-
-                @if ($parrafos->count())
-
-                    <div class="w-full p-1 min-h-0 overflow-auto rounded-lg text-base text-gray-600">
-
-                        <table class="table-fixed w-full rounded font-light text-left h-auto border-collapse">
-
-                            <tbody class="text-left">
-
-                                @foreach ($parrafos as $parrafo)
-                                    <tr class="h-8 hover:bg-gray-200 active:bg-gray-300">
-
-                                        <td class="px-2">{{ $parrafo->descripcion }}</td>
-
-                                        <td class="w-12 md:w-20 text-center">
-                                            <a href="#" title="Editar" wire:click="edit({{ $parrafo }})">
-                                                <i class="fa-solid fa-pen"></i>
-                                            </a>
-                                        </td>
-
-                                        <td class="w-12 md:w-20 text-center">
-                                            <a href="#" title="Eliminar" wire:click="delete({{ $parrafo }})">
-                                                <i class="fa-solid fa-trash"></i>
-                                            </a>
-                                        </td>
-
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                @else
-                    <div class="text-sm text-gray-700 sm:px-7 px-5 py-2 bg-white">
-                        <span>Nada para mostrar</span>
-                    </div>
-                @endif
-
-            </div>
+            </form>
         </div>
 
     </div>
@@ -88,8 +52,8 @@
 
             <div class="mb-4">
                 <x-label for="descripcion" value="{{ __('Descripción') }}" />
-                <x-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion" wire:model="descripcion"
-                    required autofocus />
+                <x-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion"
+                    wire:model="descripcion" required autofocus />
                 <x-input-error for="descripcion" />
             </div>
 

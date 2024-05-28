@@ -12,12 +12,7 @@
 
     <div class="mt-4 p-4 max-w-screen-xl mx-auto">
 
-        <div>
-            <a href="{{ route('admin_cursos') }}"
-                class="px-2 py-1 text-red-700 border border-transparent rounded-lg hover:text-lime-700 hover:border-lime-700">
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
-        </div>
+        <x-retro></x-retro>
 
         <div class="flex items-center justify-between mt-4">
             
@@ -65,11 +60,11 @@
                                 @foreach ($manana as $manan)
                                     <tr class="h-10">
 
-                                        <td class="px-2">{{ $manan->user->name }}</td>
-                                        <td class="px-2">{{ $manan->user->email }}</td>
-                                        <td class="px-2">{{ $manan->user->doc }}</td>
-                                        <td class="px-2">{{ $manan->user->telf }}</td>
-                                        <td class="px-2">{{ date('d-m-Y', strtotime($manan->updated_at)) }}</td>
+                                        <td class="w-40 px-2">{{ $manan->user->name }}</td>
+                                        <td class="w-60 px-2">{{ $manan->user->email }}</td>
+                                        <td class="w-20 px-2">{{ $manan->user->doc }}</td>
+                                        <td class="w-32 px-2">{{ $manan->user->telf }}</td>
+                                        <td class="w-32 px-2">{{ date('d-m-Y', strtotime($manan->updated_at)) }}</td>
 
                                         <td class="w-12 md:w-20 text-center">
                                             <a href="#" title="Cambiar de turno"
@@ -118,11 +113,11 @@
                                 @foreach ($tarde as $manan)
                                     <tr class="h-10">
 
-                                        <td class="px-2">{{ $manan->user->name }}</td>
-                                        <td class="px-2">{{ $manan->user->email }}</td>
-                                        <td class="px-2">{{ $manan->user->doc }}</td>
-                                        <td class="px-2">{{ $manan->user->telf }}</td>
-                                        <td class="px-2">{{ date('d-m-Y', strtotime($manan->updated_at)) }}</td>
+                                        <td class="w-40 px-2">{{ $manan->user->name }}</td>
+                                        <td class="w-60 px-2">{{ $manan->user->email }}</td>
+                                        <td class="w-20 px-2">{{ $manan->user->doc }}</td>
+                                        <td class="w-32 px-2">{{ $manan->user->telf }}</td>
+                                        <td class="w-32 px-2">{{ date('d-m-Y', strtotime($manan->updated_at)) }}</td>
 
                                         <td class="w-12 md:w-20 text-center">
                                             <a href="#" title="Cambiar de turno"
@@ -172,11 +167,11 @@
                                 @foreach ($online as $manan)
                                     <tr class="h-10">
 
-                                        <td class="px-2">{{ $manan->user->name }}</td>
-                                        <td class="px-2">{{ $manan->user->email }}</td>
-                                        <td class="px-2">{{ $manan->user->doc }}</td>
-                                        <td class="px-2">{{ $manan->user->telf }}</td>
-                                        <td class="px-2">{{ date('d-m-Y', strtotime($manan->updated_at)) }}</td>
+                                        <td class="w-40 px-2">{{ $manan->user->name }}</td>
+                                        <td class="w-60 px-2">{{ $manan->user->email }}</td>
+                                        <td class="w-20 px-2">{{ $manan->user->doc }}</td>
+                                        <td class="w-32 px-2">{{ $manan->user->telf }}</td>
+                                        <td class="w-32 px-2">{{ date('d-m-Y', strtotime($manan->updated_at)) }}</td>
 
                                         <td class="w-12 md:w-20 text-center">
                                             <a href="#" title="Cambiar de turno"

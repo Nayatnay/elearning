@@ -110,7 +110,7 @@ class IndexAdmineventos extends Component
         $imagen = $this->evento->imagen;
 
         $suscriptores = Suscripcion::all();
-        //dd($suscriptores);
+        
         if ($suscriptores <> null) {
             foreach ($suscriptores as $suscrip) {
                 $email = $suscrip->email;

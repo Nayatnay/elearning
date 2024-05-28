@@ -34,6 +34,35 @@
 
     </div>
 
+    <div class="max-w-7xl mx-auto px-4 pt-10 pb-20">
+
+        <p class="mt-4 text-2xl">Mis eventos inscritos</p>
+        
+        @if ($miseventos->count())         
+
+            <div
+                class="mt-4 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+
+                @foreach ($miseventos as $mievento)
+                    <a href="{{route('detallevento', $mievento )}}">
+
+                        <div class="">
+                            <img src="{{ asset('/storage/eventos/' . $mievento->evento->imagen) }}" alt=""
+                                title="" class="rounded-lg w-full h-48">
+                            <p class="text-ellipsis line-clamp-2 font-normal py-1">{{ $mievento->evento->nombre }}</p>
+                        </div>
+
+                    </a>
+                @endforeach
+            </div>
+        @else
+            <div class="mt-4 bg-white text-base font-semibold sm:px-10 px-5 py-2">
+                <span>No hay resultados</span>
+            </div>
+        @endif
+
+    </div>
+
     <!-- Pie de pagina -->
     <x-footer></x-footer>
 

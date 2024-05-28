@@ -15,7 +15,7 @@ use App\Livewire\Admin\SelecParrafos;
 use App\Livewire\Admin\SelecRequisitos;
 use App\Livewire\Admin\ValidarInscripcion;
 use App\Livewire\Admin\VerInscritos;
-
+use App\Livewire\Admin\VerRegistrosev;
 use App\Livewire\Contacto\IndexContactanos;
 use App\Livewire\Cursos\ClasesCurso;
 use App\Livewire\Cursos\DetalleCurso;
@@ -49,6 +49,7 @@ Route::get('cursos', IndexCursos::class)->name('cursos');
 Route::get('recetas', IndexRecetas::class)->name('recetas');
 Route::get('eventos', IndexEventos::class)->name('eventos');
 Route::get('inscripciones/{curso}', IndexInscripciones::class)->name('inscripciones');
+Route::get('registrosev/{evento}', VerRegistrosev::class)->name('registrosev');
 
 Route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurso');
 Route::get('clasesdelcurso/{curso}/{clase}/{inscrito}', ClasesCurso::class)->name('clasesdelcurso');

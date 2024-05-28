@@ -10,12 +10,7 @@
 
     <div class="mt-4 p-4 max-w-screen-xl mx-auto">
 
-        <div>
-            <a href="{{ route('admin_usuarios') }}"
-                class="px-2 py-1 text-red-700 border border-transparent rounded-lg hover:border-red-700">
-                <i class="fa-solid fa-arrow-left"></i>
-            </a>
-        </div>
+        <x-retro></x-retro>
 
         <p class="mt-4 px-4">Cursos matriculados</p>
 

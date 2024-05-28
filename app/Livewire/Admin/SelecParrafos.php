@@ -8,19 +8,21 @@ use Livewire\Component;
 
 class SelecParrafos extends Component
 {
-    public $evento, $parrafo, $descripcion;
+    public $evento, $parrafo, $descripcion, $info;
     public $open_edit = false;
 
     protected function rules()
     {
         return [
             'descripcion' => 'required',
+            'info' => 'required',
         ];
     }
 
     public function mount($evento)
     {
         $this->evento = Evento::find($evento);
+        $this->info = $this->evento->info;
     }
 
     public function cancelar()
@@ -49,6 +51,17 @@ class SelecParrafos extends Component
     {
         $parrafo->delete();
         $this->dispatch('selec-parrafos');
+    }
+
+    public function actuinfo()
+    {
+        //dd($this->evento);
+        //dd($this->info);
+        $this->evento->info = $this->info;
+        
+        $this->evento->update();
+        
+        return redirect(route('admin_eventos'));
     }
 
     public function render()

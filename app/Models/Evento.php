@@ -13,7 +13,8 @@ class Evento extends Model
     protected $fillable = [
         'nombre',
         'imagen',
-        'registrar'
+        'registrar',
+        'info'
     ];
 
     //Relacion uno a muchos
@@ -23,7 +24,11 @@ class Evento extends Model
         return $this->hasMany('App\Models\Parrevento', 'id_evento');
     }
 
-
+    public function eventouser()
+    {
+        return $this->hasMany('App\Models\Eventouser', 'id_evento');
+    }
+    
     public function nombre(): Attribute
     {
         return new Attribute(

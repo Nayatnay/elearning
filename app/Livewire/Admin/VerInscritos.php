@@ -89,7 +89,7 @@ class VerInscritos extends Component
             ->where('turno', '=', 'Mañana')->where('liberado', '=', 1)
             ->Where(function ($query) {
                 $query->where('updated_at', 'LIKE', '%' . $this->fecha . '%');
-            })->orderBy($this->sort, $this->direc)->paginate(10, ['*'], 'manana');;
+            })->orderBy($this->sort, $this->direc)->paginate(10, ['*'], 'manana');
 
         $tarde = Inscripcion::where('id_curso', '=', $curso->id)
             ->where('turno', '=', 'Tarde')->where('liberado', '=', 1)

@@ -51,6 +51,7 @@ class CrearAdmineventos extends Component
             'nombre' => $this->nombre,
             'imagen' => $fileName,
             'registrar' => $this->registrar,
+            'info' => "",
         ]);
 
         $this->reset(['open', 'nombre', 'imagen', 'registrar']);

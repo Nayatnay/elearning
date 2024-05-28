@@ -49,7 +49,7 @@
 
                     <div class="mt-8 flex items-center">
                         <x-input type="checkbox" name="registrar" id="registrar" wire:model.defer="registrar" />
-                        <x-label for="registrar" value="{{ __('Evento con registro activo') }}" class="ml-2"/>
+                        <x-label for="registrar" value="{{ __('Requiere registro') }}" class="ml-2"/>
                         <x-input-error for="registrar" />
                     </div>
 
