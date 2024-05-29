@@ -36,6 +36,6 @@ class CreateNewUser implements CreatesNewUsers
             'telf' => $input['telf'],
             'fechanac' => $input['fechanac'],
             'password' => Hash::make($input['password']),
-        ]);
+        ])->assignRole('Usuario');
     }
 }

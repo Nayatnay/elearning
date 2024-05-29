@@ -18,7 +18,7 @@ class IndexAdmincursos extends Component
     use WithPagination;
     use WithFileUploads;
 
-    public $buscar, $curso;
+    public $buscar, $curso, $slug;
     public $tostada;
     public $open_delete = false;
     public $open_edit = false;
@@ -132,4 +132,5 @@ class IndexAdmincursos extends Component
 
         return view('livewire.admin.index-admincursos', compact('cursos'));
     }
+
 }

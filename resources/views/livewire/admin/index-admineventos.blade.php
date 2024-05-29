@@ -29,14 +29,14 @@
             @if ($eventos->count())
 
                 <div
-                    class="w-full p-2 min-h-0 overflow-auto rounded-xl border border-gray-800 bg-white text-sm text-gray-600">
+                    class="w-full p-4 min-h-0 overflow-auto rounded-xl border border-gray-200 bg-gray-200 text-sm text-gray-600">
 
                     <table class="table-fixed  w-full rounded-xl font-light text-left h-auto border-collapse">
 
                         <tbody class="text-left">
 
                             @foreach ($eventos as $evento)
-                                <tr class="h-16 hover:bg-gray-50 border-b border-gray-300">
+                                <tr class="h-12 hover:bg-gray-100 border-b border-gray-300">
                                     <td class="w-14 min-w-14 md:w-6 md:min-w-6 p-2">
                                         <img src="{{ asset('/storage/eventos/' . $evento->imagen) }}" alt=""
                                             title="" class="rounded w-full">

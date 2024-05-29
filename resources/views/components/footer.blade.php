@@ -85,11 +85,11 @@
 
         </div>
         <div class="text-center font-normal p-4 border-t text-xs bg-white">
-            <a href="#" target="_blank" class="hover:underline mr-2">Condiciones de
+            <a href="{{route('condiciones')}}" target="_blank" class="hover:underline mr-2">Condiciones de
                 uso</a>
-            <a href="#" target="_blank" class="hover:underline mr-2">Políticas de
+            <a href="{{route('politicas')}}" target="_blank" class="hover:underline mr-2">Políticas de
                 privacidad</a>
-            <a href="#" target="_blank" class="hover:underline  ">Aviso legal </a>
+            <a href="{{route('aviso')}}" target="_blank" class="hover:underline  ">Aviso legal </a>
             <p class="mt-2 ">&copy; 2024 LeConcaseé - Todos los derechos reservados.</p>
         </div>
     </footer>

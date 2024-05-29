@@ -17,12 +17,14 @@ class DatabaseSeeder extends Seeder
     {
         // User::factory(10)->create();
 
+        $this->call(RoleSeeder::class);
+        
         User::factory()->create([
             'name' => 'Programador',
             'doc' => '0000000',
             'email' => 'nayatnay@gmail.com',
             'password' => '00000000',
-        ]);
+        ])->assignRole('Admin');
 
         Storage::disk('public')->deleteDirectory('cursos');
         Storage::disk('public')->makeDirectory('cursos');

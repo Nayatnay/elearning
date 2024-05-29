@@ -45,11 +45,22 @@ Route::middleware([
     })->name('dashboard');
 });
 
+Route::get('condiciones', function () {
+    return view('terms');
+})->name('condiciones');
+
+Route::get('politicas', function () {
+    return view('policy');
+})->name('politicas');
+
+Route::get('aviso', function () {
+    return view('aviso');
+})->name('aviso');
+
 Route::get('cursos', IndexCursos::class)->name('cursos');
 Route::get('recetas', IndexRecetas::class)->name('recetas');
 Route::get('eventos', IndexEventos::class)->name('eventos');
 Route::get('inscripciones/{curso}', IndexInscripciones::class)->name('inscripciones');
-Route::get('registrosev/{evento}', VerRegistrosev::class)->name('registrosev');
 
 Route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurso');
 Route::get('clasesdelcurso/{curso}/{clase}/{inscrito}', ClasesCurso::class)->name('clasesdelcurso');
@@ -57,6 +68,9 @@ Route::get('miscursos', MisCursos::class)->name('miscursos');
 Route::get('empleos', IndexEmpleos::class)->name('empleos');
 Route::post('solicitud_empleo', [IndexEmpleos::class, 'solicitud'])->name('solicitud_empleo');
 
+Route::get('contacto', IndexContactanos::class)->name('contacto');
+
+Route::post('contactanos', [IndexContactanos::class, 'contactousuario'])->name('contactanos');
 Route::get('preferencia/{email}', PreferenciaSuscripcion::class)->name('preferencia');
 
 Route::get('debaja', function () {
@@ -64,28 +78,26 @@ Route::get('debaja', function () {
 })->name('debaja');
 
 //Rutas de admninistracion
-Route::get('admin_cursos', IndexAdmincursos::class)->name('admin_cursos');
-Route::get('selec_requisitos/{curso}', SelecRequisitos::class)->name('selec_requisitos');
-Route::get('selec_alcances/{curso}', SelecAlcances::class)->name('selec_alcances');
-Route::get('selec_clases/{curso}', SelecClases::class)->name('selec_clases');
-Route::get('inscritos/{curso}', VerInscritos::class)->name('inscritos');
-Route::get('admin_validar', ValidarInscripcion::class)->name('admin_validar');
+Route::get('admin_cursos', IndexAdmincursos::class)->Middleware('can:admin_cursos')->name('admin_cursos');
+Route::get('selec_requisitos/{curso}', SelecRequisitos::class)->Middleware('can:selec_requisitos')->name('selec_requisitos');
+Route::get('selec_alcances/{curso}', SelecAlcances::class)->Middleware('can:selec_alcances')->name('selec_alcances');
+Route::get('selec_clases/{curso}', SelecClases::class)->Middleware('can:selec_clases')->name('selec_clases');
+Route::get('inscritos/{curso}', VerInscritos::class)->Middleware('can:inscritos')->name('inscritos');
+Route::get('admin_validar', ValidarInscripcion::class)->Middleware('can:admin_validar')->name('admin_validar');
 
-Route::get('admin_recetas', IndexAdminrecetas::class)->name('admin_recetas');
-Route::get('selec_ingredientes/{receta}', SelecIngredientes::class)->name('selec_ingredientes');
-Route::get('selec_indicaciones/{receta}', SelecIndicaciones::class)->name('selec_indicaciones');
-Route::get('detallereceta/{receta}', RecetasDetalleReceta::class)->name('detallereceta');
+Route::get('admin_recetas', IndexAdminrecetas::class)->Middleware('can:admin_recetas')->name('admin_recetas');
+Route::get('selec_ingredientes/{receta}', SelecIngredientes::class)->Middleware('can:selec_ingredientes')->name('selec_ingredientes');
+Route::get('selec_indicaciones/{receta}', SelecIndicaciones::class)->Middleware('can:selec_indicaciones')->name('selec_indicaciones');
+Route::get('detallereceta/{receta}', RecetasDetalleReceta::class)->Middleware('can:detallereceta')->name('detallereceta');
 
-Route::get('admin_eventos', IndexAdmineventos::class)->name('admin_eventos');
-Route::get('selec_parrafos/{evento}', SelecParrafos::class)->name('selec_parrafos');
-Route::get('detallevento/{evento}', DetalleEvento::class)->name('detallevento');
+Route::get('admin_eventos', IndexAdmineventos::class)->Middleware('can:admin_eventos')->name('admin_eventos');
+Route::get('selec_parrafos/{evento}', SelecParrafos::class)->Middleware('can:selec_parrafos')->name('selec_parrafos');
+Route::get('detallevento/{evento}', DetalleEvento::class)->Middleware('can:detallevento')->name('detallevento');
+Route::get('registrosev/{evento}', VerRegistrosev::class)->Middleware('can:registrosev')->name('registrosev');
 
-Route::get('admin_slides', IndexAdminslide::class)->name('admin_slides');
+Route::get('admin_slides', IndexAdminslide::class)->Middleware('can:admin_slides')->name('admin_slides');
 
-Route::get('admin_usuarios', IndexAdminusuarios::class)->name('admin_usuarios');
-Route::get('ver_matricula/{usuario}', IndexAdminmatricula::class)->name('ver_matricula');
+Route::get('admin_usuarios', IndexAdminusuarios::class)->Middleware('can:admin_usuarios')->name('admin_usuarios');
+Route::get('ver_matricula/{usuario}', IndexAdminmatricula::class)->Middleware('can:ver_matricula')->name('ver_matricula');
 
-Route::get('contacto', IndexContactanos::class)->name('contacto');
-
-Route::post('contactanos', [IndexContactanos::class, 'contactousuario'])->name('contactanos');
 

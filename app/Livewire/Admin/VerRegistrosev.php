@@ -11,7 +11,7 @@ class VerRegistrosev extends Component
 {
     use WithPagination;
 
-    public $evento, $eventousuario;
+    public $evento, $eventousuario, $fecha;
     public $sort = 'id';
     public $direc = 'desc';
     public $open = false;
@@ -19,12 +19,24 @@ class VerRegistrosev extends Component
     public function mount($evento)
     {
         $this->evento = Evento::find($evento);
+        $this->fecha = date("Y-m", strtotime(now()));
     }
 
     public function aviso(Eventouser $insc)
     {
         $this->eventousuario = $insc;
         $this->open = true;
+    }
+
+    public function updatingFecha()
+    {
+        $this->resetPage();
+    }
+
+    public function nvofecha()
+    {
+        $this->fecha = "01-" . $this->fecha;
+        $this->fecha = date("Y-m", strtotime($this->fecha));
     }
 
     public function eliminar()
@@ -37,9 +49,13 @@ class VerRegistrosev extends Component
     {
         $evento = $this->evento;
 
-        $totinscritos = count(Eventouser::where('id_evento', '=', $evento->id)->get());
+        $totinscritos = count(Eventouser::where('id_evento', '=', $evento->id)
+        ->where('updated_at', 'LIKE', '%' . $this->fecha . '%')->get());
+
         $inscritos = Eventouser::where('id_evento', '=', $evento->id)
-            ->orderBy($this->sort, $this->direc)->paginate(20, ['*'], 'inscrip');
+        ->Where(function ($query) {
+            $query->where('updated_at', 'LIKE', '%' . $this->fecha . '%');
+        })->orderBy($this->sort, $this->direc)->paginate(10, ['*'], 'inscrip');
 
         return view('livewire.admin.ver-registrosev', compact('evento', 'totinscritos', 'inscritos'));
     }

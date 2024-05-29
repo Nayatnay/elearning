@@ -97,6 +97,7 @@
                                         {{ __('Mis cursos y eventos') }}
                                     </x-dropdown-link>
 
+                                    @can('admin_cursos')
                                     <div
                                         class="block bg-red-800 w-full px-4 py-2 text-start text-sm leading-5 text-white border-b">
                                         Administración
@@ -118,18 +119,6 @@
                                         {{ __('Diapositivas') }}
                                     </x-dropdown-link>
 
-                                    {{-- <x-dropdown-link href="{{ route('admin_requisitos') }}">
-                                        {{ __('Requisitos') }}
-                                    </x-dropdown-link>
-
-                                    <x-dropdown-link href="{{ route('admin_alcances') }}">
-                                        {{ __('Alcances') }}
-                                    </x-dropdown-link>
-
-                                    <x-dropdown-link href="{{ route('admin_clases') }}">
-                                        {{ __('Clases') }}
-                                    </x-dropdown-link> --}}
-
                                     <x-dropdown-link href="{{ route('admin_validar') }}">
                                         {{ __('Validaciones') }}
                                     </x-dropdown-link>
@@ -137,7 +126,7 @@
                                     <x-dropdown-link href="{{ route('admin_usuarios') }}">
                                         {{ __('Usuarios') }}
                                     </x-dropdown-link>
-
+@endcan
                                     <div class="border-t border-gray-200"></div>
 
                                     <!-- Authentication -->
