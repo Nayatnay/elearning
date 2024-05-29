@@ -10,7 +10,7 @@
         </div>
     </div>
 
-    <div class="mt-4 p-4 max-w-screen-xl mx-auto">
+    <div class="mt-4 pb-20 px-4 max-w-screen-xl mx-auto">
 
         <x-retro></x-retro>
 
@@ -34,14 +34,21 @@
                             @php
                                 $con++;
                             @endphp
-                            <tr class="h-10">
+                            <tr class="h-10 hover:bg-gray-50">
                                 <td class="w-12 px-4 bg-red-800 text-white text-center">{{ $con }}.</td>
                                 <td class="w-40 px-2">{{ $insc->user->name }}</td>
                                 <td class="w-60 px-2">{{ $insc->user->email }}</td>
                                 <td class="w-20 px-2">{{ $insc->user->doc }}</td>
                                 <td class="w-32 px-2">{{ $insc->user->telf }}</td>
                                 <td class="w-32 px-2">{{ date('d-m-Y', strtotime($insc->updated_at)) }}</td>
-
+                                <td class="w-12 md:w-20 text-center">
+                                    <a href="#" title="Dar de baja"
+                                        wire:click="aviso({{ $insc }})"
+                                        class="p-2 border border-transparent rounded-lg hover:border-gray-800">
+                                        <i class="fa-solid fa-trash"></i>
+                                    </a>
+                                </td>
+                                
                             </tr>
                         @endforeach
                     </tbody>
@@ -60,4 +67,28 @@
         @endif
 
     </div>
+
+    <!--Modal validar -->
+
+    <x-confirmation-modal wire:model="open">
+
+        <x-slot name="title">
+            El usuario será retirado del evento
+        </x-slot>
+
+        <x-slot name="content">
+            ¿Está seguro de proceder con la acción?
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-secondary-button wire:click="$set('open', false)" class="mr-2">
+                Cancelar
+            </x-secondary-button>
+
+            <x-danger-button wire:click="eliminar" wire:loading.attr="disabled" class="disabled:opacity-25 ml-2">
+                Aceptar
+            </x-danger-button>
+        </x-slot>
+    </x-confirmation-modal>
+
 </div>

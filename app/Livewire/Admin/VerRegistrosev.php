@@ -11,7 +11,7 @@ class VerRegistrosev extends Component
 {
     use WithPagination;
 
-    public $evento, $fecha;
+    public $evento, $eventousuario;
     public $sort = 'id';
     public $direc = 'desc';
     public $open = false;
@@ -19,9 +19,19 @@ class VerRegistrosev extends Component
     public function mount($evento)
     {
         $this->evento = Evento::find($evento);
-        $this->fecha = date("Y-m", strtotime(now()));
     }
 
+    public function aviso(Eventouser $insc)
+    {
+        $this->eventousuario = $insc;
+        $this->open = true;
+    }
+
+    public function eliminar()
+    {
+        $this->eventousuario->delete();
+        $this->reset(['open']);  //cierra el modal     
+    }
 
     public function render()
     {
@@ -29,7 +39,7 @@ class VerRegistrosev extends Component
 
         $totinscritos = count(Eventouser::where('id_evento', '=', $evento->id)->get());
         $inscritos = Eventouser::where('id_evento', '=', $evento->id)
-        ->orderBy($this->sort, $this->direc)->paginate(10, ['*'], 'inscrip');
+            ->orderBy($this->sort, $this->direc)->paginate(20, ['*'], 'inscrip');
 
         return view('livewire.admin.ver-registrosev', compact('evento', 'totinscritos', 'inscritos'));
     }

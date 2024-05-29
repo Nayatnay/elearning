@@ -45,12 +45,12 @@
                                     @if ($evento->registrar == 1)
                                         <td class="pl-2 w-80 min-w-80" title="Evento">
                                             {{ $evento->nombre }} <i
-                                                class="fa-solid fa-calendar-day ml-2 text-sky-600"></i>
+                                                class="fa-solid fa-calendar-day ml-2 text-cyan-700"></i>
                                         </td>
                                     @else
                                         <td class="pl-2 w-80 min-w-80" title="Noticia">
                                             {{ $evento->nombre }} <i
-                                                class="fa-solid fa-envelope-open-text ml-2 text-sky-600"></i>
+                                                class="fa-solid fa-envelope-open-text ml-2 text-cyan-700"></i>
                                         </td>
                                     @endif
 
@@ -97,7 +97,7 @@
                                         <td class="w-10 text-center"></td>
                                     @endif
 
-                                    <td class="w-10 text-center text-sky-600">
+                                    <td class="w-10 text-center text-red-700">
                                         <a href="#" wire:click="notificacion({{ $evento }})"
                                             onclick="mostrar()" title="Notificar a suscriptores"
                                             class="p-2 border border-transparent rounded-lg hover:border-gray-800">

@@ -226,9 +226,6 @@
                 <x-input-error for="turno" />
             </div>
 
-
-
-
         </x-slot>
 
         <x-slot name="footer">
@@ -244,6 +241,5 @@
         </x-slot>
 
     </x-dialog-modal>
-
 
 </div>

@@ -27,7 +27,7 @@
             <div class="w-full md:px-6 md:ml-4">
                 <p class="hidden md:block text-xl lg:text-2xl text-orange-700 uppercase">{{ $evento->nombre }}</p>
                 <textarea
-                    class="text-justify info mt-10 md:mt-4 bg-transparent border-none p-0 resize-none w-full focus:border-0 focus:ring-0">{{ $evento->info }}</textarea>
+                    class="text-justify info mt-10 md:mt-4 bg-transparent border-none p-0 resize-none w-full min-h-full focus:border-0 focus:ring-0">{{ $evento->info }}</textarea>
             </div>
 
         </div>
@@ -54,9 +54,9 @@
                     </form>
                 </div>
 
-                <div class="mt-4 text-sm">
+                <div class="mt-4 text-xs">
                     @if ($reg == 1)
-                        <p class="text-lime-600">Inscripción realizada satisfactoriamente. Consulte en el menú
+                        <p class="">Inscripción realizada satisfactoriamente. Consulte en el menú
                             <strong>Mis cursos y eventos del usuario</strong>
                         </p>
                     @endif
@@ -171,10 +171,6 @@
         </x-slot>
 
     </x-dialog-modal>
-
-
-
-
 
     <!-- texarea ajustado al contenido -->
     <script>
