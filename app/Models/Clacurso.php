@@ -12,6 +12,7 @@ class Clacurso extends Model
     protected $fillable = [
         'id_curso',
         'descripcion',
+        'slug',
         'video',
     ];
 

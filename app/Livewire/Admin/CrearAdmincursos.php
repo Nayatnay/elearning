@@ -6,12 +6,13 @@ use App\Models\Curso;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Illuminate\Support\Str;
 
 class CrearAdmincursos extends Component
 {
     use WithFileUploads, WithPagination;
 
-    public $identificador, $nombre, $descripcion, $imagen, $costo;
+    public $identificador, $nombre, $descripcion, $imagen, $slug, $costo;
     public $open = false;
 
     protected $listeners = ['render'];
@@ -42,8 +43,11 @@ class CrearAdmincursos extends Component
         $fileName = time() . '.' . $this->imagen->extension();
         $this->imagen->storeAs('public/cursos', $fileName);
 
+        $this->slug = str::slug($this->nombre, '-');
+
         Curso::create([
             'nombre' => $this->nombre,
+            'slug' => $this->slug,
             'descripcion' => $this->descripcion,
             'imagen' => $fileName,
             'costo' => $this->costo,

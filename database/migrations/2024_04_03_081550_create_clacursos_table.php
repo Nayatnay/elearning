@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_curso');
             $table->string('descripcion');
+            $table->string('slug');
             $table->string('video');
             $table->timestamps();
             // Llave foranea

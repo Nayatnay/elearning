@@ -6,13 +6,14 @@ use App\Models\Clase;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 class IndexAdminclases extends Component
 {
     use WithPagination;
     use WithFileUploads;
 
-    public $buscar, $clase;
+    public $buscar, $clase, $slug;
     public $open_delete = false;
     public $open_edit = false;
     public $identificador, $video, $tema;
@@ -74,6 +75,8 @@ class IndexAdminclases extends Component
             $this->video->storeAs('public/clases', $fileName);
             $this->video = $fileName;
         }
+
+        $this->clase->slug = str::slug($this->tema, '-');
 
         $validatedData = $this->validate();
         $this->clase->update($validatedData);

@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('clases', function (Blueprint $table) {
             $table->id();
             $table->string('tema');
+            $table->string('slug');
             $table->string('video');
             $table->timestamps();
 

@@ -1,4 +1,5 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
 use App\Livewire\Admin\IndexAdmincursos;
 use App\Livewire\Admin\IndexAdmineventos;
@@ -29,7 +30,7 @@ use App\Livewire\Inscripciones\IndexInscripciones;
 use App\Livewire\Recetas\DetalleReceta as RecetasDetalleReceta;
 use App\Livewire\Recetas\IndexRecetas;
 use App\Livewire\Suscripcion\PreferenciaSuscripcion;
-use Illuminate\Support\Facades\Route;
+
 
 Route::get('/', function () {
     return view('index');
@@ -60,10 +61,10 @@ Route::get('aviso', function () {
 Route::get('cursos', IndexCursos::class)->name('cursos');
 Route::get('recetas', IndexRecetas::class)->name('recetas');
 Route::get('eventos', IndexEventos::class)->name('eventos');
-Route::get('inscripciones/{curso}', IndexInscripciones::class)->name('inscripciones');
+Route::get('inscripciones/{curso:slug}', IndexInscripciones::class)->name('inscripciones');
 
-Route::get('detalledelcurso/{curso}', DetalleCurso::class)->name('detalledelcurso');
-Route::get('clasesdelcurso/{curso}/{clase}/{inscrito}', ClasesCurso::class)->name('clasesdelcurso');
+Route::get('detalledelcurso/{curso:slug}', DetalleCurso::class)->name('detalledelcurso');
+Route::get('clasesdelcurso/{curso:slug}/{clase}/{inscrito}', ClasesCurso::class)->name('clasesdelcurso');
 Route::get('miscursos', MisCursos::class)->name('miscursos');
 Route::get('empleos', IndexEmpleos::class)->name('empleos');
 Route::post('solicitud_empleo', [IndexEmpleos::class, 'solicitud'])->name('solicitud_empleo');

@@ -10,6 +10,7 @@ use App\Models\Reqcurso;
 use App\Models\Requisito;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 use Livewire\Component;
 
@@ -85,6 +86,8 @@ class IndexAdmincursos extends Component
             $this->imagen->storeAs('public/cursos', $fileName);
             $this->imagen = $fileName;
         }
+
+        $this->curso->slug = str::slug($this->nombre, '-');
 
         $validatedData = $this->validate();
         $this->curso->update($validatedData);

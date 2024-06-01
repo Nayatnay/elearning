@@ -8,12 +8,13 @@ use App\Models\Curso;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Livewire\WithPagination;
+use Illuminate\Support\Str;
 
 class CrearAdminclases extends Component
 {
     use WithFileUploads, WithPagination;
 
-    public $identificador, $descripcion, $video, $curso;
+    public $identificador, $descripcion, $video, $curso, $slug;
     public $open = false;
 
     protected $listeners = ['render'];
@@ -23,7 +24,7 @@ class CrearAdminclases extends Component
         'video' => 'required|file|mimes:mp4|max:102400',
     ];
 
-    public function mount(Curso $curso) 
+    public function mount(Curso $curso)
     {
         $this->curso = $curso;
         $this->identificador = rand(); // Lo estoy usando para eliminar el nombre de la imagen que se selecciono anteriormente en el modal
@@ -42,9 +43,12 @@ class CrearAdminclases extends Component
         $fileName = time() . '.' . $this->video->extension();
         $this->video->storeAs('public/clases', $fileName);
 
+        $this->slug = str::slug($this->descripcion, '-');
+        //dd($this->slug);
         Clacurso::create([
             'id_curso' => $this->curso->id,
             'descripcion' => $this->descripcion,
+            'slug' => $this->slug,
             'video' => $fileName,
         ]);
 
@@ -52,7 +56,8 @@ class CrearAdminclases extends Component
 
         $this->reset(['open', 'descripcion', 'video']);
         $this->identificador = rand(); // reemplaza el valor del identificador. Reseteará el nombre del video seleccionada anteriormente
-       return redirect()->route('selec_clases', compact('curso'));
+
+        return redirect()->route('selec_clases', compact('curso'));
     }
 
     public function render()

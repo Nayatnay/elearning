@@ -27,15 +27,14 @@ class ClasesCurso extends Component
             return redirect(route('login'));
         }
     }
-    
+
     public function render()
     {
-            $curso = $this->curso;
-            $inscrito = $this->inscrito;
-            //$clas_selec = Clase::where('id', '=', $this->clase->id_clase)->first();
-            $clas_selec = Clacurso::where('id', '=', $this->clase->id)->first();
-            $clases = Clacurso::where('id_curso', '=', $curso->id)->get();
+        $curso = $this->curso;
+        $inscrito = $this->inscrito;
+        $clas_selec = Clacurso::where('id', '=', $this->clase->id)->first();
+        $clases = Clacurso::where('id_curso', '=', $curso->id)->get();
 
-            return view('livewire.cursos.clases-curso', compact('curso', 'clases', 'clas_selec', 'inscrito'));
+        return view('livewire.cursos.clases-curso', compact('curso', 'clases', 'clas_selec', 'inscrito'));
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Curso;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 class SelecClases extends Component
 {
@@ -71,6 +72,8 @@ class SelecClases extends Component
             $this->video->storeAs('public/clases', $fileName);
             $this->video = $fileName;
         }
+        
+        $this->clase->slug = str::slug($this->descripcion, '-');
 
         $validatedData = $this->validate();
         $this->clase->update($validatedData);
