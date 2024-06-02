@@ -12,6 +12,7 @@ class Clase extends Model
 
     protected $fillable = [
         'descripcion',
+        'slug',
         'video',
     ];
 

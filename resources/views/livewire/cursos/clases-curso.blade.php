@@ -15,9 +15,7 @@
                                 Su navegador no soporta la etiqueta de vídeo.
                             </video>
                         </div>
-                        <div>
-                            <p class="bg-white p-2 text-2xl text-gray-700 font-bold">{{ $clas_selec->tema }}</p>
-                        </div>
+                        
                     @else
                         <div class="relative min-w-[100px] xl:min-w-[840px] border border-gray-800">
 
@@ -40,10 +38,10 @@
                             </div>
 
                         </div>
-                        <div>
-                            <p class="bg-white p-2 text-2xl text-gray-700 font-bold">{{ $clas_selec->tema }}</p>
-                        </div>
                     @endif
+                    <div>
+                        <p class="bg-white p-2 text-2xl text-gray-700 font-bold">{{ $clas_selec->descripcion }}</p>
+                    </div>
                 @else
                     <div class="relative min-w-[100px] xl:min-w-[840px] border border-gray-800">
 
@@ -66,15 +64,16 @@
 
                     </div>
                     <div>
-                        <p class="bg-white p-2 text-2xl text-gray-700 font-bold">{{ $clas_selec->tema }}</p>
+                        <p class="bg-white p-2 text-2xl text-gray-700 font-bold">{{ $clas_selec->descripcion }}</p>
                     </div>
                 @endauth
 
             </div>
 
             <div class="w-full mt-10 md:mt-0 md:ml-4 border rounded-xl bg-white shadow p-4">
-                <p class="text-xl lg:text-2xl text-orange-700 uppercase">{{ $curso->nombre }}</p>
-                <p class="text-xl">{{ $curso->descripcion }}</p>
+
+                <p class="text-xl lg:text-2xl text-orange-700 uppercase">{{ $clas_selec->curso->nombre }}</p>
+                <p class="text-xl">{{ $clas_selec->curso->descripcion }}</p>
 
 
                 <div class="mt-10 md:mt-0 text-sm md:pt-4 pb-10 text-gray-700">
@@ -85,7 +84,7 @@
                         @foreach ($clases as $clase)
                             @if ($clase->id == $clas_selec->id)
                                 <div class="p-1">
-                                    <a href="{{ route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id, 'inscrito' => $inscrito]) }}"
+                                    <a href="{{ route('clasesdelcurso', ['clase' => $clase, 'inscrito' => $inscrito]) }}"
                                         class="text-blue-600">
                                         <i class="fa-solid fa-circle-play mr-2"></i>
                                         {{ $clase->descripcion }}
@@ -93,7 +92,7 @@
                                 </div>
                             @else
                                 <div class="p-1">
-                                    <a href="{{ route('clasesdelcurso', ['curso' => $curso, 'clase' => $clase->id, 'inscrito' => $inscrito]) }}"
+                                    <a href="{{ route('clasesdelcurso', ['clase' => $clase, 'inscrito' => $inscrito]) }}"
                                         class="hover:text-blue-600">
                                         <i class="fa-solid fa-circle-play mr-2"></i>
                                         {{ $clase->descripcion }}
