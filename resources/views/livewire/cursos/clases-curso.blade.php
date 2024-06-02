@@ -84,7 +84,7 @@
                         @foreach ($clases as $clase)
                             @if ($clase->id == $clas_selec->id)
                                 <div class="p-1">
-                                    <a href="{{ route('clasesdelcurso', ['clase' => $clase, 'inscrito' => $inscrito]) }}"
+                                    <a href="{{ route('clasesdelcurso', $clase) }}"
                                         class="text-blue-600">
                                         <i class="fa-solid fa-circle-play mr-2"></i>
                                         {{ $clase->descripcion }}
@@ -92,7 +92,7 @@
                                 </div>
                             @else
                                 <div class="p-1">
-                                    <a href="{{ route('clasesdelcurso', ['clase' => $clase, 'inscrito' => $inscrito]) }}"
+                                    <a href="{{ route('clasesdelcurso', $clase) }}"
                                         class="hover:text-blue-600">
                                         <i class="fa-solid fa-circle-play mr-2"></i>
                                         {{ $clase->descripcion }}

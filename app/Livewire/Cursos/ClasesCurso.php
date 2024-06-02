@@ -11,11 +11,15 @@ class ClasesCurso extends Component
 {
     public $curso, $clase, $inscrito;
 
-    public function mount(Clacurso $clase, $inscrito)
+    public function mount(Clacurso $clase)
     {
         //$this->curso = $curso;
         $this->clase = $clase;
-        $this->inscrito = $inscrito;
+        if (auth()->user()) {
+            $this->inscrito = 1;
+        } else {
+            $this->inscrito = 0;
+        }
     }
 
     public function verifylogin()

@@ -102,7 +102,7 @@
 
             @foreach ($clases as $clase)
                 <div class="p-1">
-                    <a href="{{ route('clasesdelcurso', ['clase' => $clase, 'inscrito' => $inscrito]) }}"
+                    <a href="{{ route('clasesdelcurso', $clase) }}"
                         class="hover:text-blue-600"><i
                             class="fa-solid fa-circle-play mr-2"></i>{{ $clase->descripcion }}</a>
                 </div>
