@@ -14,11 +14,10 @@ class MisCursos extends Component
 
     public function buscar(Inscripcion $micurso)
     {
-        //dd($micurso);
         $curso = Curso::where('id', '=', $micurso->id_curso)->first();
         $inscrito = $micurso->liberado;
         $firstclase = Clacurso::where('id_curso', '=', $micurso->id_curso)->first();
-        $clase = $firstclase->id;
+        $clase = $firstclase->slug;
 
         return redirect()->route('clasesdelcurso', compact('curso', 'clase', 'inscrito'));
     }

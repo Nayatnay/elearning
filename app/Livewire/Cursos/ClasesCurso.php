@@ -5,6 +5,7 @@ namespace App\Livewire\Cursos;
 use App\Models\Clacurso;
 use App\Models\Clase;
 use App\Models\Curso;
+use App\Models\Inscripcion;
 use Livewire\Component;
 
 class ClasesCurso extends Component
@@ -13,12 +14,23 @@ class ClasesCurso extends Component
 
     public function mount(Clacurso $clase)
     {
-        //$this->curso = $curso;
         $this->clase = $clase;
+        $this->inscrito = 0;
+        
         if (auth()->user()) {
-            $this->inscrito = 1;
-        } else {
-            $this->inscrito = 0;
+
+            $inscrip = Inscripcion::where('id_user', '=', auth()->user()->id)
+                ->where('id_curso', '=', $this->clase->id_curso)->first();
+            if ($inscrip == null) {
+                $this->inscrito = 0;
+            } else {
+
+                if ($inscrip->liberado == 1) {
+                    $this->inscrito = 1;
+                } else {
+                    $this->inscrito = 0;
+                }
+            }
         }
     }
 
@@ -40,7 +52,7 @@ class ClasesCurso extends Component
         $inscrito = $this->inscrito;
         $clas_selec = Clacurso::where('id', '=', $this->clase->id)->first();
         $clases = Clacurso::where('id_curso', '=', $this->clase->id_curso)->get();
-        
+
         return view('livewire.cursos.clases-curso', compact('clases', 'clas_selec', 'inscrito'));
     }
 }

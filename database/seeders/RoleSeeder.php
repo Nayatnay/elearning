@@ -29,12 +29,12 @@ class RoleSeeder extends Seeder
         Permission::create(['name' => 'admin_recetas'])->syncRoles([$role1]);
         Permission::create(['name' => 'selec_ingredientes'])->syncRoles([$role1]);
         Permission::create(['name' => 'selec_indicaciones'])->syncRoles([$role1]);
-        Permission::create(['name' => 'detallereceta'])->syncRoles([$role1]);
+        //Permission::create(['name' => 'detallereceta'])->syncRoles([$role1]);
         
         Permission::create(['name' => 'admin_eventos'])->syncRoles([$role1]);
         Permission::create(['name' => 'selec_parrafos'])->syncRoles([$role1]);
-        Permission::create(['name' => 'detallevento'])->syncRoles([$role1]);
-        Permission::create(['name' => 'registrosev'])->syncRoles([$role1]);
+        //Permission::create(['name' => 'detallevento'])->syncRoles([$role1]);
+        //Permission::create(['name' => 'registrosev'])->syncRoles([$role1]);
 
         Permission::create(['name' => 'admin_slides'])->syncRoles([$role1]);
         

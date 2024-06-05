@@ -6,13 +6,14 @@ use App\Models\Evento;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 
 class CrearAdmineventos extends Component
 {
     use WithFileUploads, WithPagination;
 
-    public $identificador, $nombre, $imagen, $registrar;
+    public $identificador, $nombre, $imagen, $registrar, $slug;
     public $open = false;
 
     protected $listeners = ['render'];
@@ -47,8 +48,11 @@ class CrearAdmineventos extends Component
         $fileName = time() . '.' . $this->imagen->extension();
         $this->imagen->storeAs('public/eventos', $fileName);
 
+        $this->slug = str::slug($this->nombre, '-');
+
         Evento::create([
             'nombre' => $this->nombre,
+            'slug' => $this->slug,
             'imagen' => $fileName,
             'registrar' => $this->registrar,
             'info' => "",

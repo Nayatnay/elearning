@@ -26,7 +26,7 @@
     <p>Me llamo <strong>{{ ucwords($nombre) }}</strong></p>
     <p>{{ $email }} - {{ $telf }} </p>
     <br>
-    <p class="blue">Ver CV <strong>{{ $archivo }}</strong> en Archivos adjuntos </p>
+    <p class="blue">Ver Curriculum Vitae <strong>{{ $archivo }}</strong> en Archivos adjuntos </p>
 
 </body>
 

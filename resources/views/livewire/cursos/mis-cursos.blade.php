@@ -43,13 +43,13 @@
             <div
                 class="mt-4 grid gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
 
-                @foreach ($miseventos as $mievento)
-                    <a href="{{route('detallevento', $mievento )}}">
+                @foreach ($miseventos as $evento)
+                    <a href="{{route('detallevento', $evento->evento->slug )}}">
 
                         <div class="">
-                            <img src="{{ asset('/storage/eventos/' . $mievento->evento->imagen) }}" alt=""
+                            <img src="{{ asset('/storage/eventos/' . $evento->evento->imagen) }}" alt=""
                                 title="" class="rounded-lg w-full h-48">
-                            <p class="text-ellipsis line-clamp-2 font-normal py-1">{{ $mievento->evento->nombre }}</p>
+                            <p class="text-ellipsis line-clamp-2 font-normal py-1">{{ $evento->evento->nombre }}</p>
                         </div>
 
                     </a>

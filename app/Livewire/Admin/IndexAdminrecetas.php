@@ -6,6 +6,7 @@ use App\Models\Receta;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 class IndexAdminrecetas extends Component
 {
@@ -15,7 +16,7 @@ class IndexAdminrecetas extends Component
     public $buscar, $receta;
     public $open_delete = false;
     public $open_edit = false;
-    public $identificador, $imagen, $nombre, $descripcion, $tiempo, $porciones;
+    public $identificador, $imagen, $nombre, $descripcion, $tiempo, $porciones, $slug;
     public $imagenva;
     public $chequeo;
 
@@ -80,6 +81,8 @@ class IndexAdminrecetas extends Component
             $this->imagen->storeAs('public/recetas', $fileName);
             $this->imagen = $fileName;
         }
+
+        $this->receta->slug = str::slug($this->nombre, '-');
 
         $validatedData = $this->validate();
         $this->receta->update($validatedData);

@@ -69,6 +69,12 @@ Route::get('miscursos', MisCursos::class)->name('miscursos');
 Route::get('empleos', IndexEmpleos::class)->name('empleos');
 Route::post('solicitud_empleo', [IndexEmpleos::class, 'solicitud'])->name('solicitud_empleo');
 
+Route::get('detallereceta/{receta:slug}', RecetasDetalleReceta::class)->name('detallereceta');
+
+Route::get('detallevento/{evento:slug}', DetalleEvento::class)->name('detallevento');
+
+Route::get('registrosev/{evento}', VerRegistrosev::class)->name('registrosev');
+
 Route::get('contacto', IndexContactanos::class)->name('contacto');
 
 Route::post('contactanos', [IndexContactanos::class, 'contactousuario'])->name('contactanos');
@@ -89,12 +95,10 @@ Route::get('admin_validar', ValidarInscripcion::class)->Middleware('can:admin_va
 Route::get('admin_recetas', IndexAdminrecetas::class)->Middleware('can:admin_recetas')->name('admin_recetas');
 Route::get('selec_ingredientes/{receta}', SelecIngredientes::class)->Middleware('can:selec_ingredientes')->name('selec_ingredientes');
 Route::get('selec_indicaciones/{receta}', SelecIndicaciones::class)->Middleware('can:selec_indicaciones')->name('selec_indicaciones');
-Route::get('detallereceta/{receta}', RecetasDetalleReceta::class)->Middleware('can:detallereceta')->name('detallereceta');
+
 
 Route::get('admin_eventos', IndexAdmineventos::class)->Middleware('can:admin_eventos')->name('admin_eventos');
 Route::get('selec_parrafos/{evento}', SelecParrafos::class)->Middleware('can:selec_parrafos')->name('selec_parrafos');
-Route::get('detallevento/{evento}', DetalleEvento::class)->Middleware('can:detallevento')->name('detallevento');
-Route::get('registrosev/{evento}', VerRegistrosev::class)->Middleware('can:registrosev')->name('registrosev');
 
 Route::get('admin_slides', IndexAdminslide::class)->Middleware('can:admin_slides')->name('admin_slides');
 

@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Mail;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
+use Illuminate\Support\Str;
 
 class IndexAdmineventos extends Component
 {
@@ -18,7 +19,7 @@ class IndexAdmineventos extends Component
     public $buscar, $evento;
     public $open_delete = false;
     public $open_edit = false;
-    public $identificador, $imagen, $nombre, $email, $registrar;
+    public $identificador, $imagen, $nombre, $email, $registrar, $slug;
     public $imagenva;
 
     protected function rules()
@@ -91,6 +92,8 @@ class IndexAdmineventos extends Component
         } else {
             $this->registrar = 0;
         }
+
+        $this->evento->slug = str::slug($this->nombre, '-');
 
         $validatedData = $this->validate();
         $this->evento->update($validatedData);

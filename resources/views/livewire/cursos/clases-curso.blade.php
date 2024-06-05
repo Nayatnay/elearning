@@ -40,7 +40,7 @@
                         </div>
                     @endif
                     <div>
-                        <p class="bg-white p-2 text-2xl text-gray-700 font-bold">{{ $clas_selec->descripcion }}</p>
+                        <p class="bg-white p-2 text-2xl font-light">{{ $clas_selec->descripcion }}</p>
                     </div>
                 @else
                     <div class="relative min-w-[100px] xl:min-w-[840px] border border-gray-800">
@@ -64,7 +64,7 @@
 
                     </div>
                     <div>
-                        <p class="bg-white p-2 text-2xl text-gray-700 font-bold">{{ $clas_selec->descripcion }}</p>
+                        <p class="bg-white p-2 text-2xl font-light">{{ $clas_selec->descripcion }}</p>
                     </div>
                 @endauth
 
