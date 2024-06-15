@@ -38,7 +38,7 @@
 
             <div class="mb-4">
                 <x-label for="descripcion" value="{{ __('Tema de la Clase') }}" />
-                <x-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion" wire:model.defer="descripcion"
+                <x-input id="descripcion" class="block mt-1 w-full" type="text" name="descripcion" wire:model="descripcion"
                     required autofocus />
                 <x-input-error for="descripcion" />
             </div>

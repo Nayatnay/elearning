@@ -9,6 +9,7 @@ use Illuminate\Database\Eloquent\Model;
 class Clacurso extends Model
 {
     use HasFactory;
+    
     protected $fillable = [
         'id_curso',
         'descripcion',

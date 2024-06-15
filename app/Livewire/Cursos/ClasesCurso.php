@@ -21,6 +21,7 @@ class ClasesCurso extends Component
 
             $inscrip = Inscripcion::where('id_user', '=', auth()->user()->id)
                 ->where('id_curso', '=', $this->clase->id_curso)->first();
+                
             if ($inscrip == null) {
                 $this->inscrito = 0;
             } else {
@@ -37,6 +38,7 @@ class ClasesCurso extends Component
     public function verifylogin()
     {
         $curso = Curso::where('id', '=', $this->clase->id_curso)->first();
+        
         if (auth()->user()) {
             return redirect(route('inscripciones', compact('curso')));
         } else {
@@ -50,9 +52,10 @@ class ClasesCurso extends Component
         //$curso = Curso::where('id', '=', $this->clase->id_curso)->first();
 
         $inscrito = $this->inscrito;
-        $clas_selec = Clacurso::where('id', '=', $this->clase->id)->first();
+        $clas_selec = Clacurso::where('id', '=', $this->clase->id)
+        ->where('id_curso', '=', $this->clase->id_curso)->first();
         $clases = Clacurso::where('id_curso', '=', $this->clase->id_curso)->get();
-
+        
         return view('livewire.cursos.clases-curso', compact('clases', 'clas_selec', 'inscrito'));
     }
 }

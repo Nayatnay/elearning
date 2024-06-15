@@ -1,14 +1,29 @@
 <div>
-    
-    <div id="default-carousel" class="relative" data-carousel="static">
+
+    <div id="default-carousel" class="relative" data-carousel="slide">
         <!-- Carousel wrapper -->
         <div class=" overflow-hidden relative h-48 sm:h-64 xl:h-[430px]">
             <!-- Item 1 -->
+            @php
+                $itm = 0;
+            @endphp
             @foreach ($slides as $slide)
-                <div class=" ease-in-out duration-700" data-carousel-item>
-                    <img src="{{ asset('/storage/diapositivas/' . $slide->imagen) }}"
-                        class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2" alt="...">
-                </div>
+                @php
+                    $itm++;
+                @endphp
+                @if ($itm == $slideactive)
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item="active">
+                        <img src="{{ asset('/storage/diapositivas/' . $slide->imagen) }}"
+                            class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                            alt="...">
+                    </div>
+                @else
+                    <div class="hidden duration-700 ease-in-out" data-carousel-item>
+                        <img src="{{ asset('/storage/diapositivas/' . $slide->imagen) }}"
+                            class="block absolute top-1/2 left-1/2 w-full -translate-x-1/2 -translate-y-1/2"
+                            alt="...">
+                    </div>
+                @endif
             @endforeach
         </div>
         <!-- Slider indicators -->
@@ -295,8 +310,6 @@
             @endif
         </div>
     </div>
-
-
 
     <!-- Pie de pagina -->
     <x-footer></x-footer>

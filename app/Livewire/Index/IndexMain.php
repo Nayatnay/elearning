@@ -37,8 +37,16 @@ class IndexMain extends Component
     {
         $cursos = Curso::where('publicado', '=', 1)->orderBy('id', 'desc')->paginate(8);
         $slides = Imageslide::where('estado', '=', 1)->get();
+        $countslides = count(Imageslide::where('estado', '=', 1)->get());
         $info = $this->info;
 
-        return view('livewire.index.index-main', compact('cursos', 'slides', 'info'));
+        if ($countslides < 3) {
+            $slideactive = 1;
+        }else{
+            $slideactive = $countslides / 2;
+            $slideactive = round($slideactive);
+        }
+        
+        return view('livewire.index.index-main', compact('cursos', 'slides', 'info', 'slideactive'));
     }
 }

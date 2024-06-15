@@ -24,7 +24,7 @@ class SelecClases extends Component
     protected function rules()
     {
         return [
-            'descripcion' => 'required',
+            'descripcion' => 'required|unique:clacursos',
             'video' => 'required',
         ];
     }

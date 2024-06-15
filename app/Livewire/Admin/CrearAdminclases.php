@@ -20,8 +20,8 @@ class CrearAdminclases extends Component
     protected $listeners = ['render'];
 
     protected $rules = [
-        'descripcion' => 'required',
         'video' => 'required|file|mimes:mp4|max:102400',
+        'descripcion' => 'required|unique:clacursos',
     ];
 
     public function mount(Curso $curso)
@@ -39,12 +39,14 @@ class CrearAdminclases extends Component
     public function save()
     {
         $this->validate();
+        
+        //dd($this->descripcion);
+        
+        $this->slug = str::slug($this->descripcion, '-');
 
         $fileName = time() . '.' . $this->video->extension();
         $this->video->storeAs('public/clases', $fileName);
 
-        $this->slug = str::slug($this->descripcion, '-');
-        //dd($this->slug);
         Clacurso::create([
             'id_curso' => $this->curso->id,
             'descripcion' => $this->descripcion,
