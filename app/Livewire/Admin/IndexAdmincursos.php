@@ -29,8 +29,8 @@ class IndexAdmincursos extends Component
 
     protected function rules()
     {
-        return [
-            'nombre' => 'required',
+        return [           
+            'nombre' => 'required|unique:cursos,nombre,' . $this->curso->id,
             'descripcion' => 'required',
             'imagen' => 'required',
             'costo' => 'required',
@@ -88,9 +88,9 @@ class IndexAdmincursos extends Component
         }
 
         $this->curso->slug = str::slug($this->nombre, '-');
-
+ 
         $validatedData = $this->validate();
-        $this->curso->update($validatedData);
+        $this->curso->update($validatedData);        
 
         $this->imagenva = null;
 

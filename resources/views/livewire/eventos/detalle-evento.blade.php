@@ -25,7 +25,7 @@
             </div>
 
             <div class="w-full md:px-6 md:ml-4">
-                <p class="hidden md:block text-xl lg:text-2xl text-orange-700 uppercase">{{ $evento->nombre }}</p>
+                <p class="hidden md:block text-xl lg:text-2xl text-red-800 uppercase">{{ $evento->nombre }}</p>
                 <textarea
                     class="text-justify info mt-10 md:mt-4 bg-transparent border-none p-0 resize-none w-full min-h-full focus:border-0 focus:ring-0">{{ $evento->info }}</textarea>
             </div>
@@ -56,7 +56,7 @@
 
                 <div class="mt-4 text-xs">
                     @if ($reg == 1)
-                        <p class="">Inscripción realizada satisfactoriamente. Consulte en el menú
+                        <p class="bg-green-700 px-4 py-2 text-center md:text-left text-white inline-block">Inscripción realizada satisfactoriamente. Consulte en el menú
                             <strong>Mis cursos y eventos del usuario</strong>
                         </p>
                     @endif

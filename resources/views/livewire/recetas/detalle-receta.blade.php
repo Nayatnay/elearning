@@ -28,8 +28,8 @@
             </div>
 
             <div class="w-full md:px-6">
-                <p class="hidden md:block text-xl lg:text-2xl text-orange-700 uppercase">{{ $receta->nombre }}</p>
-                <p class="hidden md:block text-xl lg:text-2xl">{{ $receta->descripcion }}</p>
+                <p class="hidden md:block text-xl lg:text-2xl text-red-800 uppercase">{{ $receta->nombre }}</p>
+                <p class="mt-1 hidden md:block text-xl lg:text-2xl">{{ $receta->descripcion }}</p>
 
 
                 <div class="text-lg mt-4 font-medium">
@@ -48,7 +48,7 @@
         </div>
 
         <div class="text-3xl mt-20 font-medium">
-            <p>Indicaciones</p>
+            <p class="mb-4">Indicaciones</p>
 
             @if ($indicaciones->count())
                 @php
@@ -60,7 +60,7 @@
                         @php
                             $con++;
                         @endphp
-                        <span class="font-bold text-2xl mr-2">{{ $con }}.</span>
+                        <span class="font-bold text-2xl mr-2 text-red-800">Paso {{ $con }}.</span>
                         <span class="font-light">{{ $indicacion->descripcion }}</p>
 
                     </div>

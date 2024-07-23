@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('clacursos', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('id_curso');
-            $table->string('descripcion');
+            $table->string('descripcion')->unique();
             $table->string('slug');
             $table->string('video');
             $table->timestamps();

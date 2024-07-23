@@ -64,7 +64,7 @@ Route::get('eventos', IndexEventos::class)->name('eventos');
 Route::get('inscripciones/{curso:slug}', IndexInscripciones::class)->name('inscripciones');
 
 Route::get('detalledelcurso/{curso:slug}', DetalleCurso::class)->name('detalledelcurso');
-Route::get('clasesdelcurso/{clase}', ClasesCurso::class)->name('clasesdelcurso');
+Route::get('clasesdelcurso/{clase:slug}', ClasesCurso::class)->name('clasesdelcurso');
 Route::get('miscursos', MisCursos::class)->name('miscursos');
 Route::get('empleos', IndexEmpleos::class)->name('empleos');
 Route::post('solicitud_empleo', [IndexEmpleos::class, 'solicitud'])->name('solicitud_empleo');

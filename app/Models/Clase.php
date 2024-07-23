@@ -16,7 +16,7 @@ class Clase extends Model
         'video',
     ];
 
-    //Relacion uno a muchos
+    /*/Relacion uno a muchos
 
     public function clacurso()
     {
@@ -30,5 +30,5 @@ class Clase extends Model
             $set = fn ($value) => strtolower($value)
         );
     }
-
+*/
 }

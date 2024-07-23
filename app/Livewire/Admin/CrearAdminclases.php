@@ -24,9 +24,8 @@ class CrearAdminclases extends Component
         'descripcion' => 'required|unique:clacursos',
     ];
 
-    public function mount(Curso $curso)
+    public function mount()
     {
-        $this->curso = $curso;
         $this->identificador = rand(); // Lo estoy usando para eliminar el nombre de la imagen que se selecciono anteriormente en el modal
     }
 
@@ -39,16 +38,16 @@ class CrearAdminclases extends Component
     public function save()
     {
         $this->validate();
-        
+
         //dd($this->descripcion);
-        
+
         $this->slug = str::slug($this->descripcion, '-');
 
         $fileName = time() . '.' . $this->video->extension();
         $this->video->storeAs('public/clases', $fileName);
 
         Clacurso::create([
-            'id_curso' => $this->curso->id,
+            'id_curso' => $this->curso,
             'descripcion' => $this->descripcion,
             'slug' => $this->slug,
             'video' => $fileName,

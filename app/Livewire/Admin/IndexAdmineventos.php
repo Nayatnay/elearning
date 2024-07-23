@@ -25,7 +25,7 @@ class IndexAdmineventos extends Component
     protected function rules()
     {
         return [
-            'nombre' => 'required',
+            'nombre' => 'required|unique:eventos,nombre,' . $this->evento->id,
             'imagen' => 'required',
             'registrar' => 'required',
         ];

@@ -18,7 +18,7 @@ class CrearAdmincursos extends Component
     protected $listeners = ['render'];
 
     protected $rules = [
-        'nombre' => 'required',
+        'nombre' => 'required|unique:cursos',
         'descripcion' => 'required',
         'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=100,min_height=100,max_width=640,max_height=480|max:2048',
         'costo' => 'required',
@@ -37,14 +37,14 @@ class CrearAdmincursos extends Component
 
     public function save()
     {
-    
-        $this->validate();       
+
+        $this->validate();
 
         $fileName = time() . '.' . $this->imagen->extension();
         $this->imagen->storeAs('public/cursos', $fileName);
 
         $this->slug = str::slug($this->nombre, '-');
-
+        
         Curso::create([
             'nombre' => $this->nombre,
             'slug' => $this->slug,

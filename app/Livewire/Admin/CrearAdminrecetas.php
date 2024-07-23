@@ -18,7 +18,7 @@ class CrearAdminrecetas extends Component
     protected $listeners = ['render'];
 
     protected $rules = [
-        'nombre' => 'required',
+        'nombre' => 'required|unique:recetas',
         'descripcion' => 'required',
         'tiempo' => 'required',
         'porciones' => 'required',

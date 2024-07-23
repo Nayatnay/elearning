@@ -22,6 +22,7 @@ class IndexAdminclases extends Component
     protected function rules()
     {
         return [
+            'tema' => 'required|unique:clases,tema,' . $this->clase->id,
             'tema' => 'required',
             'video' => 'required',
         ];

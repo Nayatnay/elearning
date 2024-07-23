@@ -24,14 +24,15 @@ class SelecClases extends Component
     protected function rules()
     {
         return [
-            'descripcion' => 'required|unique:clacursos',
-            'video' => 'required',
+            //'video' => 'required|file|mimes:mp4|max:102400',
+            'descripcion' => 'required|unique:clacursos,descripcion,' . $this->clase->id,
         ];
     }
 
     public function mount($curso)
     {
         $this->curso = Curso::find($curso);
+        //$this->clase = $clase;
         $this->identificador = rand(); // Lo estoy usando para eliminar el nombre del video seleccionado anteriormente en el modal
     }
 
@@ -66,6 +67,7 @@ class SelecClases extends Component
 
     public function update()
     {
+        
         if ($this->videovo <> null) {
             $this->video = $this->videovo;
             $fileName = time() . '.' . $this->video->extension();
@@ -73,18 +75,23 @@ class SelecClases extends Component
             $this->video = $fileName;
         }
         
+        $this->clase->descripcion = $this->descripcion;
         $this->clase->slug = str::slug($this->descripcion, '-');
+        $this->clase->video = $this->video;
+        
+
 
         $validatedData = $this->validate();
         $this->clase->update($validatedData);
-
+        
         $this->videovo = null;
 
         $this->reset(['open_edit', 'descripcion', 'video']);  //cierra el modal y limpia los campos del formulario
         $this->identificador = rand();
         
         $curso = $this->curso;
-
+        $clase = $this->clase;
+        
         return redirect()->route('selec_clases', compact('curso'));
     }
 

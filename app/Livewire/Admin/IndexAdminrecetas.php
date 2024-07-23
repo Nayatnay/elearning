@@ -23,7 +23,7 @@ class IndexAdminrecetas extends Component
     protected function rules()
     {
         return [
-            'nombre' => 'required',
+            'nombre' => 'required|unique:recetas,nombre,' . $this->receta->id,
             'descripcion' => 'required',
             'tiempo' => 'required',
             'porciones' => 'required',

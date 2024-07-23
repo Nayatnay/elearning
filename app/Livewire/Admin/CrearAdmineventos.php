@@ -19,7 +19,7 @@ class CrearAdmineventos extends Component
     protected $listeners = ['render'];
 
     protected $rules = [
-        'nombre' => 'required',
+        'nombre' => 'required|unique:eventos',
         'imagen' => 'required|image|mimes:jpeg,png,jpg,gif,svg|dimensions:min_width=100,min_height=100,max_width=640,max_height=480|max:2048',
     ];
 
