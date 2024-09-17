@@ -17,7 +17,12 @@
 
     <div class="mt-4 pt-4 px-4 pb-20 max-w-screen-xl mx-auto">
 
-        <x-retro></x-retro>
+        <div class="px-4">
+            <a href="{{ route('admin_eventos') }}"
+                class="px-2 py-1 bg-red-700 text-white rounded-lg hover:bg-red-600">
+                <i class="fa-solid fa-arrow-left"></i>
+            </a>
+        </div>
 
         <div>
             <form action="" wire:submit="actuinfo">
